@@ -1,0 +1,14 @@
+# Generated outputs
+outputs/
+
+# Node dependencies
+node_modules/
+
+# Downloaded images (keep the script and md, not the downloaded files)
+images/*.jpg
+images/*.jpeg
+images/*.png
+images/*.webp
+
+# macOS
+.DS_Store

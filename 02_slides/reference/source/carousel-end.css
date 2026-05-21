@@ -1,0 +1,361 @@
+/* ─────────────────────────────────────────────
+   TrackAI Carousels — final "the app" slide
+   Drops an iPhone-sized device into the
+   1080×1920 carousel slide canvas.
+   ───────────────────────────────────────────── */
+
+.slide.app-slide {
+  background: #0a0b0d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* faint grid texture in the background */
+.slide.app-slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(244,239,230,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244,239,230,0.035) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 700px 1000px at 50% 50%, black 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 700px 1000px at 50% 50%, black 0%, transparent 75%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.app-slide .app-stage {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* eyebrow pinned to top, foot pinned to bottom, phone perfectly centered */
+.app-slide .app-eyebrow {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.app-slide .app-phone {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2.05);
+}
+.app-slide .app-foot {
+  position: absolute;
+  bottom: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 160px);
+  align-items: center;
+}
+
+/* eyebrow above phone */
+.app-slide .app-eyebrow {
+  font-family: var(--mono);
+  font-size: 28px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+.app-slide .app-eyebrow::before,
+.app-slide .app-eyebrow::after {
+  content: "";
+  width: 60px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+/* phone wrapper — scaled up for the tall canvas; positioning is handled above */
+.app-slide .app-phone {
+  filter: drop-shadow(0 80px 100px rgba(0,0,0,0.7))
+          drop-shadow(0 30px 40px rgba(0,0,0,0.5));
+}
+
+/* CTA below phone */
+.app-slide .app-foot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  text-align: center;
+}
+
+.app-slide .app-headline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 88px;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0;
+  text-wrap: balance;
+  max-width: 14ch;
+}
+
+.app-slide .app-cta {
+  font-family: var(--mono);
+  font-size: 26px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* override end-slide.css's transparent dc-artboard so carousel artboards keep their slide bg */
+.dc-artboard:has(.slide) {
+  background: var(--paper);
+}
+
+/* ─────────────────────────────────────────────
+   Light variant — white/paper end slide
+   (iPhone stays in dark mode — keeps contrast)
+   ───────────────────────────────────────────── */
+.slide.app-slide.light {
+  background: #f6f4ef;
+}
+
+/* invert the faint grid so it reads on paper */
+.slide.app-slide.light::before {
+  background-image:
+    linear-gradient(rgba(26,24,20,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,24,20,0.045) 1px, transparent 1px);
+}
+
+/* warmer, softer shadow under the dark phone on paper */
+.slide.app-slide.light .app-phone {
+  filter: drop-shadow(0 80px 100px rgba(40,30,20,0.32))
+          drop-shadow(0 30px 40px rgba(40,30,20,0.20));
+}
+
+/* dark ink text on paper */
+.slide.app-slide.light .app-eyebrow {
+  color: rgba(26, 24, 20, 0.58);
+}
+.slide.app-slide.light .app-headline {
+  color: #1a1814;
+}
+.slide.app-slide.light .app-cta {
+  color: #d9461e;
+}
+
+/* ─────────────────────────────────────────────
+   App-as-background CTA — final slide
+   Phone is enlarged + centered so the dashboard
+   screen reads as the slide's wallpaper. A dark
+   gradient scrim at top carries the CTA copy.
+   ───────────────────────────────────────────── */
+.slide.app-bg-cta {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #07080a;
+  isolation: isolate;
+  color: var(--ink);
+  font-family: var(--sans);
+}
+
+/* phone wallpaper */
+.app-bg-cta .abc-phone {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(2.35);
+  transform-origin: center center;
+  z-index: 0;
+  filter: drop-shadow(0 80px 100px rgba(0, 0, 0, 0.7))
+          drop-shadow(0 30px 40px rgba(0, 0, 0, 0.5));
+}
+
+/* faint warm bloom behind the phone */
+.app-bg-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 1100px 700px at 50% 65%, rgba(255, 91, 46, 0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* top scrim — heavy fade to readable text */
+.app-bg-cta .abc-scrim-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56%;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 8, 10, 0.96) 0%,
+    rgba(7, 8, 10, 0.92) 20%,
+    rgba(7, 8, 10, 0.78) 42%,
+    rgba(7, 8, 10, 0.38) 70%,
+    rgba(7, 8, 10, 0) 100%
+  );
+  pointer-events: none;
+}
+
+/* bottom scrim — for CTA + "link in bio" line */
+.app-bg-cta .abc-scrim-bot {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 22%;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 8, 10, 0) 0%,
+    rgba(7, 8, 10, 0.6) 50%,
+    rgba(7, 8, 10, 0.96) 100%
+  );
+  pointer-events: none;
+}
+
+/* copy block — pinned to top portion */
+.app-bg-cta .abc-copy {
+  position: absolute;
+  top: 120px;
+  left: 90px;
+  right: 90px;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* no-eyebrow / no-cta variant — text sits lower & breathes more */
+.app-bg-cta.no-eyebrow .abc-copy {
+  top: 180px;
+  gap: 36px;
+}
+
+.app-bg-cta .abc-eyebrow {
+  font-family: var(--mono);
+  font-size: 22px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-weight: 500;
+}
+.app-bg-cta .abc-eyebrow .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 14px var(--accent);
+  flex-shrink: 0;
+}
+.app-bg-cta .abc-eyebrow .rule {
+  flex: 1;
+  height: 1px;
+  background: rgba(244, 239, 230, 0.18);
+  max-width: 220px;
+}
+
+.app-bg-cta .abc-setup {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 68px;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  color: rgba(244, 239, 230, 0.78);
+  margin: 0;
+  text-wrap: balance;
+  max-width: 18ch;
+}
+
+.app-bg-cta .abc-payoff {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 88px;
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  margin: 0;
+  text-wrap: balance;
+  max-width: 14ch;
+}
+.app-bg-cta .abc-payoff em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--accent);
+}
+.app-bg-cta .abc-payoff .brand {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* CTA pill — glassy, pinned bottom */
+.app-bg-cta .abc-cta {
+  position: absolute;
+  bottom: 110px;
+  left: 90px;
+  z-index: 5;
+  font-family: var(--mono);
+  font-size: 26px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 32px;
+  border: 1px solid rgba(244, 239, 230, 0.22);
+  background: rgba(13, 14, 16, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 999px;
+  font-weight: 500;
+}
+.app-bg-cta .abc-cta .arrow {
+  font-size: 30px;
+  letter-spacing: 0;
+  transform: translateY(-1px);
+}
+
+/* tiny watermark/foot — opposite corner */
+.app-bg-cta .abc-foot {
+  position: absolute;
+  bottom: 120px;
+  right: 90px;
+  z-index: 5;
+  font-family: var(--mono);
+  font-size: 18px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(244, 239, 230, 0.45);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.app-bg-cta .abc-foot .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}

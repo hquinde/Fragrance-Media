@@ -1,0 +1,121 @@
+#!/usr/bin/env node
+// Exports a carousel HTML file as 6 PNGs (1080×1920) via Puppeteer.
+// Usage: node design_handoff/export.js [carousel-id]
+// Example: node design_handoff/export.js slide-template
+
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+
+const carouselId = process.argv[2] || 'slide-template';
+const SOURCE_DIR = path.join(__dirname, 'source');
+const IMAGES_DIR = path.join(__dirname, '..', 'images');
+const OUTPUTS_ROOT = path.join(__dirname, '..', 'outputs');
+
+function nextOutputFolder() {
+  if (!fs.existsSync(OUTPUTS_ROOT)) return 1;
+  const numbered = fs.readdirSync(OUTPUTS_ROOT)
+    .map(n => parseInt(n, 10))
+    .filter(n => !isNaN(n))
+    .sort((a, b) => a - b);
+  // Reuse the lowest empty folder, otherwise go to max + 1
+  for (const n of numbered) {
+    const dir = path.join(OUTPUTS_ROOT, String(n));
+    if (fs.readdirSync(dir).length === 0) return n;
+  }
+  return numbered.length === 0 ? 1 : Math.max(...numbered) + 1;
+}
+
+const outNum = nextOutputFolder();
+const OUT_DIR = path.join(OUTPUTS_ROOT, String(outNum));
+
+const MIME = {
+  '.html': 'text/html',
+  '.css': 'text/css',
+  '.js': 'application/javascript',
+  '.jsx': 'application/javascript',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.webp': 'image/webp',
+  '.svg': 'image/svg+xml',
+  '.woff2': 'font/woff2',
+};
+
+function startServer(dir) {
+  return new Promise((resolve) => {
+    const server = http.createServer((req, res) => {
+      const urlPath = req.url.split('?')[0];
+      const decoded = decodeURIComponent(urlPath);
+      const filePath = decoded.startsWith('/images/')
+        ? path.join(IMAGES_DIR, decoded.slice('/images/'.length))
+        : path.join(dir, decoded);
+      if (!fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
+        res.writeHead(404);
+        res.end('Not found');
+        return;
+      }
+      const ext = path.extname(filePath);
+      res.writeHead(200, { 'Content-Type': MIME[ext] || 'application/octet-stream' });
+      fs.createReadStream(filePath).pipe(res);
+    });
+    server.listen(0, '127.0.0.1', () => {
+      const { port } = server.address();
+      resolve({ server, port });
+    });
+  });
+}
+
+async function run() {
+  const puppeteer = require('puppeteer');
+
+  fs.mkdirSync(OUT_DIR, { recursive: true });
+
+  const { server, port } = await startServer(SOURCE_DIR);
+  const url = `http://127.0.0.1:${port}/carousels/${carouselId}.html`;
+  console.log(`Serving ${SOURCE_DIR} on port ${port}`);
+  console.log(`Opening ${url}`);
+
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  });
+
+  try {
+    const page = await browser.newPage();
+    await page.setViewport({ width: 1080, height: 1920, deviceScaleFactor: 1 });
+    await page.goto(url, { waitUntil: 'networkidle0', timeout: 30000 });
+
+    // Wait for Babel/React to finish rendering all 6 slides
+    await page.waitForFunction(
+      () => document.querySelectorAll('.slide-wrap').length >= 6,
+      { timeout: 20000 }
+    );
+
+    // Wait for fonts
+    await page.evaluate(() => document.fonts.ready);
+
+    // Extra settle time for images and custom elements
+    await new Promise((r) => setTimeout(r, 1500));
+
+    const slides = await page.$$('.slide-wrap');
+    console.log(`Found ${slides.length} .slide-wrap elements`);
+
+    for (let i = 0; i < slides.length; i++) {
+      const num = String(i + 1).padStart(2, '0');
+      const outPath = path.join(OUT_DIR, `${num}-slide.png`);
+      await slides[i].screenshot({ path: outPath, type: 'png' });
+      console.log(`  Saved ${outPath}`);
+    }
+  } finally {
+    await browser.close();
+    server.close();
+  }
+
+  console.log(`\nDone — ${carouselId} exported to outputs/${outNum}/`);
+}
+
+run().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
