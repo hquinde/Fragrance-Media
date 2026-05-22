@@ -86,9 +86,9 @@ async function run() {
     await page.setViewport({ width: 1080, height: 1920, deviceScaleFactor: 1 });
     await page.goto(url, { waitUntil: 'networkidle0', timeout: 30000 });
 
-    // Wait for Babel/React to finish rendering all 6 slides
+    // Wait for Babel/React to finish rendering slides
     await page.waitForFunction(
-      () => document.querySelectorAll('.slide-wrap').length >= 6,
+      () => document.querySelectorAll('.slide-wrap').length >= 1,
       { timeout: 20000 }
     );
 

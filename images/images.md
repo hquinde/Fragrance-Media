@@ -7,24 +7,27 @@ Add or remove Slide rows to match your script. Leave a slot blank to skip it.
 
 ## Carousel 1 — [Topic]
 
-- Title:   
-- Slide 1: 
-- Slide 2: 
-- Slide 3: 
-- Slide 4: 
+- Title:
+- Slide 1:
+- Slide 2:
+- Slide 3:
+- Slide 4:
+- Slide 5:
 
 ## Carousel 2 — [Topic]
 
-- Title:   
-- Slide 1: 
-- Slide 2: 
-- Slide 3: 
-- Slide 4: 
+- Title:
+- Slide 1:
+- Slide 2:
+- Slide 3:
+- Slide 4:
+- Slide 5:
 
 ## Carousel 3 — [Topic]
 
-- Title:   
-- Slide 1: 
-- Slide 2: 
-- Slide 3: 
-- Slide 4: 
+- Title:
+- Slide 1:
+- Slide 2:
+- Slide 3:
+- Slide 4:
+- Slide 5:
