@@ -1,7 +1,7 @@
 # Batch Images
 
 Paste one Pinterest URL per slot. Run `node download-images.js` when ready.
-Leave a slot blank to skip it.
+Add or remove Slide rows to match your script. Leave a slot blank to skip it.
 
 ---
 

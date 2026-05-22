@@ -1,38 +1,4 @@
-// slide-template — TrackAI carousel template
-
-function PhoneEndSlide({ setup, payoff }) {
-  return (
-    <div className="slide" style={{ background: "var(--ink)", overflow: "hidden" }}>
-      {/* Car hero — bleeds in from top */}
-      <image-slot id="end-bg" shape="rect" src="assets/cle-53-amg.webp"></image-slot>
-      {/* Gradient: photo at top fades to off-white by 58% */}
-      <div style={{
-        position: "absolute", inset: 0, zIndex: 1,
-        background: "linear-gradient(to bottom, transparent 28%, var(--ink) 58%)",
-        pointerEvents: "none"
-      }}></div>
-      {/* Phone mockup */}
-      <div style={{
-        position: "absolute", left: "50%", top: "30%",
-        transform: "translate(-50%, -50%) scale(1.30)", transformOrigin: "center", zIndex: 2,
-        filter: "drop-shadow(0 60px 80px rgba(0,0,0,0.35)) drop-shadow(0 24px 30px rgba(0,0,0,0.2))"
-      }}>
-        <IOSDevice width={380} height={822} dark={true}>
-          <DashScreen />
-        </IOSDevice>
-      </div>
-      {/* Text */}
-      <div style={{
-        position: "absolute", top: "1320px", left: "90px", right: "90px",
-        zIndex: 4, display: "flex", flexDirection: "column",
-        alignItems: "center", textAlign: "center", gap: "24px"
-      }}>
-        {setup ? <p style={{ fontFamily: "var(--sans)", fontWeight: 700, fontSize: "104px", lineHeight: "1.0", letterSpacing: "-0.03em", color: "var(--paper)", margin: 0 }}>{setup}</p> : null}
-        {payoff ? <p style={{ fontFamily: "var(--sans)", fontWeight: 700, fontSize: "104px", lineHeight: "1.0", letterSpacing: "-0.03em", color: "var(--paper)", margin: 0 }}>{payoff}</p> : null}
-      </div>
-    </div>
-  );
-}
+// slide-template — Fragrance Collective carousel template
 
 function SlideTemplate() {
   return (
@@ -108,10 +74,20 @@ function SlideTemplate() {
         </div>
       </div>
 
-      {/* ── Slide 06 — End ── */}
-      <div className="slide-caption">06 / 06 — CTA</div>
+      {/* ── Slide 06 — Closing ── */}
+      <div className="slide-caption">06 / 06 — Closing</div>
       <div className="slide-wrap">
-        <PhoneEndSlide setup="Forget nothing." payoff={<>TrackAI.</>} />
+        <div className="slide">
+          <image-slot id="st-6-bg" shape="rect" src="assets/repairs/tires.jpeg"></image-slot>
+          <div className="scrim scrim-strong"></div>
+          <div className="frame-counter">06 / 06</div>
+          <div className="content top" style={{ paddingTop: '220px', gap: '32px' }}>
+            <div className="eyebrow">Slide 06 · Topic</div>
+            <h2 className="headline lg serif">Headline<br />goes here.</h2>
+            <div className="accent-rule"></div>
+            <p className="body wide">One sentence of body copy.</p>
+          </div>
+        </div>
       </div>
 
     </div>
