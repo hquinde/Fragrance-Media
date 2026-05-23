@@ -31,13 +31,18 @@ After Stage 1: review `01_scripts/output.md`, tweak any slide copy as needed.
 
 ## Stage 2 — Slide creation
 
-**Trigger:** tell Claude to run Stage 2. It reads all 3 scripts directly from `01_scripts/output.md`.
+**Trigger:** Automatic — fires as soon as a system-reminder shows `images/images.md` was modified with URLs filled in. No user message needed beyond pasting the URLs.
 
 **Pre-flight check:** Before doing anything in Stage 2, read `01_scripts/output.md`. If it contains no scripts (only the blank header), stop and run Stage 1 first. Do not proceed to slide creation until `output.md` has 3 complete scripts.
 
 File: `02_slides/CLAUDE.md` — full context and slide creation instructions
 
-Before running: fill in `images/images.md` with 15 Pinterest URLs (5 per carousel). When you tell Claude "images.md is filled", Claude runs `node images/download-images.js` automatically.
+**When images.md is detected as filled:**
+1. Run `node images/download-images.js` automatically
+2. Immediately proceed to full Stage 2 — build and export all 3 carousels
+3. Report: "All 3 carousels are in outputs/ and ready to upload. Let me know when you're done posting and I'll clean everything up."
+
+The user only checks the output — no "done" or "go" message required.
 
 After Stage 2: PNGs for each carousel appear in `outputs/1/`, `outputs/2/`, `outputs/3/`.
 
@@ -55,12 +60,8 @@ Stage 1 — generate 3 scripts
 01_scripts/output.md  →  (tweak if needed)
       ↓
 fill images/images.md with 15 Pinterest URLs
-      ↓
-tell Claude "images.md is filled"
-      ↓
-Claude runs node images/download-images.js automatically
-      ↓
-run Stage 2  (all 3 carousels at once)
+      ↓  ← Claude detects this automatically via system-reminder
+Claude runs download + Stage 2 with no extra message needed
       ↓
 outputs/1/  outputs/2/  outputs/3/
 ```

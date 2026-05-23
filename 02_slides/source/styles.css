@@ -178,7 +178,7 @@ image-slot {
   font-size: var(--type-eyebrow);
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--ink);
   font-weight: 500;
   display: none;
   align-items: center;
@@ -832,7 +832,7 @@ body[data-scrim="none"] .scrim { display: none; }
   display: none;
   width: 88px;
   height: 3px;
-  background: var(--accent);
+  background: var(--ink);
   border-radius: 2px;
 }
 

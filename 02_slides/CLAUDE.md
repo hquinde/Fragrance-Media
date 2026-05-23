@@ -29,17 +29,17 @@ Images are downloaded via `download-images.js` from URLs in `images.md`. Files a
 **Slide structure (per content slide)**
 ```jsx
 <div className="slide">
-  <image-slot id="cN-M-bg" shape="rect" src="assets/incoming/photo.jpg"></image-slot>
+  <img className="slide-bg" src="/images/cN-filename.jpg" />
   <div className="scrim scrim-strong"></div>
-  <div className="frame-counter">0M / 06</div>
   <div className="content top" style={{ paddingTop: "220px", gap: "32px" }}>
-    <div className="eyebrow">Slide 0M · Topic</div>
     <h2 className="headline lg serif">Headline<br />goes here.</h2>
-    <div className="accent-rule"></div>
+    <div className="accent-rule" style={{ display: 'block', background: 'var(--ink)' }}></div>
     <p className="body wide">One sentence of body copy.</p>
   </div>
 </div>
 ```
+
+**No eyebrows. No frame counters.** Do not include `<div className="eyebrow">` or `<div className="frame-counter">` in any slide — these are not part of the Fragrance Collective design.
 
 **Hard rules**
 - Never change fonts, colors, or canvas size
