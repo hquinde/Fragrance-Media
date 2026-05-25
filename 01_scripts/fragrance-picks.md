@@ -10,6 +10,22 @@ Remove entries after they've been used, or leave them if you want them revisited
 ---
 
 ## Already Used
+- Acqua di Giò Profumo — Giorgio Armani
+- Terre d'Hermès EDP — Hermès
+- Reflection Man — Amouage
+- Ani — Nishane
+- Colonia Futura — Acqua di Parma
+- La Nuit de l'Homme — Yves Saint Laurent
+- Tobacco Vanille — Tom Ford
+- Myths Man — Amouage
+- 51 Arabia — Nishane
+- Black Phantom — Kilian
+- Layton — Parfums de Marly
+- Herod — Parfums de Marly
+- Pegasus — Parfums de Marly
+- Sauvage EDP — Christian Dior
+- Bleu de Chanel — Chanel
+- Aventus — Creed
 - Messi Eau de Parfum — Messi
 - Bade'e Al Oud Amethyst — Lattafa Perfumes
 - Cruz del Sur II — Xerjoff
