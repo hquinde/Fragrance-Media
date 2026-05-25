@@ -9,13 +9,21 @@ A single AI agent reads context, runs the skill, and outputs slides — no compl
 
 **Trigger:** "let's start" (or any equivalent like "let's go", "start", "new batch")
 
-When the user says let's start, ask:
-"Before we write new scripts — how did the last batch perform? Share any titles and their view counts and I'll update the winners and failures list before we generate."
+When the user says let's start:
 
-Once the user shares results:
-- Add titles with strong performance to `01_scripts/winners.md` (include plays, source "Fragrance Collective", and a note on why it worked)
-- Add titles that flopped to `01_scripts/failures.md` (include plays and why it failed)
-- Then proceed immediately to Stage 1 — no need to ask.
+1. Read `01_scripts/pending.md`. If it has any titles, list them and ask:
+   "How did these perform? Tell me the view counts (or just say 'flopped') and I'll update the records."
+
+2. Once the user responds:
+   - Move titles with strong performance to `01_scripts/winners.md` (include plays, source "Fragrance Collective", and a note on why it worked)
+   - Move titles that flopped to `01_scripts/failures.md` (include plays and why it failed)
+   - Remove reviewed titles from `pending.md`
+
+3. Then ask: "Want to pull from your **ideas list** this batch, or generate based on what's worked before?"
+   - **Ideas list** → read `01_scripts/ideas.md` "To Try" section; use as many ideas as are listed (up to 3) as the direct script formats; fill remaining slots from winners/failures patterns
+   - **Winners/Failures** → standard generation, no ideas used
+
+4. Proceed immediately to Stage 1.
 
 ---
 
@@ -24,6 +32,8 @@ Once the user shares results:
 **Trigger:** runs automatically after Stage 0
 
 See `01_scripts/CLAUDE.md` for instructions.
+
+After writing scripts to `output.md`, append the 3 new script titles to `01_scripts/pending.md`.
 
 After Stage 1: review `01_scripts/output.md`, tweak any slide copy as needed.
 
@@ -53,9 +63,11 @@ After Stage 2: PNGs for each carousel appear in `outputs/1/`, `outputs/2/`, `out
 ```
 "let's start"
       ↓
-Stage 0 — performance review → update Winners/Failures
+Stage 0 — review pending titles → move to winners/failures
       ↓
-Stage 1 — generate 3 scripts
+Choose: ideas list or winners/failures?
+      ↓
+Stage 1 — generate 3 scripts → append titles to pending.md
       ↓
 01_scripts/output.md  →  (tweak if needed)
       ↓

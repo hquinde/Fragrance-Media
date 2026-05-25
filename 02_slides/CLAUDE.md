@@ -58,17 +58,14 @@ Create all 3 carousels from the 3 scripts in `01_scripts/output.md`.
 ## Steps
 
 1. **Determine carousel numbers** — check `02_slides/source/carousels/` for the highest existing `cN-slides.jsx`, increment by 1 for each of the 3 carousels.
-2. **List available images** — read all filenames in `02_slides/source/assets/incoming/`.
-3. **Match images to slides** — for each carousel, map every slide (title + all content slides) to the best-fitting image. Output the full mapping for all 3 carousels and wait for confirmation before continuing.
-4. **Create JSX files** — for each carousel, copy `02_slides/source/slide-template.jsx`, rename to `cN-slides.jsx`, replace all copy with the script. All slides use the same content slide structure — keep all classNames and structure exactly as-is.
-5. **Create HTML entry points** — for each carousel, copy `02_slides/source/slide-template.html`, rename to `cN.html`, update `<title>` and script src.
-6. **Export PNGs** — run `node export.js cN` from `02_slides/` for each carousel. PNGs save to `outputs/cN/`.
+2. **Check downloaded images** — list filenames in `images/`. If any file has an unsupported format (e.g. `.heic`), stop and ask the user for a replacement URL before continuing. No need to confirm anything else.
+3. **Create JSX files** — for each carousel, copy `02_slides/source/slide-template.jsx`, rename to `cN-slides.jsx`, replace all copy with the script. All slides use the same content slide structure — keep all classNames and structure exactly as-is.
+4. **Create HTML entry points** — for each carousel, copy `02_slides/source/slide-template.html`, rename to `cN.html`, update `<title>` and script src.
+5. **Export PNGs** — run `node export.js cN` from `02_slides/` for each carousel. PNGs save to `outputs/cN/`.
 
 ## Output
 
-Confirm: carousel numbers used, total PNG paths created (per carousel count), any photo substitutions made.
-
-Then end with exactly this message:
+End with exactly this message:
 "All 3 carousels are in outputs/ and ready to upload. Let me know when you're done posting and I'll clean everything up."
 
 When the user confirms they're done posting, respond with "Are you sure? This will delete all images, scripts, and exported slides from this batch." and wait for confirmation. Only run the cleanup after they confirm.
