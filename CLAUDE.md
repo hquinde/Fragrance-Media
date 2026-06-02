@@ -11,16 +11,17 @@ A single AI agent reads context, runs the skill, and outputs slides — no compl
 
 When the user says let's start:
 
-1. Read `01_scripts/pending.md`. If it has any titles, list them and ask:
+1. Read `01_scripts/data/performance.json`. If `pending` has any titles, list them and ask:
    "How did these perform? Tell me the view counts (or just say 'flopped') and I'll update the records."
 
 2. Once the user responds:
-   - Move titles with strong performance to `01_scripts/winners.md` (include plays, source "Fragrance Collective", and a note on why it worked)
-   - Move titles that flopped to `01_scripts/failures.md` (include plays and why it failed)
-   - Remove reviewed titles from `pending.md`
+   - Move titles with strong performance into `winners` (include plays and a note on why it worked)
+   - Move titles that flopped into `failures` (include plays and why it failed)
+   - Remove reviewed titles from `pending`
+   - Save all changes back to `01_scripts/data/performance.json`
 
 3. Then ask: "Want to pull from your **ideas list** this batch, or generate based on what's worked before?"
-   - **Ideas list** → read `01_scripts/ideas.md` "To Try" section; use as many ideas as are listed (up to 3) as the direct script formats; fill remaining slots from winners/failures patterns. If ideas fills all 3 slots, skip reading winners.md and failures.md entirely.
+   - **Ideas list** → read `01_scripts/ideas.md` "To Try" section; use as many ideas as are listed (up to 3) as the direct script formats; fill remaining slots from `winners`/`patterns` in `01_scripts/data/performance.json`. If ideas fills all 3 slots, skip reading it entirely.
    - **Winners/Failures** → standard generation, no ideas used
 
 4. Proceed immediately to Stage 1.
@@ -33,7 +34,7 @@ When the user says let's start:
 
 See `01_scripts/CLAUDE.md` for instructions.
 
-After writing scripts to `output.md`, append the 3 new script titles to `01_scripts/pending.md`.
+After writing scripts to `output.md`, append the 3 new script titles to `pending` in `01_scripts/data/performance.json`.
 
 After Stage 1: review `01_scripts/output.md`, tweak any slide copy as needed.
 
@@ -62,11 +63,11 @@ After Stage 2: PNGs for each carousel appear in `outputs/1/`, `outputs/2/`, `out
 ```
 "let's start"
       ↓
-Stage 0 — review pending titles → move to winners/failures
+Stage 0 — review pending titles → update 01_scripts/data/performance.json
       ↓
 Choose: ideas list or winners/failures?
       ↓
-Stage 1 — generate 3 scripts → append titles to pending.md
+Stage 1 — generate 3 scripts → append titles to 01_scripts/data/performance.json pending
       ↓
 01_scripts/output.md  →  (tweak if needed)
       ↓

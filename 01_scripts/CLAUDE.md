@@ -1,13 +1,14 @@
 # Stage 1 — Script Generation
 
-1. Read `fragrance-picks.md`. Also read `winners.md` and `failures.md` unless `ideas.md` fills all 3 slots.
-2. Generate 3 scripts based on what worked and what didn't. If `fragrance-picks.md` has entries in the "To Feature" table, include at least one of those fragrances across the 3 scripts. Prioritize picks that fit naturally into a high-performing format.
-   - Never use a fragrance listed in the "Already Used" section of `fragrance-picks.md`.
+1. Read `data/fragrance-picks.json` and `data/performance.json`. Use `data/performance.json` for winners, failures, patterns, and pending. Skip winners/failures if `ideas.md` fills all 3 slots.
+2. Generate 3 scripts based on what worked and what didn't.
+   - Never use a fragrance listed in `already_used` in `data/fragrance-picks.json`. Names are generalized — no EDT/EDP/Parfum distinction. If any version is listed, all versions are off limits.
    - Distribute niche levels across the 3 carousels — don't default to all-mainstream. Each batch must include at least one fragrance from each of the first three tiers: Mainstream, Mid-niche, and Deep niche. Ultra niche and Obscure are encouraged bonuses. Vary the mix batch to batch so the channel doesn't feel predictable.
    - Niche tiers: Mainstream (Dior, Chanel, YSL) → Mid-niche (Amouage, Xerjoff, Initio) → Deep niche (Roja, Nishane, Nasomatto) → Ultra niche/indie (Areej le Doré, Slumberhouse, Bogue Profumo) → Obscure (Sultan Pasha Attars, Ensar Oud, micro-batch/bespoke)
-3. Write the output to `output.md` using the format below.
-4. Update `images/images.md` using the format below.
-5. In `fragrance-picks.md`: move any used "To Feature" entries to "Already Used", and append all other fragrances chosen during generation to "Already Used" as well.
+3. Before writing scripts, verify every chosen fragrance exists on Fragrantica via web search. Confirm the exact name, brand, and actual notes — use the real notes in slide copy, not guesses.
+4. Write the output to `output.md` using the format below.
+5. Update `images/images.md` using the format below.
+6. In `data/fragrance-picks.json`: append all fragrances chosen during generation to `already_used`.
 
 ---
 

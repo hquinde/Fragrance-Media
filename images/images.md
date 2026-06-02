@@ -42,3 +42,7 @@ Add or remove Slide rows to match your script. Leave a slot blank to skip it.
   fragrantica:
 - Slide 3 (Fragrance Name):
   fragrantica:
+- Slide 4 (Fragrance Name):
+  fragrantica:
+- Slide 5 (Fragrance Name):
+  fragrantica:

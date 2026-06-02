@@ -1,0 +1,45 @@
+{
+  "pending": [
+    "5 Fragrances Built for the Beach",
+    "5 Fragrances That Make You Smell Like Summer Money",
+    "NEED a Fragrance for Summer Nights?"
+  ],
+  "winners": [
+    { "title": "5 Fragrances Built for Summer", "plays": "6k", "note": "\"Built for\" seasonal format — breakout performer" },
+    { "title": "5 Fragrances Built for the Heat", "plays": "6k", "note": "\"Built for\" occasion format — breakout performer" },
+    { "title": "5 Fragrances That Make You Smell Expensive", "plays": "5k", "note": "Aspiration framing + numbered list — strongest performer" },
+    { "title": "Everyone Will Ask What You're Wearing", "plays": "2k", "note": "Curiosity/social proof hook — drives shares" },
+    { "title": "5 Underrated Fragrances That Always Get Compliments", "plays": "2k", "note": "\"Underrated\" + social proof combo — strong hook" },
+    { "title": "Your Summer Fragrance Rotation", "plays": "1k", "note": "Seasonal rotation format — timely, practical" },
+    { "title": "NEED a Fragrance for a Night Out?", "plays": "1k", "note": "Occasion-based NEED format — high intent" },
+    { "title": "5 Compliment Magnets Nobody's Talking About", "plays": "1k", "note": "Hidden gem + social proof combo" },
+    { "title": "5 Fragrances That Smell Like Old Money", "plays": "1k", "note": "Aspiration/lifestyle framing" },
+    { "title": "5 Fragrances That Make You Unforgettable", "plays": "1k", "note": "Identity/transformation hook" },
+    { "title": "5 Lattafa Fragrances That Smell Like $500 Bottles", "plays": "1k", "note": "Budget-luxury contrast framing — broad appeal" },
+    { "title": "5 Fragrances That Hit Different After Dark", "plays": "1k", "note": "Time/occasion framing — aspirational" },
+    { "title": "NEED a Fragrance for Work?", "plays": "1k", "note": "Direct need-based NEED format — high intent" },
+    { "title": "NEED a Fragrance for a Date?", "plays": "1k", "note": "Direct need-based NEED format — high intent" },
+    { "title": "The Only Fragrance Guide You Need", "plays": null, "note": "\"Only X you need\" authority framing" },
+    { "title": "You Only Need These 5 Fragrances for Spring", "plays": null, "note": "Seasonal + authority framing" },
+    { "title": "Clone and Dupes for You — Jean Paul Gaultier Edition", "plays": null, "note": "Brand-specific dupe edition — high intent" },
+    { "title": "Best Dupes for Baccarat Rouge 540", "plays": null, "note": "Iconic luxury dupe — high search intent, broad appeal" },
+    { "title": "5 Fragrances That Always Get Compliments", "plays": null, "note": "Social proof framing" },
+    { "title": "The Only Spring Starter Kit You Need", "plays": null, "note": "Seasonal + authority framing" }
+  ],
+  "failures": [
+    { "title": "Top 3 Men's Fragrances from Parfums de Marly", "plays": "<1k", "why": "Brand-specific top 3 without a hook — too narrow, low discovery" }
+  ],
+  "patterns": [
+    "\"Built for X\" format (season/occasion) — 6k plays twice, strongest pattern",
+    "Aspiration framing (\"smell expensive\") — top performer, broad appeal",
+    "Curiosity hook (\"Everyone will ask…\") — drives engagement and shares",
+    "\"Underrated\" + social proof combo — strong hook",
+    "\"Always get compliments\" angle — highly shareable",
+    "Numbered lists (5 fragrances) — clear value, easy to follow",
+    "\"Only X you need\" framing — implies authority",
+    "Brand-specific dupe editions — high intent audience, searchable",
+    "Dupe content for iconic luxury fragrances (e.g. BR540) — high search intent",
+    "Seasonal rotation format — timely and practical",
+    "NEED occasion format — consistent 1k, high intent audience"
+  ]
+}
