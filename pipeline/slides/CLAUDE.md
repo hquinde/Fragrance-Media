@@ -13,10 +13,10 @@
 - `--accent-2`: #f0c25a (warm yellow)
 
 **Background photos**
-Images are downloaded via `download-images.js` from URLs in `images.md`. Files are named by position: `c1-title.jpg`, `c1-fragrance-slug.jpg`, etc.
+Images are downloaded via `../images/download-images.js` from URLs in `../../checkpoint/images.md`. Files are named by position: `c1-title.jpg`, `c1-fragrance-slug.jpg`, etc.
 
 **Fragrantica card images**
-Normalized by `images/process-images.js` to the convention: `cN-sN-card.jpg`
+Normalized by `../images/process-images.js` to the convention: `cN-sN-card.jpg`
 - `c1-s1-card.jpg` → carousel 1, slide 1 card
 - `c1-s2-card.jpg` → carousel 1, slide 2 card
 - etc.
@@ -27,8 +27,8 @@ Normalized by `images/process-images.js` to the convention: `cN-sN-card.jpg`
 
 **Fixtures**
 - Carousel numbers are fixed: every batch is c1, c2, c3.
-- `02_slides/source/carousels/c1.html`, `c2.html`, `c3.html` are permanent — never regenerated or deleted. Each loads `styles.css`, React/Babel from CDN, and its `cN-slides.jsx`.
-- `02_slides/generate.js` builds `cN-slides.jsx` directly from `01_scripts/output.md` — no separate template file.
+- `source/carousels/c1.html`, `c2.html`, `c3.html` are permanent — never regenerated or deleted. Each loads `styles.css`, React/Babel from CDN, and its `cN-slides.jsx`.
+- `generate.js` builds `cN-slides.jsx` directly from `../../checkpoint/output.md` — no separate template file.
 
 ---
 
@@ -36,7 +36,7 @@ Normalized by `images/process-images.js` to the convention: `cN-sN-card.jpg`
 
 Each fragrance gets two slides: a content slide and a Fragrantica card slide. Both share the same background photo.
 
-**Text wrapping:** `.headline` uses `text-wrap: balance` and `.body`/`.body.wide` use `text-wrap: pretty` with a `max-width`, so the browser auto-wraps titles, names, and copy by default. `02_slides/generate.js` emits plain text with no `<br/>`. Only add a manual `<br/>` afterward if a specific rendered slide wraps awkwardly (see Steps below) — it's the exception, not the rule.
+**Text wrapping:** `.headline` uses `text-wrap: balance` and `.body`/`.body.wide` use `text-wrap: pretty` with a `max-width`, so the browser auto-wraps titles, names, and copy by default. `generate.js` emits plain text with no `<br/>`. Only add a manual `<br/>` afterward if a specific rendered slide wraps awkwardly (see Steps below) — it's the exception, not the rule.
 
 **Title slide**
 ```jsx
@@ -82,28 +82,28 @@ Each fragrance gets two slides: a content slide and a Fragrantica card slide. Bo
 - `<img className="slide-bg">` not `image-slot` — Puppeteer requires it
 - Card slide always uses the same background photo as its content slide
 - Screenshots exactly 1080×1920px — no scaling
-- Save to: `outputs/N/` (via `node export.js cN` from `02_slides/`)
+- Save to: `checkpoint/N/` (via `node export.js cN` from `pipeline/slides/`)
 
 ---
 
 ## Task
 
-Read `01_scripts/output.md` before doing anything.
-Create all 3 carousels from the 3 scripts in `01_scripts/output.md`.
+Read `../../checkpoint/output.md` before doing anything.
+Create all 3 carousels from the 3 scripts in `../../checkpoint/output.md`.
 
 ## Steps
 
-1. **Process images** — run `node images/process-images.js` (downloads Pinterest backgrounds, converts non-jpg backgrounds to `.jpg`, normalizes Fragrantica card images to `cN-sN-card.jpg`).
-2. **Generate + export** — run `node 02_slides/generate.js`. This generates `c1-slides.jsx`, `c2-slides.jsx`, `c3-slides.jsx` from `01_scripts/output.md` and the resolved images, then exports all 3 carousels via `export.js`. If any background or card image is missing, it aborts and lists exactly what's missing — fix `images/` and re-run.
-3. **Review + tweak (optional)** — look at the exported PNGs in `outputs/`. If a headline, name, or copy line wraps awkwardly, hand-edit the relevant `cN-slides.jsx` (add a `<br/>` at the desired break) and re-run `node export.js cN` for just that carousel.
+1. **Process images** — run `node ../images/process-images.js` (downloads Pinterest backgrounds, converts non-jpg backgrounds to `.jpg`, normalizes Fragrantica card images to `cN-sN-card.jpg`).
+2. **Generate + export** — run `node generate.js`. This generates `c1-slides.jsx`, `c2-slides.jsx`, `c3-slides.jsx` from `../../checkpoint/output.md` and the resolved images, then exports all 3 carousels via `export.js`. If any background or card image is missing, it aborts and lists exactly what's missing — fix `../images/` and re-run.
+3. **Review + tweak (optional)** — look at the exported PNGs in `../../checkpoint/`. If a headline, name, or copy line wraps awkwardly, hand-edit the relevant `cN-slides.jsx` (add a `<br/>` at the desired break) and re-run `node export.js cN` for just that carousel.
 
 ## Output
 
 End with exactly this message:
-"All 3 carousels are in outputs/ and ready to upload. Let me know when you're done posting and I'll clean everything up."
+"All 3 carousels are in checkpoint/ and ready to upload. Let me know when you're done posting and I'll clean everything up."
 
 When the user confirms they're done posting, respond with "Are you sure? This will delete all images, scripts, and exported slides from this batch." and wait for confirmation. Only run the cleanup after they confirm.
-1. Empty `outputs/1/`, `outputs/2/`, `outputs/3/` (keep folders)
-2. Delete all image files from `images/` (keep `images.md` and `download-images.js` and `process-images.js`)
-3. Reset `images/images.md` to the blank 3-carousel template
-4. Reset `01_scripts/output.md` to its blank header
+1. Empty `checkpoint/1/`, `checkpoint/2/`, `checkpoint/3/` (keep folders)
+2. Delete all image files from `../images/` (keep `download-images.js` and `process-images.js`)
+3. Reset `checkpoint/images.md` to the blank 3-carousel template
+4. Reset `checkpoint/output.md` to its blank header

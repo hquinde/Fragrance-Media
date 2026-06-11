@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Reads images.md, downloads one image per slot into images/
+// Reads checkpoint/images.md, downloads one image per slot into pipeline/images/
 // Usage: node download-images.js
 // Requires: gallery-dl (brew install gallery-dl)
 
@@ -7,17 +7,17 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const IMAGES_MD = path.join(__dirname, 'images.md');
+const IMAGES_MD = path.join(__dirname, '..', '..', 'checkpoint', 'images.md');
 const IMAGES_DIR = __dirname;
-const OUTPUT_MD = path.join(__dirname, '..', '01_scripts', 'output.md');
+const OUTPUT_MD = path.join(__dirname, '..', '..', 'checkpoint', 'output.md');
 
-// Same slug function as 02_slides/generate.js, so fragrance names line up
+// Same slug function as pipeline/slides/generate.js, so fragrance names line up
 // with the background files generate.js looks for.
 function slugify(label) {
   return label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
-// Reads 01_scripts/output.md to map "carousel N, slide M" -> fragrance name,
+// Reads checkpoint/output.md to map "carousel N, slide M" -> fragrance name,
 // so background filenames match generate.js regardless of the label used in images.md.
 function parseSlideNames() {
   const names = {};
@@ -106,7 +106,7 @@ function run() {
   const slots = parse(md);
 
   if (slots.length === 0) {
-    console.log('No URLs found in images.md — nothing to download.');
+    console.log('No URLs found in checkpoint/images.md — nothing to download.');
     return;
   }
 
@@ -132,7 +132,7 @@ function run() {
     }
   }
 
-  console.log('\nDone. Check images/ for results.');
+  console.log('\nDone. Check pipeline/images/ for results.');
 }
 
 run();

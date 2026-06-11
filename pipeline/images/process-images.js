@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Normalizes images/ for Stage 2 after images.md is filled in:
+// Normalizes pipeline/images/ for Stage 2 after checkpoint/images.md is filled in:
 //   1. Downloads Pinterest backgrounds (via download-images.js)
 //   2. Converts any non-jpg backgrounds (png, heic, etc.) to .jpg
 //   3. Renames Fragrantica card images referenced in images.md to cN-sN-card.jpg
@@ -11,7 +11,7 @@ const path = require('path');
 const { execSync } = require('child_process');
 
 const IMAGES_DIR = __dirname;
-const IMAGES_MD = path.join(IMAGES_DIR, 'images.md');
+const IMAGES_MD = path.join(IMAGES_DIR, '..', '..', 'checkpoint', 'images.md');
 
 function downloadBackgrounds() {
   console.log('Downloading Pinterest backgrounds...\n');
@@ -80,7 +80,7 @@ function parseFragranticaSlides(md) {
 function normalizeCards() {
   console.log('\nNormalizing Fragrantica card images...');
   if (!fs.existsSync(IMAGES_MD)) {
-    console.error('  ! images.md not found — skipping.');
+    console.error('  ! checkpoint/images.md not found — skipping.');
     return;
   }
 
@@ -92,7 +92,7 @@ function normalizeCards() {
     const outPath = path.join(IMAGES_DIR, outName);
 
     if (!refs.length) {
-      console.warn(`  ! ${label} (C${carousel} S${slide}): no fragrantica reference in images.md`);
+      console.warn(`  ! ${label} (C${carousel} S${slide}): no fragrantica reference in checkpoint/images.md`);
       continue;
     }
 
@@ -101,12 +101,12 @@ function normalizeCards() {
 
     if (path.resolve(sourcePath) === path.resolve(outPath)) {
       if (!fs.existsSync(outPath)) {
-        console.warn(`  ! ${label} (C${carousel} S${slide}): "${outName}" not found in images/`);
+        console.warn(`  ! ${label} (C${carousel} S${slide}): "${outName}" not found in pipeline/images/`);
       }
     } else if (fs.existsSync(outPath)) {
       // Already normalized in a previous run — raw-named source may be gone, that's fine.
     } else if (!fs.existsSync(sourcePath)) {
-      console.warn(`  ! ${label} (C${carousel} S${slide}): source "${source}" not found in images/`);
+      console.warn(`  ! ${label} (C${carousel} S${slide}): source "${source}" not found in pipeline/images/`);
     } else {
       fs.copyFileSync(sourcePath, outPath);
       console.log(`  ${source} -> ${outName}`);
@@ -130,7 +130,7 @@ function run() {
   downloadBackgrounds();
   convertBackgrounds();
   normalizeCards();
-  console.log('\nDone. images/ is ready for 02_slides/generate.js');
+  console.log('\nDone. pipeline/images/ is ready for pipeline/slides/generate.js');
 }
 
 run();

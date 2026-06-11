@@ -1,14 +1,16 @@
 # Generated outputs
-outputs/
+checkpoint/1/*
+checkpoint/2/*
+checkpoint/3/*
 
 # Node dependencies
 node_modules/
 
-# Downloaded images (keep the script and md, not the downloaded files)
-images/*.jpg
-images/*.jpeg
-images/*.png
-images/*.webp
+# Downloaded images (keep the scripts, not the downloaded files)
+pipeline/images/*.jpg
+pipeline/images/*.jpeg
+pipeline/images/*.png
+pipeline/images/*.webp
 
 # macOS
 .DS_Store

@@ -14,7 +14,7 @@ if (!carouselId) {
 }
 const SOURCE_DIR = path.join(__dirname, 'source');
 const IMAGES_DIR = path.join(__dirname, '..', 'images');
-const OUTPUTS_ROOT = path.join(__dirname, '..', 'outputs');
+const OUTPUTS_ROOT = path.join(__dirname, '..', '..', 'checkpoint');
 
 function nextOutputFolder() {
   if (!fs.existsSync(OUTPUTS_ROOT)) return 1;
@@ -116,7 +116,7 @@ async function run() {
     server.close();
   }
 
-  console.log(`\nDone — ${carouselId} exported to outputs/${outNum}/`);
+  console.log(`\nDone — ${carouselId} exported to checkpoint/${outNum}/`);
 }
 
 run().catch((err) => {
