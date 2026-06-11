@@ -1,0 +1,185 @@
+#!/usr/bin/env node
+// Generates c1-slides.jsx / c2-slides.jsx / c3-slides.jsx from 01_scripts/output.md
+// and the normalized images/ directory, then exports PNGs for all 3 carousels.
+//
+// Usage: node generate.js   (run from 02_slides/, after images/process-images.js)
+
+const fs = require('fs');
+const path = require('path');
+const { execSync } = require('child_process');
+
+const ROOT = path.join(__dirname, '..');
+const OUTPUT_MD = path.join(ROOT, '01_scripts', 'output.md');
+const IMAGES_DIR = path.join(ROOT, 'images');
+const CAROUSELS_DIR = path.join(__dirname, 'source', 'carousels');
+
+// Same slug function as images/download-images.js, so fragrance names line up
+// with the background files it downloaded.
+function slugify(label) {
+  return label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
+function withPeriod(text) {
+  return /[.!?]$/.test(text) ? text : text + '.';
+}
+
+function parseOutputMd(content) {
+  const carousels = [];
+  const blocks = content.split(/(?=^## Carousel )/m).filter(b => b.trim().startsWith('## Carousel'));
+
+  for (const block of blocks) {
+    const num = parseInt(block.match(/^## Carousel (\d+)/)[1], 10);
+    const titleMatch = block.match(/\*\*Title slide:\*\*\s*(.+)/);
+    const title = titleMatch ? titleMatch[1].trim() : '';
+
+    const slides = [];
+    const slideRegex = /\*\*Slide (\d+) — (.+?)\*\*\s*\nBrand:\s*(.+)\s*\nCopy:\s*(.+)/g;
+    let m;
+    while ((m = slideRegex.exec(block))) {
+      slides.push({
+        num: parseInt(m[1], 10),
+        name: m[2].trim(),
+        brand: m[3].trim(),
+        copy: m[4].trim(),
+      });
+    }
+
+    carousels.push({ num, title, slides });
+  }
+
+  return carousels;
+}
+
+function findImage(dir, baseName) {
+  const files = fs.readdirSync(dir);
+  return files.find(f => path.basename(f, path.extname(f)) === baseName) || null;
+}
+
+function resolveImages(carousels) {
+  const missing = [];
+  const resolved = [];
+
+  for (const carousel of carousels) {
+    const titleBg = findImage(IMAGES_DIR, `c${carousel.num}-title`);
+    if (!titleBg) missing.push(`c${carousel.num}-title.*`);
+
+    const slides = carousel.slides.map(slide => {
+      const slug = slugify(slide.name);
+      const bg = findImage(IMAGES_DIR, `c${carousel.num}-${slug}`);
+      if (!bg) missing.push(`c${carousel.num}-${slug}.* (${slide.name})`);
+
+      const card = `c${carousel.num}-s${slide.num}-card.jpg`;
+      if (!fs.existsSync(path.join(IMAGES_DIR, card))) missing.push(card);
+
+      return { ...slide, bg, card };
+    });
+
+    resolved.push({ ...carousel, titleBg, slides });
+  }
+
+  return { resolved, missing };
+}
+
+function generateCarouselJsx(carousel) {
+  const pad = n => String(n).padStart(2, '0');
+  const sections = [];
+  let i = 1;
+
+  sections.push(`      {/* ── Slide ${pad(i)} — Title ── */}
+      <div className="slide-caption">${pad(i)} — Title</div>
+      <div className="slide-wrap">
+        <div className="slide">
+          <img className="slide-bg" src="/images/${carousel.titleBg}" />
+          <div className="scrim scrim-strong"></div>
+          <div className="content top" style={{ paddingTop: '420px', gap: '32px' }}>
+            <h1 className="headline xl serif">${withPeriod(carousel.title)}</h1>
+          </div>
+        </div>
+      </div>`);
+  i++;
+
+  for (const slide of carousel.slides) {
+    sections.push(`      {/* ── Slide ${pad(i)} — ${slide.name} Content ── */}
+      <div className="slide-caption">${pad(i)} — ${slide.name} content</div>
+      <div className="slide-wrap">
+        <div className="slide">
+          <img className="slide-bg" src="/images/${slide.bg}" />
+          <div className="scrim scrim-strong"></div>
+          <div className="content top" style={{ paddingTop: '220px', gap: '32px' }}>
+            <p style={{ fontFamily: 'var(--mono)', fontSize: '26px', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ink-dim)', margin: 0 }}>${slide.brand}</p>
+            <h2 className="headline lg serif">${withPeriod(slide.name)}</h2>
+            <div className="accent-rule" style={{ display: 'block', background: 'var(--ink)' }}></div>
+            <p className="body wide">${slide.copy}</p>
+          </div>
+        </div>
+      </div>`);
+    i++;
+
+    sections.push(`      {/* ── Slide ${pad(i)} — ${slide.name} Card ── */}
+      <div className="slide-caption">${pad(i)} — ${slide.name} card</div>
+      <div className="slide-wrap">
+        <div className="slide">
+          <img className="slide-bg" src="/images/${slide.bg}" />
+          <div className="scrim scrim-strong"></div>
+          <div className="content center" style={{ padding: '96px' }}>
+            <img src="/images/${slide.card}" style={{ width: '100%', borderRadius: '20px', display: 'block', boxShadow: '0 8px 40px rgba(0,0,0,0.5)' }} />
+          </div>
+        </div>
+      </div>`);
+    i++;
+  }
+
+  return `// c${carousel.num}-slides — "${carousel.title}"
+// Generated by 02_slides/generate.js from 01_scripts/output.md.
+// <br/> tweaks for line-wrapping are fine — re-run "node export.js c${carousel.num}" after editing.
+// Structure: 1 title + (${carousel.slides.length} fragrances x 2) = ${1 + carousel.slides.length * 2} slides
+
+function SlideTemplate() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 48, padding: 48, background: '#111', alignItems: 'center' }}>
+${sections.join('\n\n')}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<SlideTemplate />);
+`;
+}
+
+function run() {
+  if (!fs.existsSync(OUTPUT_MD)) {
+    console.error(`! ${path.relative(ROOT, OUTPUT_MD)} not found.`);
+    process.exit(1);
+  }
+
+  const carousels = parseOutputMd(fs.readFileSync(OUTPUT_MD, 'utf8'));
+  if (carousels.length !== 3) {
+    console.error(`! Expected 3 carousels in output.md, found ${carousels.length}.`);
+    process.exit(1);
+  }
+
+  const { resolved, missing } = resolveImages(carousels);
+  if (missing.length) {
+    console.error('Missing images — run images/process-images.js or fix images/ first:\n');
+    for (const m of missing) console.error(`  - ${m}`);
+    process.exit(1);
+  }
+
+  fs.mkdirSync(CAROUSELS_DIR, { recursive: true });
+
+  for (const carousel of resolved) {
+    const jsx = generateCarouselJsx(carousel);
+    const outPath = path.join(CAROUSELS_DIR, `c${carousel.num}-slides.jsx`);
+    fs.writeFileSync(outPath, jsx);
+    console.log(`Wrote ${path.relative(ROOT, outPath)}`);
+  }
+
+  console.log('\nExporting PNGs...\n');
+  for (const carousel of resolved) {
+    execSync(`node export.js c${carousel.num}`, { cwd: __dirname, stdio: 'inherit' });
+  }
+
+  console.log('\nDone.');
+}
+
+run();

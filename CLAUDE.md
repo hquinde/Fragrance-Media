@@ -49,12 +49,11 @@ After Stage 1: review `01_scripts/output.md`, tweak any slide copy as needed.
 File: `02_slides/CLAUDE.md` — full context and slide creation instructions
 
 **When triggered:**
-1. Run `node images/download-images.js` to download Pinterest backgrounds
-2. Confirm all card images (`cN-sN-card.jpg`) are present in `images/` — if any are missing, ask before continuing
-3. Immediately proceed to full Stage 2 — build and export all 3 carousels
-4. Report: "All 3 carousels are in outputs/ and ready to upload. Let me know when you're done posting and I'll clean everything up."
+1. Run `node images/process-images.js` — downloads Pinterest backgrounds, converts non-jpg backgrounds to `.jpg`, and normalizes Fragrantica card images to `cN-sN-card.jpg`
+2. Run `node 02_slides/generate.js` — generates `c1-slides.jsx`/`c2-slides.jsx`/`c3-slides.jsx` from `01_scripts/output.md` and exports all 3 carousels to PNGs. If any image is missing it aborts with a list of what's missing — fix `images/` and re-run.
+3. Report: "All 3 carousels are in outputs/ and ready to upload. Let me know when you're done posting and I'll clean everything up."
 
-After Stage 2: PNGs for each carousel appear in `outputs/1/`, `outputs/2/`, `outputs/3/`.
+After Stage 2: PNGs for each carousel appear in `outputs/N/` (one folder per carousel — see `02_slides/export.js`).
 
 ---
 
@@ -72,10 +71,13 @@ Stage 1 — generate 3 scripts → append titles to 01_scripts/data/performance.
 01_scripts/output.md  →  (tweak if needed)
       ↓
 fill images/images.md with Pinterest URLs
-run fragrantica-cards.js → save cN-sN-card.jpg for each fragrance
+save Fragrantica card screenshots into images/ (referenced via images.md)
 say "done with images.md"
       ↓
-Claude downloads backgrounds + builds Design B slides
+node images/process-images.js → backgrounds + cN-sN-card.jpg ready
+node 02_slides/generate.js → builds Design B slides + exports
       ↓
-outputs/1/  outputs/2/  outputs/3/
+outputs/N/ for each carousel
+      ↓
+(optional) tweak a slide's <br/> in cN-slides.jsx, re-run "node export.js cN"
 ```

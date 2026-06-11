@@ -16,7 +16,7 @@
 Images are downloaded via `download-images.js` from URLs in `images.md`. Files are named by position: `c1-title.jpg`, `c1-fragrance-slug.jpg`, etc.
 
 **Fragrantica card images**
-Saved by `fragrantica-cards.js` using the convention: `cN-sN-card.jpg`
+Normalized by `images/process-images.js` to the convention: `cN-sN-card.jpg`
 - `c1-s1-card.jpg` → carousel 1, slide 1 card
 - `c1-s2-card.jpg` → carousel 1, slide 2 card
 - etc.
@@ -25,10 +25,10 @@ Saved by `fragrantica-cards.js` using the convention: `cN-sN-card.jpg`
 
 **In JSX:** reference images as `/images/filename.ext` (absolute path). Use a plain `<img className="slide-bg">` tag, not `image-slot`, so Puppeteer captures the image correctly.
 
-**Template files**
-- JSX template: `02_slides/source/slide-template.jsx`
-- HTML template: `02_slides/source/slide-template.html`
-- Increment N from the last used carousel number.
+**Fixtures**
+- Carousel numbers are fixed: every batch is c1, c2, c3.
+- `02_slides/source/carousels/c1.html`, `c2.html`, `c3.html` are permanent — never regenerated or deleted. Each loads `styles.css`, React/Babel from CDN, and its `cN-slides.jsx`.
+- `02_slides/generate.js` builds `cN-slides.jsx` directly from `01_scripts/output.md` — no separate template file.
 
 ---
 
@@ -36,13 +36,15 @@ Saved by `fragrantica-cards.js` using the convention: `cN-sN-card.jpg`
 
 Each fragrance gets two slides: a content slide and a Fragrantica card slide. Both share the same background photo.
 
+**Text wrapping:** `.headline` uses `text-wrap: balance` and `.body`/`.body.wide` use `text-wrap: pretty` with a `max-width`, so the browser auto-wraps titles, names, and copy by default. `02_slides/generate.js` emits plain text with no `<br/>`. Only add a manual `<br/>` afterward if a specific rendered slide wraps awkwardly (see Steps below) — it's the exception, not the rule.
+
 **Title slide**
 ```jsx
 <div className="slide">
   <img className="slide-bg" src="/images/cN-title.jpg" />
   <div className="scrim scrim-strong"></div>
   <div className="content top" style={{ paddingTop: "420px", gap: "32px" }}>
-    <h1 className="headline xl serif">Title goes<br />here.</h1>
+    <h1 className="headline xl serif">Title goes here.</h1>
   </div>
 </div>
 ```
@@ -54,9 +56,9 @@ Each fragrance gets two slides: a content slide and a Fragrantica card slide. Bo
   <div className="scrim scrim-strong"></div>
   <div className="content top" style={{ paddingTop: "220px", gap: "32px" }}>
     <p style={{ fontFamily: 'var(--mono)', fontSize: '26px', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ink-dim)', margin: 0 }}>Brand Name</p>
-    <h2 className="headline lg serif">Fragrance<br />Name.</h2>
+    <h2 className="headline lg serif">Fragrance Name.</h2>
     <div className="accent-rule" style={{ display: 'block', background: 'var(--ink)' }}></div>
-    <p className="body wide">One punchy line.<br />Second punchy line.</p>
+    <p className="body wide">One punchy line. Second punchy line.</p>
   </div>
 </div>
 ```
@@ -91,11 +93,9 @@ Create all 3 carousels from the 3 scripts in `01_scripts/output.md`.
 
 ## Steps
 
-1. **Determine carousel numbers** — check `02_slides/source/carousels/` for the highest existing `cN-slides.jsx`, increment by 1 for each of the 3 carousels.
-2. **Check images** — confirm all Pinterest backgrounds (`cN-*.jpg`) and card images (`cN-sN-card.jpg`) are present in `images/`. If any are missing, stop and ask before continuing.
-3. **Create JSX files** — for each carousel, copy `02_slides/source/slide-template.jsx`, rename to `cN-slides.jsx`, replace all copy with the script following Design B structure.
-4. **Create HTML entry points** — for each carousel, copy `02_slides/source/slide-template.html`, rename to `cN.html`, update `<title>` and script src.
-5. **Export PNGs** — run `node export.js cN` from `02_slides/` for each carousel. PNGs save to `outputs/N/`.
+1. **Process images** — run `node images/process-images.js` (downloads Pinterest backgrounds, converts non-jpg backgrounds to `.jpg`, normalizes Fragrantica card images to `cN-sN-card.jpg`).
+2. **Generate + export** — run `node 02_slides/generate.js`. This generates `c1-slides.jsx`, `c2-slides.jsx`, `c3-slides.jsx` from `01_scripts/output.md` and the resolved images, then exports all 3 carousels via `export.js`. If any background or card image is missing, it aborts and lists exactly what's missing — fix `images/` and re-run.
+3. **Review + tweak (optional)** — look at the exported PNGs in `outputs/`. If a headline, name, or copy line wraps awkwardly, hand-edit the relevant `cN-slides.jsx` (add a `<br/>` at the desired break) and re-run `node export.js cN` for just that carousel.
 
 ## Output
 
@@ -104,7 +104,6 @@ End with exactly this message:
 
 When the user confirms they're done posting, respond with "Are you sure? This will delete all images, scripts, and exported slides from this batch." and wait for confirmation. Only run the cleanup after they confirm.
 1. Empty `outputs/1/`, `outputs/2/`, `outputs/3/` (keep folders)
-2. Delete all image files from `images/` (keep `images.md` and `download-images.js` and `fragrantica-cards.js`)
+2. Delete all image files from `images/` (keep `images.md` and `download-images.js` and `process-images.js`)
 3. Reset `images/images.md` to the blank 3-carousel template
 4. Reset `01_scripts/output.md` to its blank header
-5. Delete all `cN-slides.jsx` and `cN.html` files from `02_slides/source/carousels/`

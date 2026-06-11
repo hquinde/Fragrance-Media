@@ -1,10 +1,16 @@
 {
   "pending": [
-    "5 Fragrances Built for the Beach",
-    "5 Fragrances That Make You Smell Like Summer Money",
-    "NEED a Fragrance for Summer Nights?"
+    "5 Fragrances Built for a First Date",
+    "5 Fragrances That Make You Smell Like a Million Bucks",
+    "NEED a Fragrance for the Office?"
   ],
   "winners": [
+    { "title": "5 Fragrances Built for the Gym", "plays": "2k", "note": "\"Built for X\" format applied to gym occasion — strong performer, expands the format beyond seasons" },
+    { "title": "NEED a Fragrance for the Pool?", "plays": "1k", "note": "NEED occasion format — consistent 1k, high intent audience" },
+    { "title": "5 Summer Fragrances That Always Get Compliments", "plays": "1k", "note": "\"Always get compliments\" + seasonal combo — solid, on-pattern" },
+    { "title": "NEED a Fragrance for Summer Nights?", "plays": "3k", "note": "NEED occasion format + seasonal combo — best NEED performer yet" },
+    { "title": "5 Fragrances Built for the Beach", "plays": "2k", "note": "\"Built for\" occasion format — strong seasonal hook" },
+    { "title": "5 Fragrances That Make You Smell Like Summer Money", "plays": "1k", "note": "Aspiration framing + seasonal angle — solid" },
     { "title": "5 Fragrances Built for Summer", "plays": "6k", "note": "\"Built for\" seasonal format — breakout performer" },
     { "title": "5 Fragrances Built for the Heat", "plays": "6k", "note": "\"Built for\" occasion format — breakout performer" },
     { "title": "5 Fragrances That Make You Smell Expensive", "plays": "5k", "note": "Aspiration framing + numbered list — strongest performer" },

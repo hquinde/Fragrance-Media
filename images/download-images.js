@@ -9,6 +9,34 @@ const { execSync } = require('child_process');
 
 const IMAGES_MD = path.join(__dirname, 'images.md');
 const IMAGES_DIR = __dirname;
+const OUTPUT_MD = path.join(__dirname, '..', '01_scripts', 'output.md');
+
+// Same slug function as 02_slides/generate.js, so fragrance names line up
+// with the background files generate.js looks for.
+function slugify(label) {
+  return label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
+// Reads 01_scripts/output.md to map "carousel N, slide M" -> fragrance name,
+// so background filenames match generate.js regardless of the label used in images.md.
+function parseSlideNames() {
+  const names = {};
+  if (!fs.existsSync(OUTPUT_MD)) return names;
+
+  const content = fs.readFileSync(OUTPUT_MD, 'utf8');
+  const blocks = content.split(/(?=^## Carousel )/m).filter(b => b.trim().startsWith('## Carousel'));
+
+  for (const block of blocks) {
+    const num = parseInt(block.match(/^## Carousel (\d+)/)[1], 10);
+    const slideRegex = /\*\*Slide (\d+) — (.+?)\*\*/g;
+    let m;
+    while ((m = slideRegex.exec(block))) {
+      names[`${num}-${m[1]}`] = m[2].trim();
+    }
+  }
+
+  return names;
+}
 
 function slotKey(slot) {
   if (slot.toLowerCase() === 'title') return 'title';
@@ -83,11 +111,17 @@ function run() {
   }
 
   fs.mkdirSync(IMAGES_DIR, { recursive: true });
+  const slideNames = parseSlideNames();
 
   for (const { carousel, key, label, url } of slots) {
-    const slug = label
-      ? label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
-      : key;
+    let slug;
+    if (key === 'title') {
+      slug = 'title';
+    } else {
+      const slideNum = key.slice(1);
+      const name = slideNames[`${carousel}-${slideNum}`];
+      slug = name ? slugify(name) : (label ? slugify(label) : key);
+    }
     const name = `c${carousel}-${slug}`;
     console.log(`Downloading ${name} from ${url}`);
     try {

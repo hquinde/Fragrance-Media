@@ -1,13 +1,17 @@
 #!/usr/bin/env node
-// Exports a carousel HTML file as 6 PNGs (1080×1920) via Puppeteer.
-// Usage: node design_handoff/export.js [carousel-id]
-// Example: node design_handoff/export.js slide-template
+// Exports a carousel HTML file as PNGs (1080×1920) via Puppeteer.
+// Usage: node export.js <carousel-id>
+// Example: node export.js c1
 
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const carouselId = process.argv[2] || 'slide-template';
+const carouselId = process.argv[2];
+if (!carouselId) {
+  console.error('Usage: node export.js <carousel-id>');
+  process.exit(1);
+}
 const SOURCE_DIR = path.join(__dirname, 'source');
 const IMAGES_DIR = path.join(__dirname, '..', 'images');
 const OUTPUTS_ROOT = path.join(__dirname, '..', 'outputs');
