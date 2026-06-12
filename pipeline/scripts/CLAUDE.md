@@ -37,18 +37,20 @@ Copy: [one or two punchy lines]
 ```
 ## Carousel N — Title
 
-- Title: [pinterest url]
-- Slide 1 (Brand - Fragrance Name): [pinterest url]
-  fragrantica: c1-s1-card.jpg
-- Slide 2 (Brand - Fragrance Name): [pinterest url]
-  fragrantica: c1-s2-card.jpg
+- Title:
+- Slide 1 (Brand - Fragrance Name):
+  fragrantica link: https://www.fragrantica.com/perfume/Brand/Fragrance-Name-12345.html
+- Slide 2 (Brand - Fragrance Name):
+  fragrantica link: https://www.fragrantica.com/perfume/Brand/Fragrance-Name-12345.html
 - ... one line per slide in the script
 ```
 
-Each slide label includes the brand name (`Brand - Fragrance Name`) so the full name is searchable when sourcing Pinterest/Fragrantica images.
+Leave the space after `Title:` empty — the user pastes the Pinterest URL there. Never write a `[pinterest url]` placeholder or a pre-named `cN-sN-card.jpg` placeholder.
 
-The `fragrantica:` line under each slide points to that fragrance's Fragrantica card image, in one of two forms:
-- A pre-named `cN-sN-card.jpg` (e.g. `c1-s1-card.jpg` for carousel 1, slide 1) saved directly into `pipeline/images/`, used as-is.
-- One or more `![alt text](filename.jpg)` markdown image links to a manually-saved Fragrantica card screenshot in `pipeline/images/`. `pipeline/images/process-images.js` copies the first link's file to `cN-sN-card.jpg` and removes the raw-named originals.
+The `fragrantica link:` line must be filled in by the agent with the exact Fragrantica product page URL for that fragrance (including its numeric ID suffix, e.g. `-63062.html`). Capture this URL during step 3's Fragrantica verification search and write it directly into `images.md` — never leave it blank.
+
+Each slide label includes the brand name (`Brand - Fragrance Name`) so the full name is searchable when sourcing Pinterest images.
+
+`pipeline/images/process-images.js` uses the `fragrantica link:` URL to auto-download that fragrance's Fragrantica card image directly to `cN-sN-card.jpg` (e.g. `c1-s1-card.jpg` for carousel 1, slide 1) — no manual screenshot needed.
 
 All 3 carousels go in the same file, separated by a blank line.

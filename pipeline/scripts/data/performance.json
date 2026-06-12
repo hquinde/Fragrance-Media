@@ -1,10 +1,13 @@
 {
   "pending": [
-    "5 Fragrances Built for a First Date",
     "5 Fragrances That Make You Smell Like a Million Bucks",
-    "NEED a Fragrance for the Office?"
+    "NEED a Fragrance for the Office?",
+    "5 Dupes for Baccarat Rouge 540 (One Costs $25)",
+    "5 Fragrances People Will Stop You to Ask About",
+    "5 Fragrances Built for the Weekend"
   ],
   "winners": [
+    { "title": "5 Fragrances Built for a First Date", "plays": "1k", "note": "\"Built for X\" occasion format applied to dating — solid, on-pattern with other occasion-based winners" },
     { "title": "5 Fragrances Built for the Gym", "plays": "2k", "note": "\"Built for X\" format applied to gym occasion — strong performer, expands the format beyond seasons" },
     { "title": "NEED a Fragrance for the Pool?", "plays": "1k", "note": "NEED occasion format — consistent 1k, high intent audience" },
     { "title": "5 Summer Fragrances That Always Get Compliments", "plays": "1k", "note": "\"Always get compliments\" + seasonal combo — solid, on-pattern" },

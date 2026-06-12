@@ -2,7 +2,7 @@
 // Normalizes pipeline/images/ for Stage 2 after checkpoint/images.md is filled in:
 //   1. Downloads Pinterest backgrounds (via download-images.js)
 //   2. Converts any non-jpg backgrounds (png, heic, etc.) to .jpg
-//   3. Renames Fragrantica card images referenced in images.md to cN-sN-card.jpg
+//   3. Downloads each slide's Fragrantica card image (via fragrantica link:) to cN-sN-card.jpg
 //
 // Usage: node process-images.js
 
@@ -45,7 +45,7 @@ function convertBackgrounds() {
   if (!converted) console.log('  Nothing to convert.');
 }
 
-// Parses `## Carousel N` / `- Slide M (Label): ...` / `  fragrantica: ...` blocks.
+// Parses `## Carousel N` / `- Slide M (Label): ...` / `  fragrantica link: ...` blocks.
 function parseFragranticaSlides(md) {
   const slides = [];
   let carousel = 0;
@@ -59,15 +59,14 @@ function parseFragranticaSlides(md) {
 
     const sm = line.match(/^-\s+slide\s+(\d+)\s*\(([^)]+)\)/i);
     if (sm) {
-      pendingSlide = { carousel, slide: parseInt(sm[1], 10), label: sm[2].trim(), refs: [] };
+      pendingSlide = { carousel, slide: parseInt(sm[1], 10), label: sm[2].trim(), link: null };
       slides.push(pendingSlide);
       continue;
     }
 
-    const fm = line.match(/^fragrantica:\s*(.+)$/i);
-    if (fm && pendingSlide) {
-      const mdLinks = [...fm[1].matchAll(/!\[[^\]]*\]\(([^)]+)\)/g)].map(m => m[1].trim());
-      pendingSlide.refs = mdLinks.length ? mdLinks : [fm[1].trim()].filter(Boolean);
+    const lm = line.match(/^fragrantica link:\s*(.+)$/i);
+    if (lm && pendingSlide) {
+      pendingSlide.link = lm[1].trim();
       continue;
     }
 
@@ -75,6 +74,23 @@ function parseFragranticaSlides(md) {
   }
 
   return slides;
+}
+
+// Downloads the Fragrantica social-card image for a product page URL
+// (e.g. https://www.fragrantica.com/perfume/Brand/Name-12345.html ->
+// https://www.fragrantica.com/mdimg/perfume-social-cards/en-p_c_12345.jpeg)
+function downloadFragranticaCard(link, outPath) {
+  const m = link.match(/-(\d+)\.html?$/i);
+  if (!m) return false;
+
+  const imgUrl = `https://www.fragrantica.com/mdimg/perfume-social-cards/en-p_c_${m[1]}.jpeg`;
+  try {
+    execSync(`curl -sLf -o "${outPath}" "${imgUrl}"`, { stdio: 'pipe' });
+    return fs.existsSync(outPath) && fs.statSync(outPath).size > 0;
+  } catch {
+    if (fs.existsSync(outPath)) fs.unlinkSync(outPath);
+    return false;
+  }
 }
 
 function normalizeCards() {
@@ -85,45 +101,26 @@ function normalizeCards() {
   }
 
   const slides = parseFragranticaSlides(fs.readFileSync(IMAGES_MD, 'utf8'));
-  let renamed = 0;
+  let downloaded = 0;
 
-  for (const { carousel, slide, label, refs } of slides) {
+  for (const { carousel, slide, label, link } of slides) {
     const outName = `c${carousel}-s${slide}-card.jpg`;
     const outPath = path.join(IMAGES_DIR, outName);
 
-    if (!refs.length) {
-      console.warn(`  ! ${label} (C${carousel} S${slide}): no fragrantica reference in checkpoint/images.md`);
+    if (!link) {
+      console.warn(`  ! ${label} (C${carousel} S${slide}): no fragrantica link in checkpoint/images.md`);
       continue;
     }
 
-    const source = refs[0];
-    const sourcePath = path.join(IMAGES_DIR, source);
-
-    if (path.resolve(sourcePath) === path.resolve(outPath)) {
-      if (!fs.existsSync(outPath)) {
-        console.warn(`  ! ${label} (C${carousel} S${slide}): "${outName}" not found in pipeline/images/`);
-      }
-    } else if (fs.existsSync(outPath)) {
-      // Already normalized in a previous run — raw-named source may be gone, that's fine.
-    } else if (!fs.existsSync(sourcePath)) {
-      console.warn(`  ! ${label} (C${carousel} S${slide}): source "${source}" not found in pipeline/images/`);
+    if (downloadFragranticaCard(link, outPath)) {
+      console.log(`  ${label} (C${carousel} S${slide}): downloaded ${outName} from Fragrantica`);
+      downloaded++;
     } else {
-      fs.copyFileSync(sourcePath, outPath);
-      console.log(`  ${source} -> ${outName}`);
-      renamed++;
-    }
-
-    // Remove leftover raw-named files (all alt options) now that the card is normalized.
-    for (const ref of refs) {
-      const refPath = path.join(IMAGES_DIR, ref);
-      if (path.resolve(refPath) === path.resolve(outPath)) continue;
-      if (fs.existsSync(refPath)) {
-        try { fs.unlinkSync(refPath); } catch {}
-      }
+      console.warn(`  ! ${label} (C${carousel} S${slide}): failed to download card from ${link}`);
     }
   }
 
-  if (!renamed) console.log('  Nothing to rename.');
+  if (!downloaded) console.log('  Nothing to download.');
 }
 
 function run() {

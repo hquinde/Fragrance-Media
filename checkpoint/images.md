@@ -9,40 +9,40 @@ Add or remove Slide rows to match your script. Leave a slot blank to skip it.
 
 - Title:
 - Slide 1 (Fragrance Name):
-  fragrantica:
+  fragrantica link:
 - Slide 2 (Fragrance Name):
-  fragrantica:
+  fragrantica link:
 - Slide 3 (Fragrance Name):
-  fragrantica:
+  fragrantica link:
 - Slide 4 (Fragrance Name):
-  fragrantica:
+  fragrantica link:
 - Slide 5 (Fragrance Name):
-  fragrantica:
+  fragrantica link:
 
 ## Carousel 2 — Title
 
 - Title:
 - Slide 1 (Fragrance Name):
-  fragrantica:
+  fragrantica link:
 - Slide 2 (Fragrance Name):
-  fragrantica:
+  fragrantica link:
 - Slide 3 (Fragrance Name):
-  fragrantica:
+  fragrantica link:
 - Slide 4 (Fragrance Name):
-  fragrantica:
+  fragrantica link:
 - Slide 5 (Fragrance Name):
-  fragrantica:
+  fragrantica link:
 
 ## Carousel 3 — Title
 
 - Title:
 - Slide 1 (Fragrance Name):
-  fragrantica:
+  fragrantica link:
 - Slide 2 (Fragrance Name):
-  fragrantica:
+  fragrantica link:
 - Slide 3 (Fragrance Name):
-  fragrantica:
+  fragrantica link:
 - Slide 4 (Fragrance Name):
-  fragrantica:
+  fragrantica link:
 - Slide 5 (Fragrance Name):
-  fragrantica:
+  fragrantica link:
