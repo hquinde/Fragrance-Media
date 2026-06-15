@@ -25,7 +25,7 @@ function nextOutputFolder() {
   // Reuse the lowest empty folder, otherwise go to max + 1
   for (const n of numbered) {
     const dir = path.join(OUTPUTS_ROOT, String(n));
-    if (fs.readdirSync(dir).length === 0) return n;
+    if (fs.readdirSync(dir).filter(f => f !== '.DS_Store').length === 0) return n;
   }
   return numbered.length === 0 ? 1 : Math.max(...numbered) + 1;
 }
