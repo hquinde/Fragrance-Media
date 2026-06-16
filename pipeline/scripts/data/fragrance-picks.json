@@ -111,6 +111,21 @@
     { "name": "Honour Man", "brand": "Amouage" },
     { "name": "Diaghilev", "brand": "Roja Parfums" },
     { "name": "Psychedelic Love", "brand": "Initio Parfums Privés" },
-    { "name": "Ombré Leather Parfum", "brand": "Tom Ford" }
+    { "name": "Ombré Leather Parfum", "brand": "Tom Ford" },
+    { "name": "Phantom", "brand": "Rabanne" },
+    { "name": "Guerlain Homme Intense", "brand": "Guerlain" },
+    { "name": "Bracken Man", "brand": "Amouage" },
+    { "name": "40 Knots", "brand": "Xerjoff" },
+    { "name": "Fan Your Flames", "brand": "Nishane" },
+    { "name": "1 Million", "brand": "Rabanne" },
+    { "name": "Silver Mountain Water", "brand": "Creed" },
+    { "name": "Guidance", "brand": "Amouage" },
+    { "name": "Rehab", "brand": "Initio Parfums Privés" },
+    { "name": "Isola Blu", "brand": "Roja Dove" },
+    { "name": "Polo Blue EDP", "brand": "Ralph Lauren" },
+    { "name": "Under The Lemon Tree", "brand": "Maison Margiela Replica" },
+    { "name": "Erolfa", "brand": "Creed" },
+    { "name": "Isola Sol", "brand": "Roja Dove" },
+    { "name": "Mango Skin", "brand": "Vilhelm Parfumerie" }
   ]
 }

@@ -1,11 +1,11 @@
 {
   "pending": [
-    "NEED a Fragrance for the Office?",
-    "5 Dupes for Baccarat Rouge 540 (One Costs $25)",
-    "5 Fragrances Built for the Weekend",
     "5 Fragrances Built for a Road Trip",
     "5 Fragrances That Make You Smell Like a Five-Star Hotel",
-    "NEED a Fragrance for a Wedding?"
+    "NEED a Fragrance for a Wedding?",
+    "5 Fragrances Built for the Rooftop",
+    "5 Fragrances That Turn Heads Every Time",
+    "NEED a Fragrance for the Tropics?"
   ],
   "winners": [
     { "title": "5 Fragrances That Make You Smell Like a Million Bucks", "plays": "1k", "note": "Aspiration framing variant on \"smell expensive\" — solid, on-pattern" },
@@ -36,10 +36,13 @@
     { "title": "Clone and Dupes for You — Jean Paul Gaultier Edition", "plays": null, "note": "Brand-specific dupe edition — high intent" },
     { "title": "Best Dupes for Baccarat Rouge 540", "plays": null, "note": "Iconic luxury dupe — high search intent, broad appeal" },
     { "title": "5 Fragrances That Always Get Compliments", "plays": null, "note": "Social proof framing" },
-    { "title": "The Only Spring Starter Kit You Need", "plays": null, "note": "Seasonal + authority framing" }
+    { "title": "The Only Spring Starter Kit You Need", "plays": null, "note": "Seasonal + authority framing" },
+    { "title": "5 Fragrances Built for the Weekend", "plays": "1.2k", "note": "\"Built for X\" occasion format applied to the weekend — consistent with the pattern" }
   ],
   "failures": [
-    { "title": "Top 3 Men's Fragrances from Parfums de Marly", "plays": "<1k", "why": "Brand-specific top 3 without a hook — too narrow, low discovery" }
+    { "title": "Top 3 Men's Fragrances from Parfums de Marly", "plays": "<1k", "why": "Brand-specific top 3 without a hook — too narrow, low discovery" },
+    { "title": "NEED a Fragrance for the Office?", "plays": "300", "why": "NEED format underperformed — office occasion may be too narrow or uninspiring vs. summer/night out" },
+    { "title": "5 Dupes for Baccarat Rouge 540 (One Costs $25)", "plays": "907", "why": "Dupe content for BR540 underperformed despite high-intent topic — price hook didn't elevate it past 1k" }
   ],
   "patterns": [
     "\"Built for X\" format (season/occasion) — 6k plays twice, strongest pattern",
