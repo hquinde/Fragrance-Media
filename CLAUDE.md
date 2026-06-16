@@ -24,9 +24,9 @@ When the user says let's start:
    - Remove reviewed titles from `pending`
    - Save all changes back to `pipeline/scripts/data/performance.json`
 
-3. Then ask: "Want to pull from your **ideas list** this batch, or generate based on what's worked before?"
-   - **Ideas list** → read `checkpoint/ideas.md` "To Try" section; use as many ideas as are listed (up to 3) as the direct script formats; fill remaining slots from `winners`/`patterns` in `pipeline/scripts/data/performance.json`. If ideas fills all 3 slots, skip reading it entirely.
-   - **Winners/Failures** → standard generation, no ideas used
+3. Check `checkpoint/ideas.md` "To Try" section:
+   - **If it has entries** → use as many ideas as are listed (up to 3) as the direct script formats; fill remaining slots from `winners`/`patterns` in `pipeline/scripts/data/performance.json`.
+   - **If it's empty** → skip it entirely and proceed straight to standard generation from `winners`/`patterns` (no ideas used, no need to ask).
 
 4. Proceed immediately to Stage 1.
 
@@ -68,7 +68,7 @@ After Stage 2: PNGs for each carousel appear in `checkpoint/N/` (one folder per 
       ↓
 Stage 0 — review pending titles → update pipeline/scripts/data/performance.json
       ↓
-Choose: ideas list or winners/failures?
+ideas.md has entries? → use them; else → winners/failures only
       ↓
 Stage 1 — generate 3 scripts → append titles to pipeline/scripts/data/performance.json pending
       ↓
