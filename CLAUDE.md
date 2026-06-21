@@ -57,7 +57,7 @@ File: `pipeline/slides/CLAUDE.md` — full context and slide creation instructio
 2. Run `node pipeline/slides/generate.js` — generates `c1-slides.jsx`/`c2-slides.jsx`/`c3-slides.jsx` from `checkpoint/output.md` and exports all 3 carousels to PNGs. If any image is missing it aborts with a list of what's missing — fix `pipeline/images/` and re-run.
 3. Report: "All 3 carousels are in checkpoint/ and ready to upload. Let me know when you're done posting and I'll clean everything up."
 
-After Stage 2: PNGs for each carousel appear in `checkpoint/N/` (one folder per carousel — see `pipeline/slides/export.js`).
+After Stage 2: PNGs appear in `checkpoint/1/`, `checkpoint/2/`, `checkpoint/3/` — 11 slides each, named `01-slide.png` through `11-slide.png`.
 
 ---
 
@@ -81,7 +81,7 @@ say "done with images.md"
 node pipeline/images/process-images.js → backgrounds + cN-sN-card.jpg ready
 node pipeline/slides/generate.js → builds Design B slides + exports
       ↓
-checkpoint/N/ for each carousel
+checkpoint/1/, 2/, 3/ — 11 PNGs each (01-slide.png through 11-slide.png)
       ↓
 (optional) tweak a slide's <br/> in cN-slides.jsx, re-run "node export.js cN"
 ```

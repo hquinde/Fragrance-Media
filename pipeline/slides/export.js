@@ -16,22 +16,8 @@ const SOURCE_DIR = path.join(__dirname, 'source');
 const IMAGES_DIR = path.join(__dirname, '..', 'images');
 const OUTPUTS_ROOT = path.join(__dirname, '..', '..', 'checkpoint');
 
-function nextOutputFolder() {
-  if (!fs.existsSync(OUTPUTS_ROOT)) return 1;
-  const numbered = fs.readdirSync(OUTPUTS_ROOT)
-    .map(n => parseInt(n, 10))
-    .filter(n => !isNaN(n))
-    .sort((a, b) => a - b);
-  // Reuse the lowest empty folder, otherwise go to max + 1
-  for (const n of numbered) {
-    const dir = path.join(OUTPUTS_ROOT, String(n));
-    if (fs.readdirSync(dir).filter(f => f !== '.DS_Store').length === 0) return n;
-  }
-  return numbered.length === 0 ? 1 : Math.max(...numbered) + 1;
-}
-
-const outNum = nextOutputFolder();
-const OUT_DIR = path.join(OUTPUTS_ROOT, String(outNum));
+const carouselNum = carouselId.replace(/\D/g, '');
+const OUT_DIR = path.join(OUTPUTS_ROOT, carouselNum);
 
 const MIME = {
   '.html': 'text/html',
@@ -76,7 +62,7 @@ async function run() {
   fs.mkdirSync(OUT_DIR, { recursive: true });
 
   const { server, port } = await startServer(SOURCE_DIR);
-  const url = `http://127.0.0.1:${port}/carousels/${carouselId}.html`;
+  const url = `http://127.0.0.1:${port}/carousels/carousel.html?c=${carouselId}`;
   console.log(`Serving ${SOURCE_DIR} on port ${port}`);
   console.log(`Opening ${url}`);
 
@@ -116,7 +102,7 @@ async function run() {
     server.close();
   }
 
-  console.log(`\nDone — ${carouselId} exported to checkpoint/${outNum}/`);
+  console.log(`\nDone — ${carouselId} exported to checkpoint/${carouselNum}/`);
 }
 
 run().catch((err) => {

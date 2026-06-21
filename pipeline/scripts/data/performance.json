@@ -1,11 +1,8 @@
 {
   "pending": [
-    "5 Fragrances Built for a Road Trip",
-    "5 Fragrances That Make You Smell Like a Five-Star Hotel",
-    "NEED a Fragrance for a Wedding?",
-    "5 Fragrances Built for the Rooftop",
-    "5 Fragrances That Turn Heads Every Time",
-    "NEED a Fragrance for the Tropics?"
+    "5 Fragrances That Make People Do a Double Take",
+    "5 Fragrances Built for the Mountains",
+    "5 Fragrances That Smell Like Serious Money"
   ],
   "winners": [
     { "title": "5 Fragrances That Make You Smell Like a Million Bucks", "plays": "1k", "note": "Aspiration framing variant on \"smell expensive\" — solid, on-pattern" },
@@ -37,12 +34,21 @@
     { "title": "Best Dupes for Baccarat Rouge 540", "plays": null, "note": "Iconic luxury dupe — high search intent, broad appeal" },
     { "title": "5 Fragrances That Always Get Compliments", "plays": null, "note": "Social proof framing" },
     { "title": "The Only Spring Starter Kit You Need", "plays": null, "note": "Seasonal + authority framing" },
-    { "title": "5 Fragrances Built for the Weekend", "plays": "1.2k", "note": "\"Built for X\" occasion format applied to the weekend — consistent with the pattern" }
+    { "title": "5 Fragrances Built for the Weekend", "plays": "1.2k", "note": "\"Built for X\" occasion format applied to the weekend — consistent with the pattern" },
+    { "title": "5 Fragrances Built for a Road Trip", "plays": "1.1k", "note": "\"Built for X\" occasion format applied to road trip — solid, on-pattern" },
+    { "title": "5 Fragrances That Make You Smell Like a Five-Star Hotel", "plays": "1.1k", "note": "Aspiration/luxury setting framing — solid, variant on smell expensive" },
+    { "title": "5 Fragrances That Turn Heads Every Time", "plays": "6.2k", "note": "Social proof + \"every time\" permanence hook — breakout performer" },
+    { "title": "5 Fragrances Built for the Rooftop", "plays": 1090, "note": "\"Built for X\" occasion format — borderline, rooftop may be too niche vs. broader occasions" },
+    { "title": "5 Fragrances That Stop People in Their Tracks", "plays": 3214, "note": "Visceral action-based social proof hook — strong performer, similar energy to \"Turn Heads\"" },
+    { "title": "5 Fragrances Built for a Night Drive", "plays": 1440, "note": "\"Built for X\" occasion format — solid, cinematic occasion resonates" },
+    { "title": "5 Fragrances That Smell Like Pure Luxury", "plays": 2169, "note": "Luxury aspiration framing — stronger than expected, second best aspiration title" }
   ],
   "failures": [
     { "title": "Top 3 Men's Fragrances from Parfums de Marly", "plays": "<1k", "why": "Brand-specific top 3 without a hook — too narrow, low discovery" },
     { "title": "NEED a Fragrance for the Office?", "plays": "300", "why": "NEED format underperformed — office occasion may be too narrow or uninspiring vs. summer/night out" },
-    { "title": "5 Dupes for Baccarat Rouge 540 (One Costs $25)", "plays": "907", "why": "Dupe content for BR540 underperformed despite high-intent topic — price hook didn't elevate it past 1k" }
+    { "title": "5 Dupes for Baccarat Rouge 540 (One Costs $25)", "plays": "907", "why": "Dupe content for BR540 underperformed despite high-intent topic — price hook didn't elevate it past 1k" },
+    { "title": "NEED a Fragrance for a Wedding?", "plays": "274", "why": "NEED format underperformed — wedding occasion may be too infrequent/niche vs. everyday occasions like summer/night out" },
+    { "title": "NEED a Fragrance for the Tropics?", "plays": 909, "why": "NEED format underperformed — tropics is aspirational but too geographically specific, less universal than summer/night out" }
   ],
   "patterns": [
     "\"Built for X\" format (season/occasion) — 6k plays twice, strongest pattern",

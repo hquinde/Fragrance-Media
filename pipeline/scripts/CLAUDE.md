@@ -38,19 +38,19 @@ Copy: [one or two punchy lines]
 ## Carousel N — Title
 
 - Title:
-- Slide 1 (Brand - Fragrance Name):
+- Slide 1 (Brand - Fragrance Name): https://www.pinterest.com/search/pins/?q=Brand+Fragrance+Name&rs=typed
   fragrantica link: https://www.fragrantica.com/perfume/Brand/Fragrance-Name-12345.html
-- Slide 2 (Brand - Fragrance Name):
+- Slide 2 (Brand - Fragrance Name): https://www.pinterest.com/search/pins/?q=Brand+Fragrance+Name&rs=typed
   fragrantica link: https://www.fragrantica.com/perfume/Brand/Fragrance-Name-12345.html
 - ... one line per slide in the script
 ```
 
-Leave the space after `Title:` empty — the user pastes the Pinterest URL there. Never write a `[pinterest url]` placeholder or a pre-named `cN-sN-card.jpg` placeholder.
+Leave `Title:` empty — the user pastes the Pinterest background URL there manually.
 
-The `fragrantica link:` line must be filled in by the agent with the exact Fragrantica product page URL for that fragrance (including its numeric ID suffix, e.g. `-63062.html`). Capture this URL during step 3's Fragrantica verification search and write it directly into `images.md` — never leave it blank.
+For each slide, pre-build a Pinterest search URL using the brand + fragrance name (spaces → `+`, drop special characters). The user clicks it, picks an image, and replaces the search URL with the pin URL in place. Never write a placeholder like `[pinterest url]`.
 
-Each slide label includes the brand name (`Brand - Fragrance Name`) so the full name is searchable when sourcing Pinterest images.
+The `fragrantica link:` line must be filled in with the exact Fragrantica product page URL (including numeric ID suffix, e.g. `-63062.html`). Capture this during step 3's verification search — never leave it blank.
 
-`pipeline/images/process-images.js` uses the `fragrantica link:` URL to auto-download that fragrance's Fragrantica card image directly to `cN-sN-card.jpg` (e.g. `c1-s1-card.jpg` for carousel 1, slide 1) — no manual screenshot needed.
+`pipeline/images/process-images.js` uses the `fragrantica link:` to auto-download the card image to `cN-sN-card.jpg`. The Pinterest URL on the slide line is used by `download-images.js` to download the background.
 
 All 3 carousels go in the same file, separated by a blank line.

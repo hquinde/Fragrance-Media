@@ -82,7 +82,7 @@ Each fragrance gets two slides: a content slide and a Fragrantica card slide. Bo
 - `<img className="slide-bg">` not `image-slot` — Puppeteer requires it
 - Card slide always uses the same background photo as its content slide
 - Screenshots exactly 1080×1920px — no scaling
-- Save to: `checkpoint/N/` (via `node export.js cN` from `pipeline/slides/`)
+- Save to: `checkpoint/1/`, `checkpoint/2/`, `checkpoint/3/` (via `node export.js cN` from `pipeline/slides/`), named `NN-slide.png`
 
 ---
 
@@ -103,7 +103,7 @@ End with exactly this message:
 "All 3 carousels are in checkpoint/ and ready to upload. Let me know when you're done posting and I'll clean everything up."
 
 When the user confirms they're done posting, immediately run the cleanup:
-1. Empty `checkpoint/1/`, `checkpoint/2/`, `checkpoint/3/` (keep folders)
+1. Delete all files from `checkpoint/1/`, `checkpoint/2/`, and `checkpoint/3/` (keep the folders)
 2. Delete all image files from `../images/` (keep `download-images.js` and `process-images.js`)
 3. Reset `checkpoint/images.md` to the blank 3-carousel template
 4. Reset `checkpoint/output.md` to its blank header

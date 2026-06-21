@@ -1,7 +1,7 @@
 # Batch Images
 
-Paste one Pinterest URL per slot. Run `node download-images.js` when ready.
-Add or remove Slide rows to match your script. Leave a slot blank to skip it.
+Click the Pinterest search link, pick an image, paste the pin URL in its place.
+Leave a slot blank to skip it.
 
 ---
 
