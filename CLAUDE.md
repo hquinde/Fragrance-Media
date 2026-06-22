@@ -16,11 +16,11 @@ A single AI agent reads context, runs the skill, and outputs slides — no compl
 When the user says let's start:
 
 1. Read `pipeline/scripts/data/performance.json`. If `pending` has any titles, list them and ask:
-   "How did these perform? Tell me the view counts (or just say 'flopped') and I'll update the records."
+   "How did these perform? Tell me the views, saves, and likes (or just say 'flopped') and I'll update the records."
 
 2. Once the user responds:
-   - Move titles with strong performance into `winners` (include plays and a note on why it worked)
-   - Move titles that flopped into `failures` (include plays and why it failed)
+   - Move titles with strong performance into `winners` — take the existing pending object (which already has `fragrances`, `niche_mix`, and `date_posted`) and add `plays`, `saves`, `likes`, and `date_reported` (today's date, format `xx/xx/xx`)
+   - Move titles that flopped into `failures` — take the existing pending object and add `plays`, `saves`, `likes`, `why`, and `date_reported`
    - Remove reviewed titles from `pending`
    - Save all changes back to `pipeline/scripts/data/performance.json`
 
@@ -38,7 +38,7 @@ When the user says let's start:
 
 See `pipeline/scripts/CLAUDE.md` for instructions.
 
-After writing scripts to `output.md`, append the 3 new script titles to `pending` in `pipeline/scripts/data/performance.json`.
+After writing scripts to `output.md`, append the 3 new entries to `pending` in `pipeline/scripts/data/performance.json` as objects: `{ "title": "...", "fragrances": ["Brand Fragrance Name", ...], "date_posted": null }` — fragrances listed exactly as chosen, one per slide. `date_posted` is null and will be set automatically at the end of Stage 2.
 
 After Stage 1: review `checkpoint/output.md`, tweak any slide copy as needed.
 
@@ -55,7 +55,8 @@ File: `pipeline/slides/CLAUDE.md` — full context and slide creation instructio
 **When triggered:**
 1. Run `node pipeline/images/process-images.js` — downloads Pinterest backgrounds, converts non-jpg backgrounds to `.jpg`, and normalizes Fragrantica card images to `cN-sN-card.jpg`
 2. Run `node pipeline/slides/generate.js` — generates `c1-slides.jsx`/`c2-slides.jsx`/`c3-slides.jsx` from `checkpoint/output.md` and exports all 3 carousels to PNGs. If any image is missing it aborts with a list of what's missing — fix `pipeline/images/` and re-run.
-3. Report: "All 3 carousels are in checkpoint/ and ready to upload. Let me know when you're done posting and I'll clean everything up."
+3. Update `pipeline/scripts/data/performance.json` — set `date_posted` to today's date (format `xx/xx/xx`) on all 3 pending entries that were just built.
+4. Report: "All 3 carousels are in checkpoint/ and ready to upload. Let me know when you're done posting and I'll clean everything up."
 
 After Stage 2: PNGs appear in `checkpoint/1/`, `checkpoint/2/`, `checkpoint/3/` — 11 slides each, named `01-slide.png` through `11-slide.png`.
 

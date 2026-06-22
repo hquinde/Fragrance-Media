@@ -45,35 +45,50 @@ function convertBackgrounds() {
   if (!converted) console.log('  Nothing to convert.');
 }
 
-// Parses `## Carousel N` / `- Slide M (Label): ...` / `  fragrantica link: ...` blocks.
-function parseFragranticaSlides(md) {
+// Parses `## Carousel N` / `- Slide M (Label): ...` blocks from images.md (labels only, no fragrantica links).
+function parseSlideLabels(md) {
   const slides = [];
   let carousel = 0;
-  let pendingSlide = null;
 
   for (const raw of md.split('\n')) {
     const line = raw.trim();
-
     const cm = line.match(/^## Carousel (\d+)/);
-    if (cm) { carousel = parseInt(cm[1], 10); pendingSlide = null; continue; }
-
+    if (cm) { carousel = parseInt(cm[1], 10); continue; }
     const sm = line.match(/^-\s+slide\s+(\d+)\s*\(([^)]+)\)/i);
-    if (sm) {
-      pendingSlide = { carousel, slide: parseInt(sm[1], 10), label: sm[2].trim(), link: null };
-      slides.push(pendingSlide);
-      continue;
-    }
-
-    const lm = line.match(/^fragrantica link:\s*(.+)$/i);
-    if (lm && pendingSlide) {
-      pendingSlide.link = lm[1].trim();
-      continue;
-    }
-
-    if (line && !line.startsWith('-') && !line.startsWith('#')) pendingSlide = null;
+    if (sm) slides.push({ carousel, slide: parseInt(sm[1], 10), label: sm[2].trim() });
   }
 
   return slides;
+}
+
+// Loads fragrantica links from pipeline/images/fragrantica-links.md (format: `c1-s1: https://...`)
+// Falls back to reading `fragrantica link:` lines from images.md for backward compatibility.
+function loadFragranticaLinks() {
+  const linksFile = path.join(IMAGES_DIR, 'fragrantica-links.md');
+
+  if (fs.existsSync(linksFile)) {
+    const links = {};
+    for (const line of fs.readFileSync(linksFile, 'utf8').split('\n')) {
+      const m = line.match(/^c(\d+)-s(\d+):\s*(.+)$/i);
+      if (m) links[`${m[1]}-${m[2]}`] = m[3].trim();
+    }
+    return links;
+  }
+
+  // Legacy fallback: parse fragrantica link: lines from images.md
+  if (!fs.existsSync(IMAGES_MD)) return {};
+  const links = {};
+  let carousel = 0, pendingKey = null;
+  for (const raw of fs.readFileSync(IMAGES_MD, 'utf8').split('\n')) {
+    const line = raw.trim();
+    const cm = line.match(/^## Carousel (\d+)/);
+    if (cm) { carousel = parseInt(cm[1], 10); pendingKey = null; continue; }
+    const sm = line.match(/^-\s+slide\s+(\d+)\s*\(/i);
+    if (sm) { pendingKey = `${carousel}-${sm[1]}`; continue; }
+    const lm = line.match(/^fragrantica link:\s*(.+)$/i);
+    if (lm && pendingKey) { links[pendingKey] = lm[1].trim(); pendingKey = null; }
+  }
+  return links;
 }
 
 // Downloads the Fragrantica social-card image for a product page URL
@@ -85,7 +100,7 @@ function downloadFragranticaCard(link, outPath) {
 
   const imgUrl = `https://www.fragrantica.com/mdimg/perfume-social-cards/en-p_c_${m[1]}.jpeg`;
   try {
-    execSync(`curl -sLf -o "${outPath}" "${imgUrl}"`, { stdio: 'pipe' });
+    execSync(`curl -sLf -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" -H "Referer: https://www.fragrantica.com/" -o "${outPath}" "${imgUrl}"`, { stdio: 'pipe' });
     return fs.existsSync(outPath) && fs.statSync(outPath).size > 0;
   } catch {
     if (fs.existsSync(outPath)) fs.unlinkSync(outPath);
@@ -100,15 +115,17 @@ function normalizeCards() {
     return;
   }
 
-  const slides = parseFragranticaSlides(fs.readFileSync(IMAGES_MD, 'utf8'));
+  const slides = parseSlideLabels(fs.readFileSync(IMAGES_MD, 'utf8'));
+  const links = loadFragranticaLinks();
   let downloaded = 0;
 
-  for (const { carousel, slide, label, link } of slides) {
+  for (const { carousel, slide, label } of slides) {
     const outName = `c${carousel}-s${slide}-card.jpg`;
     const outPath = path.join(IMAGES_DIR, outName);
+    const link = links[`${carousel}-${slide}`];
 
     if (!link) {
-      console.warn(`  ! ${label} (C${carousel} S${slide}): no fragrantica link in checkpoint/images.md`);
+      console.warn(`  ! ${label} (C${carousel} S${slide}): no fragrantica link found`);
       continue;
     }
 
