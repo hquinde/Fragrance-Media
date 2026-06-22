@@ -14,3 +14,4 @@ pipeline/images/*.webp
 
 # macOS
 .DS_Store
+.claude/
