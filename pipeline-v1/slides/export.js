@@ -14,7 +14,7 @@ if (!carouselId) {
 }
 const SOURCE_DIR = path.join(__dirname, 'source');
 const IMAGES_DIR = path.join(__dirname, '..', 'images');
-const OUTPUTS_ROOT = path.join(__dirname, '..', '..', 'checkpoint');
+const OUTPUTS_ROOT = path.join(__dirname, '..', '..', 'checkpoint', 'v1');
 
 const carouselNum = carouselId.replace(/\D/g, '');
 const OUT_DIR = path.join(OUTPUTS_ROOT, carouselNum);
