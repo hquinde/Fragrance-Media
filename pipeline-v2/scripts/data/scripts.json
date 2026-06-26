@@ -1,0 +1,37 @@
+{
+  "carousels": [
+    {
+      "num": 1,
+      "title": "5 Fragrances Built for the Cold",
+      "slides": [
+        { "num": 1, "name": "Born in Roma Intense", "brand": "Valentino", "gender": "men", "copy": "Soft lavender pulled into deep vanilla and smoke. This is the coat you never want to take off." },
+        { "num": 2, "name": "Oajan", "brand": "Parfums de Marly", "gender": "unisex", "copy": "Liquid honey poured over warm spice. It lingers like an open fire in an empty room." },
+        { "num": 3, "name": "Jubilation XXV Man", "brand": "Amouage", "gender": "men", "copy": "Frankincense and dark fruit over ancient woods. The kind of complexity that takes years to fully understand." },
+        { "num": 4, "name": "Baraonda", "brand": "Nasomatto", "gender": "unisex", "copy": "Wine and whiskey distilled into skin. Bold, addictive, and entirely unforgettable." },
+        { "num": 5, "name": "03 Lonestar Memories", "brand": "Tauer Perfumes", "gender": "unisex", "copy": "Old leather and smoke beneath a pale winter sky. You've never smelled anything quite like this." }
+      ]
+    },
+    {
+      "num": 2,
+      "title": "5 Fragrances That Smell Like a Different Life",
+      "slides": [
+        { "num": 1, "name": "Coco Mademoiselle", "brand": "Chanel", "gender": "women", "copy": "Crisp citrus that melts into rose, then settles into something earthy and entirely your own. The standard for a reason." },
+        { "num": 2, "name": "By the Fireplace", "brand": "Maison Margiela Replica", "gender": "unisex", "copy": "Chestnuts, smoke, and warm vanilla — the exact feeling of coming in from the cold. Wears like a memory." },
+        { "num": 3, "name": "Ivory Route", "brand": "Xerjoff", "gender": "unisex", "copy": "Warm spice over smooth sandalwood, trail-blazing and unhurried. Wear this and you've already left." },
+        { "num": 4, "name": "Narcotic Venus", "brand": "Nasomatto", "gender": "women", "copy": "White flowers turned intoxicating — tuberose so dense it stops the room. A short sentence can't hold it." },
+        { "num": 5, "name": "Russian Musk", "brand": "Areej le Doré", "gender": "unisex", "copy": "Forest floor, old oud, and cool musk that drifts like smoke through pines. Nothing prepares you for it." }
+      ]
+    },
+    {
+      "num": 3,
+      "title": "5 Fragrances People Look Up After Smelling You",
+      "slides": [
+        { "num": 1, "name": "Black Opium", "brand": "Yves Saint Laurent", "gender": "women", "copy": "Coffee and dark florals with a vanilla trail that lingers for hours. Everyone will notice before they ask." },
+        { "num": 2, "name": "Intoxicated", "brand": "By Kilian", "gender": "unisex", "copy": "Turkish coffee, cardamom, and thick caramel — gourmand without being sweet. Rich in a way that makes people turn around." },
+        { "num": 3, "name": "Roses Vanille", "brand": "Mancera", "gender": "women", "copy": "One rose, stretched over pure vanilla and cedar. Simple enough to remember, complex enough to ask about." },
+        { "num": 4, "name": "Blamage", "brand": "Nasomatto", "gender": "unisex", "copy": "You'll struggle to explain it — earthy, intimate, raw. That's exactly why they'll ask." },
+        { "num": 5, "name": "Une Rose Chyprée", "brand": "Tauer Perfumes", "gender": "women", "copy": "A true old-school chypre rose — earthy, warm, and completely out of time. The kind of fragrance that starts conversations." }
+      ]
+    }
+  ]
+}

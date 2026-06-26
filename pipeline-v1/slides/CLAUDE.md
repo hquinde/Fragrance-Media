@@ -13,7 +13,7 @@
 - `--accent-2`: #f0c25a (warm yellow)
 
 **Background photos**
-Images are downloaded via `../images/download-images.js` from URLs in `../../checkpoint/images.md`. Files are named by position: `c1-title.jpg`, `c1-fragrance-slug.jpg`, etc.
+Images are downloaded via `../images/download-images.js` from URLs in [images.md](../../checkpoint/images.md). Files are named by position: `c1-title.jpg`, `c1-fragrance-slug.jpg`, etc.
 
 **Fragrantica card images**
 Normalized by `../images/process-images.js` to the convention: `cN-sN-card.jpg`
@@ -28,7 +28,7 @@ Normalized by `../images/process-images.js` to the convention: `cN-sN-card.jpg`
 **Fixtures**
 - Carousel numbers are fixed: every batch is c1, c2, c3.
 - `source/carousels/c1.html`, `c2.html`, `c3.html` are permanent — never regenerated or deleted. Each loads `styles.css`, React/Babel from CDN, and its `cN-slides.jsx`.
-- `generate.js` builds `cN-slides.jsx` directly from `../../checkpoint/output.md` — no separate template file.
+- `generate.js` builds `cN-slides.jsx` directly from [output.md](../../checkpoint/output.md) — no separate template file.
 
 ---
 
@@ -82,19 +82,19 @@ Each fragrance gets two slides: a content slide and a Fragrantica card slide. Bo
 - `<img className="slide-bg">` not `image-slot` — Puppeteer requires it
 - Card slide always uses the same background photo as its content slide
 - Screenshots exactly 1080×1920px — no scaling
-- Save to: `checkpoint/1/`, `checkpoint/2/`, `checkpoint/3/` (via `node export.js cN` from `pipeline/slides/`), named `NN-slide.png`
+- Save to: `checkpoint/v1/1/`, `checkpoint/v1/2/`, `checkpoint/v1/3/` (via `node export.js cN` from `pipeline-v1/slides/`), named `NN-slide.png`
 
 ---
 
 ## Task
 
-Read `../../checkpoint/output.md` before doing anything.
-Create all 3 carousels from the 3 scripts in `../../checkpoint/output.md`.
+Read [scripts.json](../scripts/data/scripts.json) before doing anything.
+Create all 3 carousels from the 3 scripts in [scripts.json](../scripts/data/scripts.json).
 
 ## Steps
 
 1. **Process images** — run `node ../images/process-images.js` (downloads Pinterest backgrounds, converts non-jpg backgrounds to `.jpg`, normalizes Fragrantica card images to `cN-sN-card.jpg`).
-2. **Generate + export** — run `node generate.js`. This generates `c1-slides.jsx`, `c2-slides.jsx`, `c3-slides.jsx` from `../../checkpoint/output.md` and the resolved images, then exports all 3 carousels via `export.js`. If any background or card image is missing, it aborts and lists exactly what's missing — fix `../images/` and re-run.
+2. **Generate + export** — run `node generate.js`. This generates `c1-slides.jsx`, `c2-slides.jsx`, `c3-slides.jsx` from [output.md](../../checkpoint/output.md) and the resolved images, then exports all 3 carousels via `export.js`. If any background or card image is missing, it aborts and lists exactly what's missing — fix `../images/` and re-run.
 3. **Review + tweak (optional)** — look at the exported PNGs in `../../checkpoint/`. If a headline, name, or copy line wraps awkwardly, hand-edit the relevant `cN-slides.jsx` (add a `<br/>` at the desired break) and re-run `node export.js cN` for just that carousel.
 
 ## Output
@@ -103,7 +103,7 @@ End with exactly this message:
 "All 3 carousels are in checkpoint/ and ready to upload. Let me know when you're done posting and I'll clean everything up."
 
 When the user confirms they're done posting, immediately run the cleanup:
-1. Delete all files from `checkpoint/1/`, `checkpoint/2/`, and `checkpoint/3/` (keep the folders)
-2. Delete all image files from `../images/` (keep `download-images.js` and `process-images.js`)
-3. Reset `checkpoint/images.md` to the blank 3-carousel template
-4. Reset `checkpoint/output.md` to its blank header
+1. Delete all files from `checkpoint/v1/1/`, `checkpoint/v1/2/`, and `checkpoint/v1/3/` (keep the folders)
+2. Delete all image files from `pipeline-v1/images/` (keep `download-images.js` and `process-images.js`)
+3. Reset [images.md](../../checkpoint/images.md) to the blank 3-carousel template
+4. Delete [scripts.json](../scripts/data/scripts.json)
