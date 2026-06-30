@@ -20,7 +20,7 @@ A single AI agent reads context, runs the skill, and outputs slides — no compl
 
 When the user says let's start:
 
-1. Read [performance.json](pipeline-v1/scripts/data/performance.json). If `pending` has any titles, list them and ask:
+1. Run `jq '.pending' pipeline-v1/scripts/data/performance.json`. If the array is non-empty, list the titles and ask:
    "How did these perform? Tell me the views, saves, and likes (or just say 'flopped') and I'll update the records."
 
 2. Once the user responds:

@@ -1,8 +1,22 @@
 # Stage 1 — Script Generation (pipeline-v1, Design v1)
 
-1. Read [fragrance-picks.json](data/fragrance-picks.json) and [performance.json](data/performance.json). Use `performance.json` to inform two things: (a) **title formats and hook categories** from winners/patterns, and (b) **niche tier mix** from the `niche_mix` field on winners vs. failures — higher plays/saves on a given mix means that tier distribution is working. When comparing designs, filter by `"design": "v1"` entries for the most relevant signal. Fragrance selection is always fresh; winners never suggest which fragrances to reuse.
-2. Generate 3 scripts based on what worked and what didn't.
-   - Never use a fragrance listed in `already_used` in [fragrance-picks.json](data/fragrance-picks.json). Names are generalized — no EDT/EDP/Parfum distinction. If any version is listed, all versions are off limits.
+1. Query performance signals and exclusions — do not read the full files:
+   ```bash
+   # Winners, failures, patterns (v1-filtered)
+   jq '{winners: [.winners[] | select(.design == "v1")], failures: .failures, patterns: .patterns}' pipeline-v1/scripts/data/performance.json
+   # Already-used names
+   jq '[.already_used[].name]' pipeline-v1/scripts/data/fragrance-picks.json
+   ```
+   Use winners/patterns to inform (a) title formats and hook categories and (b) niche tier mix. Fragrance selection is always fresh; winners never suggest which fragrances to reuse.
+
+2. Select 15 fragrances, then verify none are in `already_used` before proceeding:
+   ```bash
+   jq --argjson picks '["Name 1","Name 2","Name 3"]' \
+     '[.already_used[].name] as $used | $picks | map(select(. as $p | $used | any(. == $p)))' \
+     pipeline-v1/scripts/data/fragrance-picks.json
+   ```
+   An empty array means all are clean. Swap any conflicts and re-run before continuing.
+   - Names are generalized — no EDT/EDP/Parfum distinction. If any version is listed, all versions are off limits.
    - Also avoid flankers of any fragrance in `already_used` — different-named entries in the same line (e.g. Eros, Eros Flame, Eros Energy are all off limits if any one is listed). Pick fragrances from different lines/families instead.
    - **Niche tier mix:** Read the `niche_mix` field across winners and interpret which distribution correlates with stronger plays and saves. Use that as the target mix per carousel. Do not apply a fixed rule — let the data decide. If winners consistently show `1 mainstream, 2 mid-niche, 1 deep niche, 1 ultra niche`, reproduce that. If the data shifts over time, shift with it.
    - Niche tiers: Mainstream (Dior, Chanel, YSL, Rabanne, Hugo Boss) → Mid-niche (Amouage, Xerjoff, Initio, Creed, MFK, PdM, Kilian, Maison Margiela Replica, Mancera, Montale) → Deep niche (Roja, Nishane, Nasomatto, Orto Parisi, Bogue Profumo) → Ultra niche/indie (Areej le Doré, Slumberhouse, Tauer, Ensar Oud) → Obscure (Sultan Pasha Attars, micro-batch/bespoke)

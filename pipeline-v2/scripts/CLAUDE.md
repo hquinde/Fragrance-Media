@@ -2,9 +2,21 @@
 
 Follow [pipeline-v1/scripts/CLAUDE.md](../../pipeline-v1/scripts/CLAUDE.md) for shared generation rules — fragrance exclusions, niche tier taxonomy, niche mix logic, and performance.json update format. Apply these v2-specific differences and follow the steps below in order:
 
-**Step 1:** Filter performance signals by `"design": "v2"` entries (v1 entries are also valid context until v2 builds its own history).
+**Step 1:** Query performance signals — do not read the full files:
+```bash
+# Winners + patterns (v2-first; v1 entries valid as fallback context)
+jq '{winners: [.winners[] | select(.design == "v2")], v1_winners: [.winners[] | select(.design == "v1")], patterns: .patterns}' pipeline-v1/scripts/data/performance.json
+# Already-used names
+jq '[.already_used[].name]' pipeline-v1/scripts/data/fragrance-picks.json
+```
 
-**Step 2:** Pick 15 fragrances (5 per carousel) following niche mix and exclusion rules. Also determine **gender audience** (men / women / unisex) for each.
+**Step 2:** Pick 15 fragrances (5 per carousel) following niche mix and exclusion rules. Also determine **gender audience** (men / women / unisex) for each. Then verify all 15 before proceeding:
+```bash
+jq --argjson picks '["Name 1","Name 2","Name 3"]' \
+  '[.already_used[].name] as $used | $picks | map(select(. as $p | $used | any(. == $p)))' \
+  pipeline-v1/scripts/data/fragrance-picks.json
+```
+An empty array means all are clean. Swap any conflicts and re-run before continuing.
 
 **Step 3 — URL search only:** Search Fragrantica once per carousel — batch all 5 fragrance names into a single query, e.g. `site:fragrantica.com "Name A" OR "Name B" OR "Name C" OR "Name D" OR "Name E"`. Capture the exact URL with its numeric ID suffix (e.g. `-46038.html`) for each. Do NOT read or extract notes from search results — copy is written later from the card images.
 
