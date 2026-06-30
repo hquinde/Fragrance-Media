@@ -8,7 +8,7 @@ A single AI agent reads context, runs the skill, and outputs slides — no compl
 > `performance.json` and `fragrance-picks.json` are always at `pipeline-v1/scripts/data/` regardless of active pipeline.
 
 **Folder layout**
-- `checkpoint/` — the only folder the user needs to look at: `images.md`, `ideas.md`, and exported carousels in `v1/1/`, `v1/2/`, `v1/3/` or `v2/1/`, `v2/2/`, `v2/3/`.
+- `checkpoint/` — the only folder the user needs to look at: `images.md` and exported carousels in `v1/1/`, `v1/2/`, `v1/3/` or `v2/1/`, `v2/2/`, `v2/3/`.
 - `pipeline-v1/` — dark Design B (photo backgrounds, Instrument Serif). Shared data lives here.
 - `pipeline-v2/` — white design (Cormorant Garamond + IBM Plex Mono, bottle + card images). Title slides use a dark Pinterest photo background (same as v1); fragrance slides are white.
 
@@ -29,11 +29,7 @@ When the user says let's start:
    - Remove reviewed titles from `pending`
    - Save all changes back to [performance.json](pipeline-v1/scripts/data/performance.json)
 
-3. Check [ideas.md](checkpoint/ideas.md) "To Try" section:
-   - **If it has entries** → use as many ideas as are listed (up to 3) as the direct script formats; fill remaining slots from `winners`/`patterns` in [performance.json](pipeline-v1/scripts/data/performance.json).
-   - **If it's empty** → skip it entirely and proceed straight to standard generation from `winners`/`patterns` (no ideas used, no need to ask).
-
-4. Proceed immediately to Stage 1.
+3. Proceed immediately to Stage 1.
 
 ---
 
@@ -62,19 +58,15 @@ After generating scripts, write them to `{pipeline}/scripts/data/scripts.json` a
 }
 ```
 
-After Stage 1: tell the user the 3 titles are ready. Then follow the pipeline-specific prompt in [{pipeline}/slides/CLAUDE.md](pipeline-v2/slides/CLAUDE.md) for what comes next:
-- **pipeline-v1:** fill [images.md](checkpoint/images.md) with Pinterest URLs for all slides → say "build"
-- **pipeline-v2:** ask user to drop 3 Pinterest title URLs in chat → build starts immediately on paste
+After Stage 1: follow the pipeline-specific steps in [{pipeline}/scripts/CLAUDE.md](pipeline-v2/scripts/CLAUDE.md) — they handle everything through to slide export.
 
 ---
 
 ## Stage 2 — Slide creation
 
-**Trigger:** User says "build" (or equivalent like "generate", "ready", "go"). For pipeline-v1, [images.md](checkpoint/images.md) must be filled first. For pipeline-v2, the agent must have the 3 Pinterest title URLs from the user's chat messages.
+**pipeline-v1 only trigger:** User says "build" (or equivalent). [images.md](checkpoint/images.md) must be filled first.
 
-**Pre-flight check:** Before doing anything in Stage 2, read `{pipeline}/scripts/data/scripts.json`. If it is missing or has no carousels, stop and run Stage 1 first.
-
-See [{pipeline}/slides/CLAUDE.md](pipeline-v2/slides/CLAUDE.md) for full steps.
+**pipeline-v2:** Stage 2 runs automatically within Stage 1 — no separate trigger needed. See [{pipeline}/scripts/CLAUDE.md](pipeline-v2/scripts/CLAUDE.md) for the full sequence.
 
 After Stage 2: PNGs appear in `checkpoint/v1/` or `checkpoint/v2/` (matching the active pipeline), in subfolders `1/`, `2/`, `3/`, named `01-slide.png` through `NN-slide.png`.
 
@@ -87,17 +79,13 @@ After Stage 2: PNGs appear in `checkpoint/v1/` or `checkpoint/v2/` (matching the
       ↓
 Stage 0 — review pending titles → update pipeline-v1/scripts/data/performance.json
       ↓
-ideas.md has entries? → use them; else → winners/failures only
+Stage 1 — pick fragrances → search URLs only → write fragrantica-links.md + draft scripts.json
       ↓
-Stage 1 — generate 3 scripts → write {pipeline}/scripts/data/scripts.json + update performance.json pending
+ask for 3 Pinterest title URLs → node process-images.js → read card images → write copy → finalize scripts.json
       ↓
-pipeline-v1: fill checkpoint/images.md with Pinterest URLs → say "build"
-pipeline-v2: drop 3 Pinterest title URLs in chat → build starts automatically
-      ↓
-node {pipeline}/images/process-images.js → images ready
 node {pipeline}/slides/generate.js → builds slides + exports
       ↓
-checkpoint/1/, 2/, 3/ — PNGs named 01-slide.png through NN-slide.png
+checkpoint/v1/ or v2/ — 1/, 2/, 3/ — PNGs named 01-slide.png through NN-slide.png
       ↓
 (optional) tweak a slide's <br/> in cN-slides.jsx, re-run "node export.js cN"
 ```

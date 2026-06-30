@@ -1,13 +1,22 @@
 # Stage 1 — Script Generation (pipeline-v2, Design v2)
 
-Follow [pipeline-v1/scripts/CLAUDE.md](../../pipeline-v1/scripts/CLAUDE.md) for shared generation rules — fragrance exclusions, niche tier taxonomy, niche mix logic, and performance.json update format. Apply these v2-specific differences:
+Follow [pipeline-v1/scripts/CLAUDE.md](../../pipeline-v1/scripts/CLAUDE.md) for shared generation rules — fragrance exclusions, niche tier taxonomy, niche mix logic, and performance.json update format. Apply these v2-specific differences and follow the steps below in order:
 
-- **Step 1:** filter performance signals by `"design": "v2"` entries (v1 entries are also valid context until v2 builds its own history)
-- **Step 3:** also confirm **gender audience** (men / women / unisex) for each fragrance
-- **Step 5 (v2 only):** after writing all files, ask the user: "3 titles ready. Drop 3 Pinterest URLs for the title backgrounds (one per line, carousel order) and I'll build immediately."
-- **Step 4 path:** write [fragrantica-links.md](../images/fragrantica-links.md) instead of pipeline-v1's path
-- **Step 6:** append to [fragrance-picks.json](../../pipeline-v1/scripts/data/fragrance-picks.json) `already_used`
-- **Step 7:** append to [performance.json](../../pipeline-v1/scripts/data/performance.json) `pending` with `"design": "v2"`
+**Step 1:** Filter performance signals by `"design": "v2"` entries (v1 entries are also valid context until v2 builds its own history).
+
+**Step 2:** Pick 15 fragrances (5 per carousel) following niche mix and exclusion rules. Also determine **gender audience** (men / women / unisex) for each.
+
+**Step 3 — URL search only:** Search Fragrantica once per carousel — batch all 5 fragrance names into a single query, e.g. `site:fragrantica.com "Name A" OR "Name B" OR "Name C" OR "Name D" OR "Name E"`. Capture the exact URL with its numeric ID suffix (e.g. `-46038.html`) for each. Do NOT read or extract notes from search results — copy is written later from the card images.
+
+**Step 4:** Write [fragrantica-links.md](../images/fragrantica-links.md) and a draft [scripts.json](../scripts/data/scripts.json) with titles, fragrance names, brands, and genders — leave `copy` as `""` for now.
+
+**Step 5:** Update [fragrance-picks.json](../../pipeline-v1/scripts/data/fragrance-picks.json) `already_used` and [performance.json](../../pipeline-v1/scripts/data/performance.json) `pending` with `"design": "v2"`.
+
+**Step 6:** Tell the user the 3 titles, then ask for 3 Pinterest title URLs. Run `node ../images/process-images.js "url1" "url2" "url3"` from `pipeline-v2/slides/` immediately on paste.
+
+**Step 7 — Read card images for copy:** Once images are downloaded, read each `pipeline-v2/images/cN-sN-card.jpg` to see the actual note pyramid. Write 1–2 punchy lines of copy per slide based on what the card shows. Update scripts.json with the final copy.
+
+**Step 8:** Run `node generate.js` from `pipeline-v2/slides/`.
 
 ---
 
@@ -26,4 +35,17 @@ c2-s1: ...
 c3-s5: ...
 ```
 
-Capture these during step 3's verification search. The numeric ID suffix (e.g. `-46038.html`) is required — never leave a line blank.
+The numeric ID suffix (e.g. `-46038.html`) is required — never leave a line blank.
+
+---
+
+## Output rules
+
+Produce user-facing text **only** at these moments:
+
+1. **Stage 0** — ask the performance question if `pending` is non-empty; skip silently if empty.
+2. **Step 6** — output the 3 titles, then: "Paste 3 Pinterest title URLs."
+3. **After Step 8** — one line: `Done. Slides in checkpoint/v2/1/, 2/, 3/.`
+4. **After "clean up"** — one line: `Done.`
+
+Everything else is silent — no selection reasoning, no confirmation tables, no file-write acknowledgements, no search narration.
