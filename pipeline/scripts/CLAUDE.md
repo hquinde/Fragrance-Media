@@ -11,11 +11,9 @@ Use winners/patterns to inform (a) title formats and hook categories and (b) nic
 
 **Step 2:** Pick 15 fragrances (5 per carousel) following the exclusion rules and niche mix below. Also determine **gender audience** (men / women / unisex) for each. Then verify all 15 before proceeding:
 ```bash
-jq --argjson picks '["Name 1","Name 2","Name 3"]' \
-  '[.already_used[].name] as $used | $picks | map(select(. as $p | $used | any(. == $p)))' \
-  pipeline/scripts/data/fragrance-picks.json
+node pipeline/scripts/check-fragrances.js "Name 1" "Name 2" "Name 3" ...
 ```
-An empty array means all are clean. Swap any conflicts and re-run before continuing.
+This normalizes names (strips accents/case) and catches substring collisions, so it flags flankers (e.g. "Layton Exclusif" vs "Layton") and accent variants (e.g. "Vetiver" vs "Vétiver"), not just exact matches. "Clean — no conflicts." means all are clean. Swap any conflicts and re-run before continuing.
 
 - Names are generalized — no EDT/EDP/Parfum distinction. If any version is listed, all versions are off limits.
 - Also avoid flankers of any fragrance in `already_used` — different-named entries in the same line (e.g. Eros, Eros Flame, Eros Energy are all off limits if any one is listed). Pick fragrances from different lines/families instead.
