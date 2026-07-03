@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// Normalizes pipeline-v2/images/ for Stage 2 after Stage 1 fills fragrantica-links.md:
+// Normalizes pipeline/images/ for Stage 2 after Stage 1 fills fragrantica-links.md:
 //   1. Downloads Fragrantica bottle images (cN-sN-bottle.jpg) from fimgs.net
 //   2. Downloads Fragrantica card images (cN-sN-card.jpg) from fragrantica.com social cards
 //
-// Usage: node process-images.js  (run from pipeline-v2/images/)
+// Usage: node process-images.js  (run from pipeline/images/)
 
 const fs = require('fs');
 const path = require('path');
@@ -15,7 +15,7 @@ const LINKS_FILE = path.join(IMAGES_DIR, 'fragrantica-links.md');
 
 function loadSlides() {
   if (!fs.existsSync(SCRIPTS_JSON)) {
-    console.error('! pipeline-v2/scripts/data/scripts.json not found — run Stage 1 first.');
+    console.error('! pipeline/scripts/data/scripts.json not found — run Stage 1 first.');
     process.exit(1);
   }
   const { carousels } = JSON.parse(fs.readFileSync(SCRIPTS_JSON, 'utf8'));
@@ -83,7 +83,7 @@ function downloadTitleImages(urls) {
       fs.renameSync(found, `${outBase}${ext}`);
       console.log(`  Carousel ${num}: downloaded c${num}-title${ext}`);
     } catch (err) {
-      console.warn(`  ! Carousel ${num}: download failed — place c${num}-title.jpg manually in pipeline-v2/images/`);
+      console.warn(`  ! Carousel ${num}: download failed — place c${num}-title.jpg manually in pipeline/images/`);
       console.warn(`    ${err.message}`);
     } finally {
       fs.rmSync(tmp, { recursive: true, force: true });
@@ -122,7 +122,7 @@ function downloadBottles(slides, links) {
       console.log(`  ${label} (C${carousel} S${slide}): downloaded ${outName}`);
       downloaded++;
     } else {
-      console.warn(`  ! ${label} (C${carousel} S${slide}): bottle download failed — place ${outName} manually in pipeline-v2/images/`);
+      console.warn(`  ! ${label} (C${carousel} S${slide}): bottle download failed — place ${outName} manually in pipeline/images/`);
     }
   }
 
@@ -181,7 +181,7 @@ function run() {
   downloadBottles(slides, links);
   downloadCards(slides, links);
 
-  console.log('\nDone. pipeline-v2/images/ is ready for pipeline-v2/slides/generate.js');
+  console.log('\nDone. pipeline/images/ is ready for pipeline/slides/generate.js');
 }
 
 run();

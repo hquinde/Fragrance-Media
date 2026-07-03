@@ -1,28 +1,19 @@
 # Generated carousel JSX (rebuilt each run)
-pipeline-v1/slides/source/carousels/c*-slides.jsx
-pipeline-v2/slides/source/carousels/c*-slides.jsx
+pipeline/slides/source/carousels/c*-slides.jsx
 
 # Generated scripts (deleted after each batch)
-pipeline-v1/scripts/data/scripts.json
-pipeline-v2/scripts/data/scripts.json
+pipeline/scripts/data/scripts.json
 
 # Downloaded images (keep scripts, not the image files)
-pipeline-v1/images/*.jpg
-pipeline-v1/images/*.jpeg
-pipeline-v1/images/*.png
-pipeline-v1/images/*.webp
-pipeline-v2/images/*.jpg
-pipeline-v2/images/*.jpeg
-pipeline-v2/images/*.png
-pipeline-v2/images/*.webp
+pipeline/images/*.jpg
+pipeline/images/*.jpeg
+pipeline/images/*.png
+pipeline/images/*.webp
 
 # Exported PNGs
-checkpoint/v1/1/*
-checkpoint/v1/2/*
-checkpoint/v1/3/*
-checkpoint/v2/1/*
-checkpoint/v2/2/*
-checkpoint/v2/3/*
+checkpoint/1/*
+checkpoint/2/*
+checkpoint/3/*
 
 # Node dependencies
 node_modules/

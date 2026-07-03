@@ -1,0 +1,992 @@
+{
+  "already_used": [
+    {
+      "name": "Acqua di Giò Profumo",
+      "brand": "Giorgio Armani"
+    },
+    {
+      "name": "Acqua di Giò",
+      "brand": "Giorgio Armani"
+    },
+    {
+      "name": "Terre d'Hermès EDP",
+      "brand": "Hermès"
+    },
+    {
+      "name": "Reflection Man",
+      "brand": "Amouage"
+    },
+    {
+      "name": "Myths Man",
+      "brand": "Amouage"
+    },
+    {
+      "name": "Interlude Man",
+      "brand": "Amouage"
+    },
+    {
+      "name": "Ani",
+      "brand": "Nishane"
+    },
+    {
+      "name": "51 Arabia",
+      "brand": "Nishane"
+    },
+    {
+      "name": "Colonia Futura",
+      "brand": "Acqua di Parma"
+    },
+    {
+      "name": "La Nuit de l'Homme",
+      "brand": "Yves Saint Laurent"
+    },
+    {
+      "name": "Y EDP",
+      "brand": "Yves Saint Laurent"
+    },
+    {
+      "name": "Tobacco Vanille",
+      "brand": "Tom Ford"
+    },
+    {
+      "name": "Oud Wood",
+      "brand": "Tom Ford"
+    },
+    {
+      "name": "Black Orchid",
+      "brand": "Tom Ford"
+    },
+    {
+      "name": "Black Phantom",
+      "brand": "Kilian"
+    },
+    {
+      "name": "Layton",
+      "brand": "Parfums de Marly"
+    },
+    {
+      "name": "Herod",
+      "brand": "Parfums de Marly"
+    },
+    {
+      "name": "Pegasus",
+      "brand": "Parfums de Marly"
+    },
+    {
+      "name": "Sauvage EDP",
+      "brand": "Christian Dior"
+    },
+    {
+      "name": "Dior Homme Parfum",
+      "brand": "Christian Dior"
+    },
+    {
+      "name": "Bleu de Chanel",
+      "brand": "Chanel"
+    },
+    {
+      "name": "Aventus",
+      "brand": "Creed"
+    },
+    {
+      "name": "Messi Eau de Parfum",
+      "brand": "Messi"
+    },
+    {
+      "name": "Bade'e Al Oud Amethyst",
+      "brand": "Lattafa"
+    },
+    {
+      "name": "Maahir Black Edition",
+      "brand": "Lattafa"
+    },
+    {
+      "name": "Qaed Al Fursan",
+      "brand": "Lattafa"
+    },
+    {
+      "name": "Asad",
+      "brand": "Lattafa"
+    },
+    {
+      "name": "Al Dur Al Maknoon Silver",
+      "brand": "Lattafa"
+    },
+    {
+      "name": "Cruz del Sur II",
+      "brand": "Xerjoff"
+    },
+    {
+      "name": "Erba Pura",
+      "brand": "Xerjoff"
+    },
+    {
+      "name": "Naxos",
+      "brand": "Xerjoff 1861"
+    },
+    {
+      "name": "Encre Noire",
+      "brand": "Lalique"
+    },
+    {
+      "name": "Montblanc Explorer",
+      "brand": "Montblanc"
+    },
+    {
+      "name": "Versace Eros Flame",
+      "brand": "Versace"
+    },
+    {
+      "name": "Ariana Grande Cloud",
+      "brand": "Ariana Grande"
+    },
+    {
+      "name": "Oud for Greatness",
+      "brand": "Initio Parfums Privés"
+    },
+    {
+      "name": "Elysium",
+      "brand": "Roja Parfums"
+    },
+    {
+      "name": "Light Blue",
+      "brand": "Dolce & Gabbana"
+    },
+    {
+      "name": "Versace Pour Homme",
+      "brand": "Versace"
+    },
+    {
+      "name": "Beach Walk",
+      "brand": "Maison Margiela Replica"
+    },
+    {
+      "name": "Virgin Island Water",
+      "brand": "Creed"
+    },
+    {
+      "name": "Aqva Pour Homme",
+      "brand": "Bvlgari"
+    },
+    {
+      "name": "Megamare",
+      "brand": "Orto Parisi"
+    },
+    {
+      "name": "Allure Homme Sport",
+      "brand": "Chanel"
+    },
+    {
+      "name": "Side Effect",
+      "brand": "Initio Parfums Privés"
+    },
+    {
+      "name": "Hacivat",
+      "brand": "Nishane"
+    },
+    {
+      "name": "Pardon",
+      "brand": "Nasomatto"
+    },
+    {
+      "name": "New Sibet",
+      "brand": "Slumberhouse"
+    },
+    {
+      "name": "Le Male Elixir",
+      "brand": "Jean Paul Gaultier"
+    },
+    {
+      "name": "Richwood",
+      "brand": "Xerjoff"
+    },
+    {
+      "name": "Apple Brandy on the Rocks",
+      "brand": "Kilian"
+    },
+    {
+      "name": "Fate Man",
+      "brand": "Amouage"
+    },
+    {
+      "name": "MEM",
+      "brand": "Bogue Profumo"
+    },
+    {
+      "name": "Luna Rossa Carbon",
+      "brand": "Prada"
+    },
+    {
+      "name": "Hero",
+      "brand": "Burberry"
+    },
+    {
+      "name": "Millesime Imperial",
+      "brand": "Creed"
+    },
+    {
+      "name": "Beach Hut Man",
+      "brand": "Amouage"
+    },
+    {
+      "name": "Wulóng Chá",
+      "brand": "Nishane"
+    },
+    {
+      "name": "H24",
+      "brand": "Hermès"
+    },
+    {
+      "name": "K",
+      "brand": "Dolce & Gabbana"
+    },
+    {
+      "name": "Green Irish Tweed",
+      "brand": "Creed"
+    },
+    {
+      "name": "Bohemian Lime",
+      "brand": "Goldfield & Banks"
+    },
+    {
+      "name": "Ambra Calabria",
+      "brand": "Nishane"
+    },
+    {
+      "name": "L'Homme",
+      "brand": "Yves Saint Laurent"
+    },
+    {
+      "name": "MYSLF",
+      "brand": "Yves Saint Laurent"
+    },
+    {
+      "name": "Bois du Portugal",
+      "brand": "Creed"
+    },
+    {
+      "name": "EGE",
+      "brand": "Nishane"
+    },
+    {
+      "name": "Silver Musk",
+      "brand": "Nasomatto"
+    },
+    {
+      "name": "Armani Code",
+      "brand": "Giorgio Armani"
+    },
+    {
+      "name": "Althaïr",
+      "brand": "Parfums de Marly"
+    },
+    {
+      "name": "Intense Café",
+      "brand": "Montale"
+    },
+    {
+      "name": "Hundred Silent Ways",
+      "brand": "Nishane"
+    },
+    {
+      "name": "Boccanera",
+      "brand": "Orto Parisi"
+    },
+    {
+      "name": "Man in Black",
+      "brand": "Bvlgari"
+    },
+    {
+      "name": "Uden",
+      "brand": "Xerjoff"
+    },
+    {
+      "name": "Epic Man",
+      "brand": "Amouage"
+    },
+    {
+      "name": "Maai",
+      "brand": "Bogue"
+    },
+    {
+      "name": "Norne",
+      "brand": "Slumberhouse"
+    },
+    {
+      "name": "The One for Men",
+      "brand": "Dolce & Gabbana"
+    },
+    {
+      "name": "L'Eau d'Issey Pour Homme",
+      "brand": "Issey Miyake"
+    },
+    {
+      "name": "Paragon",
+      "brand": "Initio Parfums Privés"
+    },
+    {
+      "name": "Marfa",
+      "brand": "Memo Paris"
+    },
+    {
+      "name": "Papilefiko",
+      "brand": "Nishane"
+    },
+    {
+      "name": "Ana Abiyedh Rouge",
+      "brand": "Lattafa"
+    },
+    {
+      "name": "Red Temptation For Her",
+      "brand": "Zara"
+    },
+    {
+      "name": "Amber Oud Rouge Edition",
+      "brand": "Al Haramain"
+    },
+    {
+      "name": "Instant Crush",
+      "brand": "Mancera"
+    },
+    {
+      "name": "Pour Homme Dylan Blue",
+      "brand": "Versace"
+    },
+    {
+      "name": "Khamrah",
+      "brand": "Lattafa"
+    },
+    {
+      "name": "Missing Person",
+      "brand": "Phlur"
+    },
+    {
+      "name": "Libre Le Parfum",
+      "brand": "Yves Saint Laurent"
+    },
+    {
+      "name": "Stronger With You Intensely",
+      "brand": "Giorgio Armani"
+    },
+    {
+      "name": "CK Everyone Eau de Parfum",
+      "brand": "Calvin Klein"
+    },
+    {
+      "name": "Sailing Day",
+      "brand": "Maison Margiela Replica"
+    },
+    {
+      "name": "Neroli Portofino",
+      "brand": "Tom Ford"
+    },
+    {
+      "name": "Cedrat Boise",
+      "brand": "Mancera"
+    },
+    {
+      "name": "Le Beau",
+      "brand": "Jean Paul Gaultier"
+    },
+    {
+      "name": "Cool Water",
+      "brand": "Davidoff"
+    },
+    {
+      "name": "Sedley",
+      "brand": "Parfums de Marly"
+    },
+    {
+      "name": "Amber Aoud",
+      "brand": "Roja Parfums"
+    },
+    {
+      "name": "Eros Energy",
+      "brand": "Versace"
+    },
+    {
+      "name": "Red Tobacco",
+      "brand": "Mancera"
+    },
+    {
+      "name": "Boss Bottled",
+      "brand": "Hugo Boss"
+    },
+    {
+      "name": "XJ 1861 Renaissance",
+      "brand": "Xerjoff"
+    },
+    {
+      "name": "Black Afgano",
+      "brand": "Nasomatto"
+    },
+    {
+      "name": "Gentleman Eau de Parfum",
+      "brand": "Givenchy"
+    },
+    {
+      "name": "Carlisle",
+      "brand": "Parfums de Marly"
+    },
+    {
+      "name": "Eternity for Men",
+      "brand": "Calvin Klein"
+    },
+    {
+      "name": "Honour Man",
+      "brand": "Amouage"
+    },
+    {
+      "name": "Diaghilev",
+      "brand": "Roja Parfums"
+    },
+    {
+      "name": "Psychedelic Love",
+      "brand": "Initio Parfums Privés"
+    },
+    {
+      "name": "Ombré Leather Parfum",
+      "brand": "Tom Ford"
+    },
+    {
+      "name": "Phantom",
+      "brand": "Rabanne"
+    },
+    {
+      "name": "Guerlain Homme Intense",
+      "brand": "Guerlain"
+    },
+    {
+      "name": "Bracken Man",
+      "brand": "Amouage"
+    },
+    {
+      "name": "40 Knots",
+      "brand": "Xerjoff"
+    },
+    {
+      "name": "Fan Your Flames",
+      "brand": "Nishane"
+    },
+    {
+      "name": "1 Million",
+      "brand": "Rabanne"
+    },
+    {
+      "name": "Silver Mountain Water",
+      "brand": "Creed"
+    },
+    {
+      "name": "Guidance",
+      "brand": "Amouage"
+    },
+    {
+      "name": "Rehab",
+      "brand": "Initio Parfums Privés"
+    },
+    {
+      "name": "Isola Blu",
+      "brand": "Roja Dove"
+    },
+    {
+      "name": "Polo Blue EDP",
+      "brand": "Ralph Lauren"
+    },
+    {
+      "name": "Under The Lemon Tree",
+      "brand": "Maison Margiela Replica"
+    },
+    {
+      "name": "Erolfa",
+      "brand": "Creed"
+    },
+    {
+      "name": "Isola Sol",
+      "brand": "Roja Dove"
+    },
+    {
+      "name": "Mango Skin",
+      "brand": "Vilhelm Parfumerie"
+    },
+    {
+      "name": "Spicebomb Extreme",
+      "brand": "Viktor & Rolf"
+    },
+    {
+      "name": "Invictus Parfum",
+      "brand": "Rabanne"
+    },
+    {
+      "name": "Baccarat Rouge 540",
+      "brand": "Maison Francis Kurkdjian"
+    },
+    {
+      "name": "Unutamam",
+      "brand": "Nishane"
+    },
+    {
+      "name": "Manly",
+      "brand": "Areej Le Doré"
+    },
+    {
+      "name": "Fahrenheit",
+      "brand": "Christian Dior"
+    },
+    {
+      "name": "Guilty Absolute",
+      "brand": "Gucci"
+    },
+    {
+      "name": "Angels' Share",
+      "brand": "By Kilian"
+    },
+    {
+      "name": "Duro",
+      "brand": "Nasomatto"
+    },
+    {
+      "name": "Rume",
+      "brand": "Slumberhouse"
+    },
+    {
+      "name": "Allure Homme",
+      "brand": "Chanel"
+    },
+    {
+      "name": "Nio",
+      "brand": "Xerjoff"
+    },
+    {
+      "name": "Gold Man",
+      "brand": "Amouage"
+    },
+    {
+      "name": "Apex",
+      "brand": "Roja Dove"
+    },
+    {
+      "name": "No. 1",
+      "brand": "Clive Christian"
+    },
+    {
+      "name": "Boss The Scent Le Parfum for Him",
+      "brand": "Hugo Boss"
+    },
+    {
+      "name": "Memoir Man",
+      "brand": "Amouage"
+    },
+    {
+      "name": "1888",
+      "brand": "Xerjoff"
+    },
+    {
+      "name": "Nudiflorum",
+      "brand": "Nasomatto"
+    },
+    {
+      "name": "Baikal Gris",
+      "brand": "Areej le Doré"
+    },
+    {
+      "name": "Vétiver",
+      "brand": "Guerlain"
+    },
+    {
+      "name": "Himalaya",
+      "brand": "Creed"
+    },
+    {
+      "name": "Greenley",
+      "brand": "Parfums de Marly"
+    },
+    {
+      "name": "Cuoium",
+      "brand": "Orto Parisi"
+    },
+    {
+      "name": "Ore",
+      "brand": "Slumberhouse"
+    },
+    {
+      "name": "L'Homme Intense",
+      "brand": "Prada"
+    },
+    {
+      "name": "Alexandria II",
+      "brand": "Xerjoff"
+    },
+    {
+      "name": "Grand Soir",
+      "brand": "Maison Francis Kurkdjian"
+    },
+    {
+      "name": "Danger Pour Homme",
+      "brand": "Roja Dove"
+    },
+    {
+      "name": "Santal Galore",
+      "brand": "Areej le Doré"
+    },
+    {
+      "name": "Pure XS",
+      "brand": "Rabanne"
+    },
+    {
+      "name": "Straight to Heaven",
+      "brand": "By Kilian"
+    },
+    {
+      "name": "Enigma Pour Homme",
+      "brand": "Roja Dove"
+    },
+    {
+      "name": "L'Air du Désert Marocain",
+      "brand": "Tauer Perfumes"
+    },
+    {
+      "name": "Noir EDP",
+      "brand": "Tom Ford"
+    },
+    {
+      "name": "Homme Intense",
+      "brand": "Christian Dior"
+    },
+    {
+      "name": "Jazz Club",
+      "brand": "Maison Margiela Replica"
+    },
+    {
+      "name": "Amyris Homme",
+      "brand": "Maison Francis Kurkdjian"
+    },
+    {
+      "name": "Journey Man",
+      "brand": "Amouage"
+    },
+    {
+      "name": "Scandal Pour Homme",
+      "brand": "Roja Dove"
+    },
+    {
+      "name": "Legend EDP",
+      "brand": "Montblanc"
+    },
+    {
+      "name": "Percival",
+      "brand": "Parfums de Marly"
+    },
+    {
+      "name": "Royal Oud",
+      "brand": "Creed"
+    },
+    {
+      "name": "Lyric Man",
+      "brand": "Amouage"
+    },
+    {
+      "name": "Égoïste",
+      "brand": "Chanel"
+    },
+    {
+      "name": "A*Men",
+      "brand": "Mugler"
+    },
+    {
+      "name": "Wanted by Night",
+      "brand": "Azzaro"
+    },
+    {
+      "name": "Absolute Aphrodisiac",
+      "brand": "Initio Parfums Privés"
+    },
+    {
+      "name": "Seminalis",
+      "brand": "Orto Parisi"
+    },
+    {
+      "name": "Jeke",
+      "brand": "Slumberhouse"
+    },
+    {
+      "name": "L'Envol de Cartier",
+      "brand": "Cartier"
+    },
+    {
+      "name": "Mr. Burberry",
+      "brand": "Burberry"
+    },
+    {
+      "name": "Gentle Fluidity Gold",
+      "brand": "Maison Francis Kurkdjian"
+    },
+    {
+      "name": "Oligarch",
+      "brand": "Roja Dove"
+    },
+    {
+      "name": "Au Coeur du Désert",
+      "brand": "Tauer Perfumes"
+    },
+    {
+      "name": "Voyage d'Hermès Parfum",
+      "brand": "Hermès"
+    },
+    {
+      "name": "Pi",
+      "brand": "Givenchy"
+    },
+    {
+      "name": "At The Barber's",
+      "brand": "Maison Margiela Replica"
+    },
+    {
+      "name": "Zenne",
+      "brand": "Nishane"
+    },
+    {
+      "name": "Kiste",
+      "brand": "Slumberhouse"
+    },
+    {
+      "name": "Born in Roma Intense",
+      "brand": "Valentino"
+    },
+    {
+      "name": "Oajan",
+      "brand": "Parfums de Marly"
+    },
+    {
+      "name": "Jubilation XXV Man",
+      "brand": "Amouage"
+    },
+    {
+      "name": "Baraonda",
+      "brand": "Nasomatto"
+    },
+    {
+      "name": "Lonestar Memories",
+      "brand": "Tauer Perfumes"
+    },
+    {
+      "name": "Coco Mademoiselle",
+      "brand": "Chanel"
+    },
+    {
+      "name": "By the Fireplace",
+      "brand": "Maison Margiela Replica"
+    },
+    {
+      "name": "Ivory Route",
+      "brand": "Xerjoff"
+    },
+    {
+      "name": "Narcotic Venus",
+      "brand": "Nasomatto"
+    },
+    {
+      "name": "Russian Musk",
+      "brand": "Areej le Doré"
+    },
+    {
+      "name": "Black Opium",
+      "brand": "Yves Saint Laurent"
+    },
+    {
+      "name": "Intoxicated",
+      "brand": "By Kilian"
+    },
+    {
+      "name": "Roses Vanille",
+      "brand": "Mancera"
+    },
+    {
+      "name": "Blamage",
+      "brand": "Nasomatto"
+    },
+    {
+      "name": "Une Rose Chyprée",
+      "brand": "Tauer Perfumes"
+    },
+    {
+      "name": "La Vie Est Belle",
+      "brand": "Lancôme"
+    },
+    {
+      "name": "Love Don't Be Shy",
+      "brand": "By Kilian"
+    },
+    {
+      "name": "Lazy Sunday Morning",
+      "brand": "Maison Margiela Replica"
+    },
+    {
+      "name": "Elixir Pour Femme",
+      "brand": "Roja Dove"
+    },
+    {
+      "name": "Carillon pour un Ange",
+      "brand": "Tauer Perfumes"
+    },
+    {
+      "name": "Flowerbomb",
+      "brand": "Viktor & Rolf"
+    },
+    {
+      "name": "Aventus for Her",
+      "brand": "Creed"
+    },
+    {
+      "name": "Honour Woman",
+      "brand": "Amouage"
+    },
+    {
+      "name": "Sultan Vetiver",
+      "brand": "Nishane"
+    },
+    {
+      "name": "Oud Picante",
+      "brand": "Areej le Doré"
+    },
+    {
+      "name": "Chance Eau Tendre",
+      "brand": "Chanel"
+    },
+    {
+      "name": "Lira",
+      "brand": "Xerjoff"
+    },
+    {
+      "name": "À La Rose",
+      "brand": "Maison Francis Kurkdjian"
+    },
+    {
+      "name": "Nefs",
+      "brand": "Nishane"
+    },
+    {
+      "name": "Reverie au Jardin",
+      "brand": "Tauer Perfumes"
+    },
+    {
+      "name": "Mon Guerlain",
+      "brand": "Guerlain"
+    },
+    {
+      "name": "Chasing Sunsets",
+      "brand": "Maison Margiela Replica"
+    },
+    {
+      "name": "Good Girl Gone Bad",
+      "brand": "By Kilian"
+    },
+    {
+      "name": "Ti Amo",
+      "brand": "Roja Dove"
+    },
+    {
+      "name": "Pear & Olive",
+      "brand": "Slumberhouse"
+    },
+    {
+      "name": "L'Interdit",
+      "brand": "Givenchy"
+    },
+    {
+      "name": "Torino21",
+      "brand": "Xerjoff"
+    },
+    {
+      "name": "Dark Purple",
+      "brand": "Montale"
+    },
+    {
+      "name": "Absinth",
+      "brand": "Nasomatto"
+    },
+    {
+      "name": "05 Incense Extrême",
+      "brand": "Tauer Perfumes"
+    },
+    {
+      "name": "Alien Man",
+      "brand": "Mugler"
+    },
+    {
+      "name": "Hamdani",
+      "brand": "Parfums de Marly"
+    },
+    {
+      "name": "Oud Satin Mood",
+      "brand": "Maison Francis Kurkdjian"
+    },
+    {
+      "name": "Sweetie Aoud",
+      "brand": "Roja Dove"
+    },
+    {
+      "name": "Malik Al Taif",
+      "brand": "Areej le Doré"
+    },
+    {
+      "name": "Sì Passione",
+      "brand": "Giorgio Armani"
+    },
+    {
+      "name": "Delina",
+      "brand": "Parfums de Marly"
+    },
+    {
+      "name": "Chocolate Greedy",
+      "brand": "Montale"
+    },
+    {
+      "name": "Terroni",
+      "brand": "Orto Parisi"
+    },
+    {
+      "name": "Russian Oud",
+      "brand": "Areej le Doré"
+    },
+    {
+      "name": "Valentino Uomo",
+      "brand": "Valentino"
+    },
+    {
+      "name": "More Than Words",
+      "brand": "Xerjoff"
+    },
+    {
+      "name": "Musk Therapy",
+      "brand": "Initio"
+    },
+    {
+      "name": "Cologne Reloaded",
+      "brand": "Bogue"
+    },
+    {
+      "name": "Sova",
+      "brand": "Slumberhouse"
+    },
+    {
+      "name": "Angel",
+      "brand": "Mugler"
+    },
+    {
+      "name": "Aoud Lime",
+      "brand": "Montale"
+    },
+    {
+      "name": "Sweet Redemption",
+      "brand": "By Kilian"
+    },
+    {
+      "name": "Stercus",
+      "brand": "Orto Parisi"
+    },
+    {
+      "name": "Oud Yusuf",
+      "brand": "Ensar Oud"
+    }
+  ]
+}

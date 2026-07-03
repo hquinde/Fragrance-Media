@@ -1,4 +1,4 @@
-# Stage 2 — Slide Creation (pipeline-v2, Design v2)
+# Stage 2 — Slide Creation
 
 ## Context
 
@@ -18,7 +18,7 @@
 - `cN-sN-card.jpg` — Fragrantica social card, pinned to the bottom at 560px wide
 - All downloaded by `process-images.js`
 
-**Slide structure — title slide (dark photo, mimics pipeline-v1)**
+**Slide structure — title slide (dark photo background)**
 
 ```
 ┌──────────────────────────────────────┐
@@ -65,7 +65,7 @@
 
 ## Steps
 
-1. **Process images** — run `node ../images/process-images.js "url1" "url2" "url3"` from `pipeline-v2/slides/`, passing the 3 Pinterest title URLs the user gave in chat. Downloads `cN-title.jpg` from Pinterest and `cN-sN-bottle.jpg` + `cN-sN-card.jpg` from Fragrantica for all slides.
+1. **Process images** — run `node ../images/process-images.js "url1" "url2" "url3"` from `pipeline/slides/`, passing the 3 Pinterest title URLs the user gave in chat. Downloads `cN-title.jpg` from Pinterest and `cN-sN-bottle.jpg` + `cN-sN-card.jpg` from Fragrantica for all slides.
 2. **Generate + export** — run `node generate.js`. Generates `c1-slides.jsx`, `c2-slides.jsx`, `c3-slides.jsx` from [scripts.json](../scripts/data/scripts.json) and exports all 3 carousels via `export.js`. Aborts with a missing-files list if any image is absent.
 3. **Review + tweak (optional)** — if a headline wraps awkwardly, hand-edit the relevant `cN-slides.jsx` (add a `<br/>`) and re-run `node export.js cN`.
 
@@ -75,6 +75,6 @@ End with exactly this message:
 "All 3 carousels are in checkpoint/ and ready to upload. Let me know when you're done posting and I'll clean everything up."
 
 When the user confirms they're done posting, immediately run the cleanup:
-1. Delete all files from `checkpoint/v2/1/`, `checkpoint/v2/2/`, and `checkpoint/v2/3/` (keep the folders)
-2. Delete all image files from `pipeline-v2/images/` (keep `process-images.js` and `fragrantica-links.md`)
+1. Delete all files from `checkpoint/1/`, `checkpoint/2/`, and `checkpoint/3/` (keep the folders)
+2. Delete all image files from `pipeline/images/` (keep `process-images.js` and `fragrantica-links.md`)
 3. Delete [scripts.json](../scripts/data/scripts.json)
