@@ -1,0 +1,25 @@
+# .claude/
+
+# Purpose
+
+- Claude Code configuration for this workspace: skills, hooks, and settings.
+
+# Skills
+
+- [<skill-name>](skills/<skill-name>/SKILL.md) — <when this skill is invoked>.
+
+# Hooks
+
+- [hooks/claude-md-reminder.sh](hooks/claude-md-reminder.sh) — `PostToolUse`/`Write` hook that reminds the agent to document any newly created file in the nearest directory-level `CLAUDE.md` (falls back to the root file).
+- [hooks/mv-reminder.sh](hooks/mv-reminder.sh) — `PostToolUse`/`Bash` hook that reminds the agent to update `CLAUDE.md` entries when a command moves/renames files (`mv`/`git mv`), and logs each move to `hooks/.pending-moves.jsonl` for verification.
+- [hooks/check-pending-moves.py](hooks/check-pending-moves.py) — `Stop` hook that verifies logged moves against project `CLAUDE.md` files. Blocks the turn from ending once per move if a stale reference remains (forcing a fix), then auto-clears on the next check to avoid an infinite block loop from a false positive.
+- [hooks/stamp-claude-md-date.sh](hooks/stamp-claude-md-date.sh) — `PostToolUse`/`Edit|Write` hook that deterministically rewrites the `# Last Updated` date to today whenever an edited/written file is a `CLAUDE.md` that already has that section. No-ops on files without one.
+
+# Settings
+
+- [settings.json](settings.json) — checked-in hook configuration: wires the four hooks above to their `PostToolUse`/`Stop` events using `$CLAUDE_PROJECT_DIR`.
+- [settings.local.json](settings.local.json) — local, per-user permission allowlist.
+
+# Last Updated
+
+- <YYYY-MM-DD> — update this date whenever this file is edited.

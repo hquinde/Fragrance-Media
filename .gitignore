@@ -9,6 +9,7 @@ pipeline/images/*.jpg
 pipeline/images/*.jpeg
 pipeline/images/*.png
 pipeline/images/*.webp
+pipeline/images/.manifest.json
 
 # Exported PNGs
 checkpoint/1/*

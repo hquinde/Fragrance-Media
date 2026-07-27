@@ -21,8 +21,10 @@ When the user says let's start:
 2. Once the user responds, for each title run [report-performance.js](pipeline/scripts/report-performance.js) instead of hand-editing the JSON:
    ```bash
    node pipeline/scripts/report-performance.js --title "Title" --plays N --saves N --likes N
-   # flopped — add --why "reason" to route it to failures instead of winners
+   # flopped with real metrics — add --why "reason" to route it to failures instead of winners
    node pipeline/scripts/report-performance.js --title "Title" --plays N --saves N --likes N --why "reason"
+   # flopped with no metrics given — omit plays/saves/likes entirely, don't fabricate 0s
+   node pipeline/scripts/report-performance.js --title "Title" --why "flopped"
    ```
    This moves the pending entry into `winners` or `failures`, stamps `date_reported`, and removes it from `pending` automatically.
 
@@ -36,7 +38,7 @@ When the user says let's start:
 
 See [pipeline/scripts/CLAUDE.md](pipeline/scripts/CLAUDE.md) for instructions.
 
-After generating scripts, write them to `pipeline/scripts/data/scripts.json` as structured JSON (see format below). Also append the 3 new entries to `pending` in [performance.json](pipeline/scripts/data/performance.json).
+After generating scripts, write them to `pipeline/scripts/data/scripts.json` as structured JSON (see format below). Also record the 3 new entries via [add-batch.js](pipeline/scripts/add-batch.js) — see Step 5 in [pipeline/scripts/CLAUDE.md](pipeline/scripts/CLAUDE.md) — which appends to both `pending` in performance.json and `already_used` in fragrance-picks.json together.
 
 **scripts.json format:**
 ```json
@@ -54,6 +56,7 @@ After generating scripts, write them to `pipeline/scripts/data/scripts.json` as 
   ]
 }
 ```
+Optional per-carousel field: `"titleStyle": "minimal"` — renders that carousel's title slide as centered black text on white instead of the default dark-photo-with-scrim. Omit (or `"photo"`) for the default. See [pipeline/slides/CLAUDE.md](pipeline/slides/CLAUDE.md).
 
 After Stage 1: follow the pipeline-specific steps in [pipeline/scripts/CLAUDE.md](pipeline/scripts/CLAUDE.md) — they handle everything through to slide export.
 
@@ -76,7 +79,7 @@ Stage 0 — review pending titles → update pipeline/scripts/data/performance.j
       ↓
 Stage 1 — pick fragrances → search URLs only → write fragrantica-links.md + draft scripts.json
       ↓
-ask for 3 Pinterest title URLs → node process-images.js → read card images → write copy → finalize scripts.json
+ask for Pinterest title URLs (one per non-minimal carousel) → node process-images.js → read card images → write copy → finalize scripts.json
       ↓
 node pipeline/slides/generate.js → builds slides + exports
       ↓
@@ -84,3 +87,7 @@ checkpoint/ — 1/, 2/, 3/ — PNGs named 01-slide.png through NN-slide.png
       ↓
 (optional) tweak a slide's <br/> in cN-slides.jsx, re-run "node export.js cN"
 ```
+
+# Last Updated
+
+- 2026-07-26 — update this date whenever this file is edited.

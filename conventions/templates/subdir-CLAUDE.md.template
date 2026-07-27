@@ -1,0 +1,13 @@
+# <subdir>/
+
+# Purpose
+
+- <one-sentence statement of what this directory holds and why>
+
+# <Typed Section, e.g. "Scripts" / "State" / "Source Files">
+
+- [<file>](<file>) — <what it is, how it's produced/consumed, any "never do X" caveats>.
+
+# Last Updated
+
+- <YYYY-MM-DD> — update this date whenever this file is edited.

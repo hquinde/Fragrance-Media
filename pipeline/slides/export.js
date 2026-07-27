@@ -59,6 +59,11 @@ function startServer(dir) {
 async function run() {
   const puppeteer = require('puppeteer');
 
+  // Clear first, not just mkdir: export always regenerates every slide for
+  // this carousel, so a stale PNG from a previous run with a different slide
+  // count (e.g. 07-slide.png left behind when this batch only has 6) must
+  // not survive into the new output.
+  fs.rmSync(OUT_DIR, { recursive: true, force: true });
   fs.mkdirSync(OUT_DIR, { recursive: true });
 
   const { server, port } = await startServer(SOURCE_DIR);

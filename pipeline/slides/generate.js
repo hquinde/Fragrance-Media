@@ -19,8 +19,11 @@ function resolveImages(carousels) {
   const resolved = [];
 
   for (const carousel of carousels) {
-    const titleImg = ['jpg', 'png', 'webp'].map(e => `c${carousel.num}-title.${e}`).find(f => fs.existsSync(path.join(IMAGES_DIR, f)));
-    if (!titleImg) missing.push(`c${carousel.num}-title.jpg`);
+    let titleImg = null;
+    if (carousel.titleStyle !== 'minimal') {
+      titleImg = ['jpg', 'png', 'webp'].map(e => `c${carousel.num}-title.${e}`).find(f => fs.existsSync(path.join(IMAGES_DIR, f)));
+      if (!titleImg) missing.push(`c${carousel.num}-title.jpg`);
+    }
 
     const slides = carousel.slides.map(slide => {
       const bottle = `c${carousel.num}-s${slide.num}-bottle.jpg`;
@@ -58,8 +61,18 @@ function generateCarouselJsx(carousel) {
   const sections = [];
   let i = 1;
 
-  // Title slide — Instrument Serif 400, 132px, dark photo bg + scrim-strong
-  sections.push(`      {/* ── Slide ${pad(i)} — Title ── */}
+  // Title slide — "minimal": white bg, centered black Cormorant Garamond, no photo.
+  // Default "photo": Instrument Serif 400, 132px, dark photo bg + scrim-strong.
+  if (carousel.titleStyle === 'minimal') {
+    sections.push(`      {/* ── Slide ${pad(i)} — Title (minimal) ── */}
+      <div className="slide-caption">${pad(i)} — Title</div>
+      <div className="slide-wrap">
+        <div style={{ width: '100%', height: '100%', boxSizing: 'border-box', background: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '96px' }}>
+          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: '64px', color: '#161310', lineHeight: '1.05', textAlign: 'center', textWrap: 'balance', margin: 0 }}>${carousel.title}</h1>
+        </div>
+      </div>`);
+  } else {
+    sections.push(`      {/* ── Slide ${pad(i)} — Title ── */}
       <div className="slide-caption">${pad(i)} — Title</div>
       <div className="slide-wrap" style={{ position: 'relative' }}>
         <img src="/images/${carousel.titleImg}" alt="title background" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0, display: 'block' }} />
@@ -68,6 +81,7 @@ function generateCarouselJsx(carousel) {
           <h1 style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400, fontSize: '132px', color: '#f4efe6', lineHeight: '1.0', textWrap: 'balance', margin: 0 }}>${carousel.title}</h1>
         </div>
       </div>`);
+  }
   i++;
 
   for (const slide of carousel.slides) {

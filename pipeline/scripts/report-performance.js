@@ -38,8 +38,15 @@ function main() {
   const args = parseArgs(process.argv.slice(2));
   const { title, plays, saves, likes, why } = args;
 
-  if (!title || plays === undefined || saves === undefined || likes === undefined) {
+  // Metrics are required for a reported winner, but a flop reported with only
+  // --why shouldn't be forced to carry fabricated 0/0/0 numbers alongside
+  // entries that have real reported metrics.
+  const hasAnyMetric = plays !== undefined || saves !== undefined || likes !== undefined;
+  const hasAllMetrics = plays !== undefined && saves !== undefined && likes !== undefined;
+
+  if (!title || (!why && !hasAllMetrics) || (hasAnyMetric && !hasAllMetrics)) {
     console.error('Usage: node report-performance.js --title "Title" --plays N --saves N --likes N [--why "reason"]');
+    console.error('       node report-performance.js --title "Title" --why "flopped, no metrics given"');
     process.exit(1);
   }
 
@@ -53,9 +60,11 @@ function main() {
   }
 
   const entry = data.pending[idx];
-  entry.plays = /^\d+$/.test(plays) ? Number(plays) : plays;
-  entry.saves = /^\d+$/.test(saves) ? Number(saves) : saves;
-  entry.likes = /^\d+$/.test(likes) ? Number(likes) : likes;
+  if (hasAllMetrics) {
+    entry.plays = /^\d+$/.test(plays) ? Number(plays) : plays;
+    entry.saves = /^\d+$/.test(saves) ? Number(saves) : saves;
+    entry.likes = /^\d+$/.test(likes) ? Number(likes) : likes;
+  }
   entry.date_reported = todayDate();
 
   data.pending.splice(idx, 1);

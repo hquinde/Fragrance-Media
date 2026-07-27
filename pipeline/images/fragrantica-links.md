@@ -3,18 +3,18 @@
 Filled by Stage 1 agent. Format: `cN-sN: https://www.fragrantica.com/perfume/...`
 process-images.js reads this file to auto-download bottle images and card images.
 
-c1-s1: https://www.fragrantica.com/perfume/Chanel/Antaeus-616.html
-c1-s2: https://www.fragrantica.com/perfume/Amouage/Dia-Man-1110.html
-c1-s3: https://www.fragrantica.com/perfume/Maison-Francis-Kurkdjian/Oud-Silk-Mood-48456.html
-c1-s4: https://www.fragrantica.com/perfume/Nasomatto/China-White-4290.html
-c1-s5: https://www.fragrantica.com/perfume/Slumberhouse/Grev-11742.html
-c2-s1: https://www.fragrantica.com/perfume/Rabanne/Black-XS-514.html
-c2-s2: https://www.fragrantica.com/perfume/Creed/Viking-41698.html
-c2-s3: https://www.fragrantica.com/perfume/Xerjoff/Accento-55156.html
-c2-s4: https://www.fragrantica.com/perfume/Orto-Parisi/Bergamask-24191.html
-c2-s5: https://www.fragrantica.com/perfume/Tauer-Perfumes/Zeta-11910.html
-c3-s1: https://www.fragrantica.com/perfume/Hugo-Boss/Boss-Number-One-6278.html
-c3-s2: https://www.fragrantica.com/perfume/Initio-Parfums-Prives/Oud-for-Happiness-69224.html
-c3-s3: https://www.fragrantica.com/perfume/Montale/Black-Aoud-1142.html
-c3-s4: https://www.fragrantica.com/perfume/Roja-Dove/Vetiver-Pour-Homme-48797.html
-c3-s5: https://www.fragrantica.com/perfume/Ensar-Oud/Tigerlust-58896.html
+c1-s1: https://www.fragrantica.com/perfume/Bvlgari/Bvlgari-Man-Wood-Neroli-55688.html
+c1-s2: https://www.fragrantica.com/perfume/Lacoste-Fragrances/L-12-12-Blanc-Eau-Fraiche-Eau-de-Toilette-For-Him-71504.html
+c1-s3: https://www.fragrantica.com/perfume/Issey-Miyake/Fusion-d-Issey-61866.html
+c1-s4: https://www.fragrantica.com/perfume/Salvatore-Ferragamo/Uomo-Salvatore-Ferragamo-39466.html
+c1-s5: https://www.fragrantica.com/perfume/Vilhelm-Parfumerie/Back-to-the-Roots-85947.html
+c2-s1: https://www.fragrantica.com/perfume/Azzaro/Azzaro-pour-Homme-829.html
+c2-s2: https://www.fragrantica.com/perfume/Bogue/20-77255.html
+c2-s3: https://www.fragrantica.com/perfume/Bogue/Come-113321.html
+c2-s4: https://www.fragrantica.com/perfume/Roja-Dove/Harrods-Aoud-56709.html
+c2-s5: https://www.fragrantica.com/perfume/Areej-Le-Dore/Royal-Barn-91204.html
+c3-s1: https://www.fragrantica.com/perfume/Frederic-Malle/Portrait-of-a-Lady-10464.html
+c3-s2: https://www.fragrantica.com/perfume/Ormonde-Jayne/Isfarkand-4932.html
+c3-s3: https://www.fragrantica.com/perfume/Byredo/Bal-d-Afrique-6458.html
+c3-s4: https://www.fragrantica.com/perfume/Bogue/10-77254.html
+c3-s5: https://www.fragrantica.com/perfume/Roja-Dove/Oceania-57385.html

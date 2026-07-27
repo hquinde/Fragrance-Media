@@ -1,0 +1,16 @@
+# <project-name>
+
+# Purpose
+
+- <one-sentence statement of what this project/workspace does>
+
+# Project Map
+
+Each subdirectory with its own `CLAUDE.md` is listed here as `- **xxx/** — [xxx/CLAUDE.md](xxx/CLAUDE.md) — <one-line description>`, with no "see" before the link. Add new subdirectories in this exact format.
+
+- **<subdir>/** — [<subdir>/CLAUDE.md](<subdir>/CLAUDE.md) — <one-line description>
+- **.claude/** — [.claude/CLAUDE.md](.claude/CLAUDE.md) — Claude Code configuration: skills, hooks, and settings.
+
+# Last Updated
+
+- <YYYY-MM-DD> — update this date whenever this file is edited.
