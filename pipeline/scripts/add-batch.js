@@ -1,7 +1,6 @@
 #!/usr/bin/env node
-// Stage 1 helper: records a new batch of 3 carousels into both
-// performance.json (pending) and fragrance-picks.json (already_used) in one
-// atomic step, instead of hand-editing both JSON files via Edit/Write.
+// Stage 1 helper: records a new batch of 3 carousels into carousels.json as
+// pending entries, instead of hand-editing the JSON via Edit/Write.
 //
 // Usage:
 //   node add-batch.js batch.json
@@ -11,9 +10,8 @@
 //   "carousels": [
 //     {
 //       "title": "5 Fragrances Built for a Long Flight",
-//       "niche_mix": "1 mainstream, 2 mid-niche, 1 deep niche, 1 ultra niche",
 //       "fragrances": [
-//         { "name": "Weekend for Men", "brand": "Burberry" },
+//         { "fragrance": "Burberry Weekend for Men", "tier": "mainstream", "gender": "men" },
 //         ...
 //       ]
 //     },
@@ -24,8 +22,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const PERF_JSON = path.join(__dirname, 'data', 'performance.json');
-const PICKS_JSON = path.join(__dirname, 'data', 'fragrance-picks.json');
+const CAROUSELS_JSON = path.join(__dirname, 'data', 'carousels.json');
+const VALID_TIERS = new Set(['mainstream', 'mid-niche', 'deep-niche', 'ultra-niche', 'obscure']);
+const VALID_GENDERS = new Set(['men', 'women', 'unisex']);
 
 function main() {
   const batchPath = process.argv[2];
@@ -41,32 +40,38 @@ function main() {
     process.exit(1);
   }
   for (const c of carousels) {
-    if (!c.title || !c.niche_mix || !Array.isArray(c.fragrances) || c.fragrances.length !== 5) {
-      console.error(`! Carousel "${c.title || '(untitled)'}" needs title, niche_mix, and exactly 5 fragrances.`);
+    if (!c.title || !Array.isArray(c.fragrances) || c.fragrances.length !== 5) {
+      console.error(`! Carousel "${c.title || '(untitled)'}" needs a title and exactly 5 fragrances.`);
       process.exit(1);
     }
-  }
-
-  const perf = JSON.parse(fs.readFileSync(PERF_JSON, 'utf8'));
-  const picks = JSON.parse(fs.readFileSync(PICKS_JSON, 'utf8'));
-
-  for (const c of carousels) {
-    perf.pending.push({
-      title: c.title,
-      fragrances: c.fragrances.map(f => `${f.brand} ${f.name}`),
-      niche_mix: c.niche_mix,
-      design: 'v2',
-      date_posted: null,
-    });
     for (const f of c.fragrances) {
-      picks.already_used.push({ name: f.name, brand: f.brand });
+      if (!f.fragrance || !VALID_TIERS.has(f.tier) || !VALID_GENDERS.has(f.gender)) {
+        console.error(`! Carousel "${c.title}" has an invalid fragrance entry: ${JSON.stringify(f)}`);
+        console.error(`  tier must be one of: ${[...VALID_TIERS].join(', ')}`);
+        console.error(`  gender must be one of: ${[...VALID_GENDERS].join(', ')}`);
+        process.exit(1);
+      }
     }
   }
 
-  fs.writeFileSync(PERF_JSON, JSON.stringify(perf, null, 2) + '\n');
-  fs.writeFileSync(PICKS_JSON, JSON.stringify(picks, null, 2) + '\n');
+  const data = JSON.parse(fs.readFileSync(CAROUSELS_JSON, 'utf8'));
 
-  console.log(`Added ${carousels.length} carousels to pending and ${carousels.reduce((n, c) => n + c.fragrances.length, 0)} fragrances to already_used.`);
+  for (const c of carousels) {
+    data.carousels.push({
+      title: c.title,
+      status: 'pending',
+      date_posted: null,
+      date_reported: null,
+      plays: null,
+      saves: null,
+      likes: null,
+      fragrances: c.fragrances.map(f => ({ fragrance: f.fragrance, tier: f.tier, gender: f.gender })),
+    });
+  }
+
+  fs.writeFileSync(CAROUSELS_JSON, JSON.stringify(data, null, 2) + '\n');
+
+  console.log(`Added ${carousels.length} carousels as pending, ${carousels.reduce((n, c) => n + c.fragrances.length, 0)} fragrances now excluded.`);
   for (const c of carousels) console.log(`  - ${c.title}`);
 }
 

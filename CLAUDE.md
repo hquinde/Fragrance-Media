@@ -5,7 +5,7 @@ A single AI agent reads context, runs the skill, and outputs slides — no compl
 
 **Folder layout**
 - `checkpoint/` — the only folder the user needs to look at: exported carousels in `1/`, `2/`, `3/`.
-- `pipeline/` — white design (Cormorant Garamond + IBM Plex Mono, bottle + card images). Title slides use a dark Pinterest photo background; fragrance slides are white. Shared data (`performance.json`, `fragrance-picks.json`) lives at `pipeline/scripts/data/`.
+- `pipeline/` — white design (Cormorant Garamond + IBM Plex Mono, bottle + card images). Title slides use a dark Pinterest photo background; fragrance slides are white. Shared tracking data (`carousels.json`) lives at `pipeline/scripts/data/`.
 
 ---
 
@@ -15,18 +15,16 @@ A single AI agent reads context, runs the skill, and outputs slides — no compl
 
 When the user says let's start:
 
-1. Run `jq '.pending' pipeline/scripts/data/performance.json`. If the array is non-empty, list the titles and ask:
+1. Run `jq '[.carousels[] | select(.status=="pending")]' pipeline/scripts/data/carousels.json`. If the array is non-empty, list the titles and ask:
    "How did these perform? Tell me the views, saves, and likes (or just say 'flopped') and I'll update the records."
 
 2. Once the user responds, for each title run [report-performance.js](pipeline/scripts/report-performance.js) instead of hand-editing the JSON:
    ```bash
    node pipeline/scripts/report-performance.js --title "Title" --plays N --saves N --likes N
-   # flopped with real metrics — add --why "reason" to route it to failures instead of winners
-   node pipeline/scripts/report-performance.js --title "Title" --plays N --saves N --likes N --why "reason"
-   # flopped with no metrics given — omit plays/saves/likes entirely, don't fabricate 0s
-   node pipeline/scripts/report-performance.js --title "Title" --why "flopped"
+   # flopped, or no metrics given at all — the carousel is dropped outright, its fragrances become reusable
+   node pipeline/scripts/report-performance.js --title "Title"
    ```
-   This moves the pending entry into `winners` or `failures`, stamps `date_reported`, and removes it from `pending` automatically.
+   A title reported with `plays` ≥ 1000 is marked `status: "reported"` with its real metrics and `date_reported` stamped. A title with no metrics, or with `plays` under 1000, is removed from `carousels.json` entirely — low/no-performance records aren't kept, and dropping the carousel immediately frees its fragrances for reuse.
 
 3. Proceed immediately to Stage 1.
 
@@ -38,7 +36,7 @@ When the user says let's start:
 
 See [pipeline/scripts/CLAUDE.md](pipeline/scripts/CLAUDE.md) for instructions.
 
-After generating scripts, write them to `pipeline/scripts/data/scripts.json` as structured JSON (see format below). Also record the 3 new entries via [add-batch.js](pipeline/scripts/add-batch.js) — see Step 5 in [pipeline/scripts/CLAUDE.md](pipeline/scripts/CLAUDE.md) — which appends to both `pending` in performance.json and `already_used` in fragrance-picks.json together.
+After generating scripts, write them to `pipeline/scripts/data/scripts.json` as structured JSON (see format below). Also record the 3 new entries via [add-batch.js](pipeline/scripts/add-batch.js) — see Step 5 in [pipeline/scripts/CLAUDE.md](pipeline/scripts/CLAUDE.md) — which appends them to `carousels.json` as `status: "pending"` entries, fragrances excluded immediately.
 
 **scripts.json format:**
 ```json
@@ -75,7 +73,7 @@ After Stage 2: PNGs appear in `checkpoint/`, in subfolders `1/`, `2/`, `3/`, nam
 ```
 "let's start"
       ↓
-Stage 0 — review pending titles → update pipeline/scripts/data/performance.json
+Stage 0 — review pending titles → update pipeline/scripts/data/carousels.json
       ↓
 Stage 1 — pick fragrances → search URLs only → write fragrantica-links.md + draft scripts.json
       ↓
@@ -90,4 +88,4 @@ checkpoint/ — 1/, 2/, 3/ — PNGs named 01-slide.png through NN-slide.png
 
 # Last Updated
 
-- 2026-07-26 — update this date whenever this file is edited.
+- 2026-08-07 — update this date whenever this file is edited.

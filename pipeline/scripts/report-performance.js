@@ -1,17 +1,20 @@
 #!/usr/bin/env node
-// Stage 0 helper: moves a pending title into winners or failures with
-// reported metrics, instead of hand-editing performance.json via jq.
+// Stage 0 helper: reports real-world metrics for a pending carousel, instead
+// of hand-editing carousels.json via Edit/Write.
 //
 // Usage:
 //   node report-performance.js --title "Title" --plays 1234 --saves 10 --likes 20
-//   node report-performance.js --title "Title" --plays 500 --saves 1 --likes 2 --why "weak hook, niche fragrances didn't land"
+//   node report-performance.js --title "Title"
 //
-// --why present -> moves to failures. Otherwise -> moves to winners.
+// A title with plays >= 1000 is marked reported and kept, with its metrics.
+// A title reported with no metrics at all, or with plays < 1000, is dropped
+// entirely — we don't keep low/no-performance records, and its fragrances
+// become eligible for reuse the moment the carousel is gone.
 
 const fs = require('fs');
 const path = require('path');
 
-const PERF_JSON = path.join(__dirname, 'data', 'performance.json');
+const CAROUSELS_JSON = path.join(__dirname, 'data', 'carousels.json');
 
 function parseArgs(argv) {
   const args = {};
@@ -36,51 +39,43 @@ function todayDate() {
 
 function main() {
   const args = parseArgs(process.argv.slice(2));
-  const { title, plays, saves, likes, why } = args;
+  const { title, plays, saves, likes } = args;
 
-  // Metrics are required for a reported winner, but a flop reported with only
-  // --why shouldn't be forced to carry fabricated 0/0/0 numbers alongside
-  // entries that have real reported metrics.
   const hasAnyMetric = plays !== undefined || saves !== undefined || likes !== undefined;
   const hasAllMetrics = plays !== undefined && saves !== undefined && likes !== undefined;
 
-  if (!title || (!why && !hasAllMetrics) || (hasAnyMetric && !hasAllMetrics)) {
-    console.error('Usage: node report-performance.js --title "Title" --plays N --saves N --likes N [--why "reason"]');
-    console.error('       node report-performance.js --title "Title" --why "flopped, no metrics given"');
+  if (!title || (hasAnyMetric && !hasAllMetrics)) {
+    console.error('Usage: node report-performance.js --title "Title" --plays N --saves N --likes N');
+    console.error('       node report-performance.js --title "Title"   (no metrics -> dropped)');
     process.exit(1);
   }
 
-  const data = JSON.parse(fs.readFileSync(PERF_JSON, 'utf8'));
-  const idx = data.pending.findIndex(p => p.title === title);
+  const data = JSON.parse(fs.readFileSync(CAROUSELS_JSON, 'utf8'));
+  const idx = data.carousels.findIndex(c => c.status === 'pending' && c.title === title);
   if (idx === -1) {
-    console.error(`! No pending entry found with title "${title}"`);
+    console.error(`! No pending carousel found with title "${title}"`);
     console.error('Pending titles:');
-    for (const p of data.pending) console.error(`  - ${p.title}`);
+    for (const c of data.carousels) if (c.status === 'pending') console.error(`  - ${c.title}`);
     process.exit(1);
   }
 
-  const entry = data.pending[idx];
-  if (hasAllMetrics) {
-    entry.plays = /^\d+$/.test(plays) ? Number(plays) : plays;
+  const playsNum = hasAllMetrics && /^\d+$/.test(plays) ? Number(plays) : null;
+
+  if (hasAllMetrics && playsNum !== null && playsNum >= 1000) {
+    const entry = data.carousels[idx];
+    entry.status = 'reported';
+    entry.plays = playsNum;
     entry.saves = /^\d+$/.test(saves) ? Number(saves) : saves;
     entry.likes = /^\d+$/.test(likes) ? Number(likes) : likes;
-  }
-  entry.date_reported = todayDate();
-
-  data.pending.splice(idx, 1);
-
-  if (why) {
-    entry.why = why;
-    data.failures = data.failures || [];
-    data.failures.push(entry);
-    console.log(`Moved "${title}" to failures.`);
+    entry.date_reported = todayDate();
+    fs.writeFileSync(CAROUSELS_JSON, JSON.stringify(data, null, 2) + '\n');
+    console.log(`Reported "${title}" — ${playsNum} plays, kept.`);
   } else {
-    data.winners = data.winners || [];
-    data.winners.push(entry);
-    console.log(`Moved "${title}" to winners.`);
+    const freed = data.carousels[idx].fragrances.map(f => f.fragrance);
+    data.carousels.splice(idx, 1);
+    fs.writeFileSync(CAROUSELS_JSON, JSON.stringify(data, null, 2) + '\n');
+    console.log(`Dropped "${title}" — no qualifying metrics. ${freed.length} fragrances now eligible for reuse.`);
   }
-
-  fs.writeFileSync(PERF_JSON, JSON.stringify(data, null, 2) + '\n');
 }
 
 main();

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-// Checks proposed fragrance names against fragrance-picks.json already_used,
-// using normalized (accent-stripped, lowercased) + substring matching so
+// Checks proposed fragrance names against every fragrance already recorded in
+// carousels.json (any status — pending picks are already spoken for), using
+// normalized (accent-stripped, lowercased) + substring matching so
 // near-misses like "Vetiver" vs "Vétiver" or flankers like "Layton Exclusif"
 // vs "Layton" are caught, not just exact matches.
 //
@@ -9,7 +10,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const PICKS_JSON = path.join(__dirname, 'data', 'fragrance-picks.json');
+const CAROUSELS_JSON = path.join(__dirname, 'data', 'carousels.json');
 
 // Connector/descriptor words that are too common across unrelated fragrance
 // names to count as a meaningful signal on their own (e.g. "Black Orchid" vs
@@ -47,11 +48,22 @@ function containsTokenSequence(needle, haystack) {
   return false;
 }
 
+// Strips the shared leading run (the brand, since fragrances are stored as
+// "Brand Name") so two different products from the same brand don't collide
+// just because they share the brand's words.
+function stripCommonPrefix(aTokens, bTokens) {
+  let i = 0;
+  while (i < aTokens.length && i < bTokens.length && aTokens[i] === bTokens[i]) i++;
+  return [aTokens.slice(i), bTokens.slice(i)];
+}
+
 // Catches same-fragrance-different-qualifier cases that don't share a
 // contiguous run at all (e.g. "XJ 1861 Renaissance" vs "Xerjoff Renaissance").
 // Flags on 2+ shared distinctive words, or a single shared word long enough
-// (>=7 chars) to be unlikely to be a coincidental shared descriptor.
-function distinctiveOverlapHit(aTokens, bTokens) {
+// (>=7 chars) to be unlikely to be a coincidental shared descriptor. Runs
+// only on the tokens remaining after stripping a shared brand prefix.
+function distinctiveOverlapHit(aTokensFull, bTokensFull) {
+  const [aTokens, bTokens] = stripCommonPrefix(aTokensFull, bTokensFull);
   const distinctive = t => t.length >= 4 && !STOPWORDS.has(t);
   const aDist = aTokens.filter(distinctive);
   const bSet = new Set(bTokens);
@@ -68,8 +80,9 @@ function main() {
     process.exit(1);
   }
 
-  const { already_used } = JSON.parse(fs.readFileSync(PICKS_JSON, 'utf8'));
-  const usedNormalized = already_used.map(u => ({ raw: u.name, norm: normalize(u.name), tokens: tokenize(normalize(u.name)) }));
+  const { carousels } = JSON.parse(fs.readFileSync(CAROUSELS_JSON, 'utf8'));
+  const already_used = carousels.flatMap(c => c.fragrances.map(f => f.fragrance));
+  const usedNormalized = already_used.map(name => ({ raw: name, norm: normalize(name), tokens: tokenize(normalize(name)) }));
 
   const conflicts = [];
   for (const pick of picks) {
