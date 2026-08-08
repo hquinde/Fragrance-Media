@@ -2,19 +2,24 @@
 // Runs the "done posting" cleanup as a single command instead of a 3-step
 // free-text instruction, which has been silently skipped before:
 //   1. Delete PNGs from checkpoint/1, checkpoint/2, checkpoint/3 (keep folders)
-//   2. Delete image files + manifest from pipeline/images/ (keep the scripts + links.md)
-//   3. Delete pipeline/scripts/data/scripts.json
+//   2. Delete downloaded image files from this folder (keep the scripts/docs/toolchain)
+//   3. Delete scripts.json
 //
 // Usage: node cleanup.js
 
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = path.join(__dirname, '..', '..');
+const ROOT = path.join(__dirname, '..');
 const CHECKPOINT_DIRS = [1, 2, 3].map(n => path.join(ROOT, 'checkpoint', String(n)));
-const IMAGES_DIR = path.join(ROOT, 'pipeline', 'images');
-const SCRIPTS_JSON = path.join(ROOT, 'pipeline', 'scripts', 'data', 'scripts.json');
-const IMAGES_KEEP = new Set(['process-images.js', 'fragrantica-links.md']);
+const IMAGES_DIR = __dirname;
+const SCRIPTS_JSON = path.join(__dirname, 'scripts.json');
+
+// Images share this folder with the scripts, docs, and render toolchain now,
+// so deletion must positively identify a downloaded asset by name rather than
+// blacklist one known file — an "everything except X" rule here would wipe
+// the pipeline itself.
+const DOWNLOADED_ASSET = /^c\d+(-s\d+)?-(title|bottle|card)\.(jpg|jpeg|png|webp)$|^\.manifest\.json$/;
 
 function main() {
   let removed = 0;
@@ -29,7 +34,7 @@ function main() {
 
   if (fs.existsSync(IMAGES_DIR)) {
     for (const f of fs.readdirSync(IMAGES_DIR)) {
-      if (IMAGES_KEEP.has(f)) continue;
+      if (!DOWNLOADED_ASSET.test(f)) continue;
       fs.unlinkSync(path.join(IMAGES_DIR, f));
       removed++;
     }
@@ -40,7 +45,7 @@ function main() {
     removed++;
   }
 
-  console.log(`Cleanup done — removed ${removed} file(s). checkpoint/1,2,3 and pipeline/images/ are ready for the next batch.`);
+  console.log(`Cleanup done — removed ${removed} file(s). checkpoint/1,2,3 and this folder are ready for the next batch.`);
 }
 
 main();

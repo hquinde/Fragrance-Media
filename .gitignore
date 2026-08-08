@@ -1,15 +1,15 @@
 # Generated carousel JSX (rebuilt each run)
-pipeline/slides/source/carousels/c*-slides.jsx
+02-pipeline/source/carousels/c*-slides.jsx
 
-# Generated scripts (deleted after each batch)
-pipeline/scripts/data/scripts.json
+# Generated scripts.json (deleted after each batch)
+02-pipeline/scripts.json
 
-# Downloaded images (keep scripts, not the image files)
-pipeline/images/*.jpg
-pipeline/images/*.jpeg
-pipeline/images/*.png
-pipeline/images/*.webp
-pipeline/images/.manifest.json
+# Downloaded images (keep the scripts, not the image files)
+02-pipeline/*.jpg
+02-pipeline/*.jpeg
+02-pipeline/*.png
+02-pipeline/*.webp
+02-pipeline/.manifest.json
 
 # Exported PNGs
 checkpoint/1/*

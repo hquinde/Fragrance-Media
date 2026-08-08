@@ -10,7 +10,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const CAROUSELS_JSON = path.join(__dirname, 'data', 'carousels.json');
+const CAROUSELS_JSON = path.join(__dirname, '..', '01-creation', 'carousels.json');
 
 // Connector/descriptor words that are too common across unrelated fragrance
 // names to count as a meaningful signal on their own (e.g. "Black Orchid" vs

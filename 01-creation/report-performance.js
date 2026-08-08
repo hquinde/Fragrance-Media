@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Stage 0 helper: reports real-world metrics for a pending carousel, instead
+// 01-creation helper: reports real-world metrics for a pending carousel, instead
 // of hand-editing carousels.json via Edit/Write.
 //
 // Usage:
@@ -14,7 +14,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const CAROUSELS_JSON = path.join(__dirname, 'data', 'carousels.json');
+const CAROUSELS_JSON = path.join(__dirname, 'carousels.json');
 
 function parseArgs(argv) {
   const args = {};

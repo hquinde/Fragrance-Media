@@ -1545,12 +1545,12 @@
     },
     {
       "title": "5 Fragrances Only Real Collectors Know About",
-      "status": "pending",
+      "status": "reported",
       "date_posted": "07/31/26",
-      "date_reported": null,
-      "plays": null,
-      "saves": null,
-      "likes": null,
+      "date_reported": "08/07/26",
+      "plays": 1755,
+      "saves": 23,
+      "likes": 35,
       "fragrances": [
         {
           "fragrance": "Nishane Shinanay",
@@ -1581,12 +1581,12 @@
     },
     {
       "title": "5 Fragrances Built for a Promotion",
-      "status": "pending",
+      "status": "reported",
       "date_posted": "07/31/26",
-      "date_reported": null,
-      "plays": null,
-      "saves": null,
-      "likes": null,
+      "date_reported": "08/07/26",
+      "plays": 1195,
+      "saves": 1,
+      "likes": 16,
       "fragrances": [
         {
           "fragrance": "Yves Saint Laurent Rive Gauche",
@@ -1617,12 +1617,12 @@
     },
     {
       "title": "5 Fragrances That Feel Like a Reward",
-      "status": "pending",
+      "status": "reported",
       "date_posted": "07/31/26",
-      "date_reported": null,
-      "plays": null,
-      "saves": null,
-      "likes": null,
+      "date_reported": "08/07/26",
+      "plays": 1260,
+      "saves": 8,
+      "likes": 27,
       "fragrances": [
         {
           "fragrance": "Mancera Black Gold",
@@ -1647,6 +1647,114 @@
         {
           "fragrance": "Nishane Meltemia",
           "tier": "deep-niche",
+          "gender": "unisex"
+        }
+      ]
+    },
+    {
+      "title": "5 Fragrances Built for Summer",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Giorgio Armani Acqua di Giò",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Bvlgari Aqva Pour Homme",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Dolce & Gabbana Light Blue",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Bogue MAAI",
+          "tier": "deep-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Slumberhouse Norne",
+          "tier": "ultra-niche",
+          "gender": "unisex"
+        }
+      ]
+    },
+    {
+      "title": "5 Fragrances That Get You Noticed First",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Nasomatto Black Afgano",
+          "tier": "deep-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Meo Fusciuni Luce",
+          "tier": "deep-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Orto Parisi Boccanera",
+          "tier": "deep-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Areej Le Doré Atlantic Ambergris",
+          "tier": "ultra-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Tauer Perfumes 14 Noontide Petals",
+          "tier": "ultra-niche",
+          "gender": "women"
+        }
+      ]
+    },
+    {
+      "title": "Fragrances Most People Sleep On",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Mancera Cedrat Boisé",
+          "tier": "mid-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Creed Bois du Portugal",
+          "tier": "mid-niche",
+          "gender": "men"
+        },
+        {
+          "fragrance": "By Kilian Angels' Share",
+          "tier": "mid-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Parfums de Marly Herod",
+          "tier": "mid-niche",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Ensar Oud Abu Madyan",
+          "tier": "ultra-niche",
           "gender": "unisex"
         }
       ]

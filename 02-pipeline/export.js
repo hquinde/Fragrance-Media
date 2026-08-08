@@ -13,8 +13,8 @@ if (!carouselId) {
   process.exit(1);
 }
 const SOURCE_DIR = path.join(__dirname, 'source');
-const IMAGES_DIR = path.join(__dirname, '..', 'images');
-const OUTPUTS_ROOT = path.join(__dirname, '..', '..', 'checkpoint');
+const IMAGES_DIR = __dirname;
+const OUTPUTS_ROOT = path.join(__dirname, '..', 'checkpoint');
 
 const carouselNum = carouselId.replace(/\D/g, '');
 const OUT_DIR = path.join(OUTPUTS_ROOT, carouselNum);

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Stage 1 helper: records a new batch of 3 carousels into carousels.json as
+// 02-pipeline helper: records a new batch of 3 carousels into carousels.json as
 // pending entries, instead of hand-editing the JSON via Edit/Write.
 //
 // Usage:
@@ -22,7 +22,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const CAROUSELS_JSON = path.join(__dirname, 'data', 'carousels.json');
+const CAROUSELS_JSON = path.join(__dirname, '..', '01-creation', 'carousels.json');
 const VALID_TIERS = new Set(['mainstream', 'mid-niche', 'deep-niche', 'ultra-niche', 'obscure']);
 const VALID_GENDERS = new Set(['men', 'women', 'unisex']);
 

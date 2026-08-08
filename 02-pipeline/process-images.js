@@ -1,17 +1,17 @@
 #!/usr/bin/env node
-// Normalizes pipeline/images/ for Stage 2 after Stage 1 fills fragrantica-links.md:
+// Normalizes this folder's images after scripts.json is filled (each slide
+// carries its own fragranticaUrl):
 //   1. Downloads Fragrantica bottle images (cN-sN-bottle.jpg) from fimgs.net
 //   2. Downloads Fragrantica card images (cN-sN-card.jpg) from fragrantica.com social cards
 //
-// Usage: node process-images.js  (run from pipeline/images/)
+// Usage: node process-images.js "url1" "url2" ...  (cwd-independent)
 
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
 const IMAGES_DIR = __dirname;
-const SCRIPTS_JSON = path.join(IMAGES_DIR, '..', 'scripts', 'data', 'scripts.json');
-const LINKS_FILE = path.join(IMAGES_DIR, 'fragrantica-links.md');
+const SCRIPTS_JSON = path.join(IMAGES_DIR, 'scripts.json');
 const MANIFEST_PATH = path.join(IMAGES_DIR, '.manifest.json');
 
 // Tracks which source URL produced each downloaded file. Filenames are
@@ -30,7 +30,7 @@ function saveManifest(manifest) {
 
 function loadCarousels() {
   if (!fs.existsSync(SCRIPTS_JSON)) {
-    console.error('! pipeline/scripts/data/scripts.json not found — run Stage 1 first.');
+    console.error('! scripts.json not found — run add-batch.js first.');
     process.exit(1);
   }
   const { carousels } = JSON.parse(fs.readFileSync(SCRIPTS_JSON, 'utf8'));
@@ -41,20 +41,10 @@ function loadSlides(carousels) {
   const slides = [];
   for (const c of carousels) {
     for (const s of c.slides || []) {
-      slides.push({ carousel: c.num, slide: s.num, label: s.name });
+      slides.push({ carousel: c.num, slide: s.num, label: s.name, link: s.fragranticaUrl });
     }
   }
   return slides;
-}
-
-function loadFragranticaLinks() {
-  if (!fs.existsSync(LINKS_FILE)) return {};
-  const links = {};
-  for (const line of fs.readFileSync(LINKS_FILE, 'utf8').split('\n')) {
-    const m = line.match(/^c(\d+)-s(\d+):\s*(.+)$/i);
-    if (m) links[`${m[1]}-${m[2]}`] = m[3].trim();
-  }
-  return links;
 }
 
 function downloadUrl(url, outPath) {
@@ -115,7 +105,7 @@ function downloadTitleImages(carousels, urls, manifest) {
       manifest[manifestKey] = url;
       console.log(`  Carousel ${num}: downloaded c${num}-title${ext}`);
     } catch (err) {
-      console.warn(`  ! Carousel ${num}: download failed — place c${num}-title.jpg manually in pipeline/images/`);
+      console.warn(`  ! Carousel ${num}: download failed — place c${num}-title.jpg manually in this folder`);
       console.warn(`    ${err.message}`);
     } finally {
       fs.rmSync(tmp, { recursive: true, force: true });
@@ -123,14 +113,13 @@ function downloadTitleImages(carousels, urls, manifest) {
   }
 }
 
-function downloadBottles(slides, links, manifest) {
+function downloadBottles(slides, manifest) {
   console.log('Downloading Fragrantica bottle images...');
   let downloaded = 0;
 
-  for (const { carousel, slide, label } of slides) {
+  for (const { carousel, slide, label, link } of slides) {
     const outName = `c${carousel}-s${slide}-bottle.jpg`;
     const outPath = path.join(IMAGES_DIR, outName);
-    const link = links[`${carousel}-${slide}`];
 
     if (fs.existsSync(outPath) && fs.statSync(outPath).size > 0 && manifest[outName] === link) {
       console.log(`  ${label} (C${carousel} S${slide}): already have ${outName}`);
@@ -139,7 +128,7 @@ function downloadBottles(slides, links, manifest) {
     }
 
     if (!link) {
-      console.warn(`  ! ${label} (C${carousel} S${slide}): no fragrantica link — skipping bottle`);
+      console.warn(`  ! ${label} (C${carousel} S${slide}): no fragranticaUrl — skipping bottle`);
       continue;
     }
 
@@ -155,21 +144,20 @@ function downloadBottles(slides, links, manifest) {
       console.log(`  ${label} (C${carousel} S${slide}): downloaded ${outName}`);
       downloaded++;
     } else {
-      console.warn(`  ! ${label} (C${carousel} S${slide}): bottle download failed — place ${outName} manually in pipeline/images/`);
+      console.warn(`  ! ${label} (C${carousel} S${slide}): bottle download failed — place ${outName} manually in this folder`);
     }
   }
 
   if (!downloaded) console.log('  Nothing downloaded.');
 }
 
-function downloadCards(slides, links, manifest) {
+function downloadCards(slides, manifest) {
   console.log('\nDownloading Fragrantica card images...');
   let downloaded = 0;
 
-  for (const { carousel, slide, label } of slides) {
+  for (const { carousel, slide, label, link } of slides) {
     const outName = `c${carousel}-s${slide}-card.jpg`;
     const outPath = path.join(IMAGES_DIR, outName);
-    const link = links[`${carousel}-${slide}`];
 
     if (fs.existsSync(outPath) && fs.statSync(outPath).size > 0 && manifest[outName] === link) {
       console.log(`  ${label} (C${carousel} S${slide}): already have ${outName}`);
@@ -178,7 +166,7 @@ function downloadCards(slides, links, manifest) {
     }
 
     if (!link) {
-      console.warn(`  ! ${label} (C${carousel} S${slide}): no fragrantica link — skipping card`);
+      console.warn(`  ! ${label} (C${carousel} S${slide}): no fragranticaUrl — skipping card`);
       continue;
     }
 
@@ -212,15 +200,14 @@ function run() {
   }
 
   const slides = loadSlides(carousels);
-  const links = loadFragranticaLinks();
   const manifest = loadManifest();
 
   downloadTitleImages(carousels, titleUrls, manifest);
-  downloadBottles(slides, links, manifest);
-  downloadCards(slides, links, manifest);
+  downloadBottles(slides, manifest);
+  downloadCards(slides, manifest);
   saveManifest(manifest);
 
-  console.log('\nDone. pipeline/images/ is ready for pipeline/slides/generate.js');
+  console.log('\nDone. this folder is ready for generate.js');
 }
 
 run();
