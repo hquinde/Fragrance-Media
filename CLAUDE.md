@@ -1,4 +1,4 @@
-# Fragrance Collective — MWP Workspace
+# Fragrance Collective Media
 
 A pipeline for creating Fragrance Collective carousels. A single AI agent works through it in order, one phase at a time — no complex orchestration needed.
 
