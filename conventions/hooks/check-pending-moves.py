@@ -44,7 +44,7 @@ def save_entries(entries):
 
 def extract_old_basenames(command):
     basenames = []
-    for match in re.finditer(r"(?:git\s+)?\bmv\b([^;&|]*)", command):
+    for match in re.finditer(r"(?:git\s+)?\bmv\b([^;&|\n]*)", command):
         try:
             args = shlex.split(match.group(1))
         except ValueError:
@@ -52,8 +52,12 @@ def extract_old_basenames(command):
         args = [a for a in args if not a.startswith("-")]
         if len(args) < 2:
             continue
+        dest_basename = os.path.basename(args[-1].rstrip("/"))
         for old in args[:-1]:
-            basenames.append(os.path.basename(old.rstrip("/")))
+            old_basename = os.path.basename(old.rstrip("/"))
+            if old_basename == dest_basename:
+                continue  # pure directory move / case-only rename — name is still current
+            basenames.append(old_basename)
     return basenames
 
 

@@ -21,6 +21,17 @@ const STOPWORDS = new Set([
   'man', 'woman', 'men', 'women',
 ]);
 
+// Common perfume-naming themes/descriptors that recur across many unrelated
+// fragrances (different brands, different products) and so shouldn't count
+// as a meaningful single-word signal on their own, even at 7+ characters
+// (e.g. "Russian Tea" vs "Russian Musk" sharing only "russian" should NOT
+// flag). Add to this list whenever a real false positive turns up — see
+// CLAUDE.md Rules.
+const GENERIC_DESCRIPTORS = new Set([
+  'russian', 'oriental', 'leather', 'tobacco', 'vanilla', 'chocolate',
+  'vintage', 'classic', 'original', 'intense', 'extreme', 'absolute',
+]);
+
 function normalize(str) {
   return str
     .normalize('NFD')
@@ -65,11 +76,11 @@ function stripCommonPrefix(aTokens, bTokens) {
 function distinctiveOverlapHit(aTokensFull, bTokensFull) {
   const [aTokens, bTokens] = stripCommonPrefix(aTokensFull, bTokensFull);
   const distinctive = t => t.length >= 4 && !STOPWORDS.has(t);
-  const aDist = aTokens.filter(distinctive);
+  const aDist = [...new Set(aTokens.filter(distinctive))];
   const bSet = new Set(bTokens);
   const shared = aDist.filter(w => bSet.has(w));
   if (shared.length >= 2) return true;
-  if (shared.length === 1 && shared[0].length >= 7) return true;
+  if (shared.length === 1 && shared[0].length >= 7 && !GENERIC_DESCRIPTORS.has(shared[0])) return true;
   return false;
 }
 

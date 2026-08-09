@@ -1653,12 +1653,12 @@
     },
     {
       "title": "5 Fragrances Built for Summer",
-      "status": "pending",
+      "status": "reported",
       "date_posted": null,
-      "date_reported": null,
-      "plays": null,
-      "saves": null,
-      "likes": null,
+      "date_reported": "08/09/26",
+      "plays": 1106,
+      "saves": 9,
+      "likes": 22,
       "fragrances": [
         {
           "fragrance": "Giorgio Armani Acqua di Giò",
@@ -1689,12 +1689,12 @@
     },
     {
       "title": "5 Fragrances That Get You Noticed First",
-      "status": "pending",
+      "status": "reported",
       "date_posted": null,
-      "date_reported": null,
-      "plays": null,
-      "saves": null,
-      "likes": null,
+      "date_reported": "08/09/26",
+      "plays": 1693,
+      "saves": 38,
+      "likes": 71,
       "fragrances": [
         {
           "fragrance": "Nasomatto Black Afgano",
@@ -1724,7 +1724,7 @@
       ]
     },
     {
-      "title": "Fragrances Most People Sleep On",
+      "title": "5 Fragrances That Make You the Main Character",
       "status": "pending",
       "date_posted": null,
       "date_reported": null,
@@ -1733,13 +1733,85 @@
       "likes": null,
       "fragrances": [
         {
-          "fragrance": "Mancera Cedrat Boisé",
+          "fragrance": "Versace Eros",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Rabanne Olympéa",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Yves Saint Laurent Libre",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Dior Sauvage Elixir",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Maison Francis Kurkdjian Baccarat Rouge 540",
           "tier": "mid-niche",
+          "gender": "unisex"
+        }
+      ]
+    },
+    {
+      "title": "Imagine Smelling Like Fall",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Bogue MEM",
+          "tier": "deep-niche",
           "gender": "unisex"
         },
         {
-          "fragrance": "Creed Bois du Portugal",
-          "tier": "mid-niche",
+          "fragrance": "Filippo Sorcinelli AMBROSIVS",
+          "tier": "ultra-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Vero Profumo Rubj",
+          "tier": "ultra-niche",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Bruno Acampora Musc",
+          "tier": "ultra-niche",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Masque Milano Montecristo",
+          "tier": "ultra-niche",
+          "gender": "men"
+        }
+      ]
+    },
+    {
+      "title": "5 Fragrances That Make People Ask What You're Wearing",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Orto Parisi Megamare",
+          "tier": "deep-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Nasomatto Pardon",
+          "tier": "deep-niche",
           "gender": "men"
         },
         {
@@ -1748,13 +1820,13 @@
           "gender": "unisex"
         },
         {
-          "fragrance": "Parfums de Marly Herod",
+          "fragrance": "Mancera Red Tobacco",
           "tier": "mid-niche",
-          "gender": "men"
+          "gender": "unisex"
         },
         {
-          "fragrance": "Ensar Oud Abu Madyan",
-          "tier": "ultra-niche",
+          "fragrance": "Creed Silver Mountain Water",
+          "tier": "mid-niche",
           "gender": "unisex"
         }
       ]

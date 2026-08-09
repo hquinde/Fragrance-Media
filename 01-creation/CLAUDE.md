@@ -1,33 +1,23 @@
-# 01 — Performance Review + Title Creation
+# 01-creation/
 
-**Trigger:** "let's start" (or any equivalent like "let's go", "start", "new batch")
+# Purpose
 
-## Data
+- Performance review + title creation — the one part of the pipeline that's a real back-and-forth with the user.
 
-Query past performance for patterns, don't read the full file:
-```bash
-jq '[.carousels[] | select(.status=="reported") | {title, plays, saves, likes}]' carousels.json
-```
+# Context
 
-Once the user responds, for each title run [report-performance.js](report-performance.js) instead of hand-editing the JSON:
-```bash
-node report-performance.js --title "Title" --plays N --saves N --likes N
-node report-performance.js --title "Title"   # flopped, or no metrics given at all
-```
+- [CONTEXT.md](CONTEXT.md) — the phase instructions: trigger, the monthly analysis check, performance review, and the title-creation back-and-forth. Start here.
 
-## Performance review
+# Data
 
-- Check `carousels.json` for pending carousels (`status: "pending"`, see [schema.md](schema.md)).
-- If any exist, list the titles and ask: "Insert the views, saves, and likes and I'll update the records."
-- If none, skip silently.
+- [carousels.json](carousels.json) — full carousel tracking data.
+- [schema.md](schema.md) — column/type reference for `carousels.json`.
+- [analysis.md](analysis.md) — monthly-refreshed write-up of performance patterns, checked/regenerated.
 
-## Title creation
+# Scripts
 
-- Back-and-forth phase — stay here until the user has actually signed off on 3 titles, not something merely proposed.
-- Propose 3 candidate titles grounded in the performance patterns above.
-- Present them and wait — the user may confirm as-is, edit any of them, or swap in titles of their own.
-- Once confirmed, state the 3 final titles, then move to [../02-pipeline/scripts.md](../02-pipeline/scripts.md).
+- [report-performance.js](report-performance.js) — records plays/saves/likes for a pending carousel instead of hand-editing `carousels.json`.
 
 # Last Updated
 
-- 2026-08-08 — update this date whenever this file is edited.
+- 2026-08-09 — update this date whenever this file is edited.

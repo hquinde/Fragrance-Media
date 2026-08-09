@@ -14,7 +14,7 @@ if (!carouselId) {
 }
 const SOURCE_DIR = path.join(__dirname, 'source');
 const IMAGES_DIR = __dirname;
-const OUTPUTS_ROOT = path.join(__dirname, '..', 'checkpoint');
+const OUTPUTS_ROOT = path.join(__dirname, '..', '03-checkpoint');
 
 const carouselNum = carouselId.replace(/\D/g, '');
 const OUT_DIR = path.join(OUTPUTS_ROOT, carouselNum);
@@ -107,7 +107,7 @@ async function run() {
     server.close();
   }
 
-  console.log(`\nDone — ${carouselId} exported to checkpoint/${carouselNum}/`);
+  console.log(`\nDone — ${carouselId} exported to 03-checkpoint/${carouselNum}/`);
 }
 
 run().catch((err) => {

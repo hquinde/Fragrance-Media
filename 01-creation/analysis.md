@@ -25,3 +25,7 @@ The strongest lever isn't "That vs. Built for" as a template — it's **universa
 For the next batch, best bets:
 - `"5 Fragrances Built for [Fall/Winter/current season]"`
 - `"5 Fragrances That [Make/Stop/Turn — active verb about others noticing you]"`
+
+# Last Updated
+
+- 2026-06-08 — update this date whenever this file is edited.

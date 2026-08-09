@@ -1,0 +1,12 @@
+{
+  "name": "fragrance-collective-design",
+  "version": "1.0.0",
+  "description": "Standalone carousel design system + template preview — no pipeline logic or data.",
+  "private": true,
+  "scripts": {
+    "preview": "node preview.js"
+  },
+  "dependencies": {
+    "puppeteer": "^25.0.4"
+  }
+}
