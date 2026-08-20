@@ -19,7 +19,7 @@ const SCRIPTS_JSON = path.join(__dirname, 'scripts.json');
 // so deletion must positively identify a downloaded asset by name rather than
 // blacklist one known file — an "everything except X" rule here would wipe
 // the pipeline itself.
-const DOWNLOADED_ASSET = /^c\d+(-s\d+)?-(title|bottle|card)\.(jpg|jpeg|png|webp)$|^\.manifest\.json$/;
+const DOWNLOADED_ASSET = /^c\d+(-s\d+[ab]?)?-(title|bottle|card)\.(jpg|jpeg|png|webp)$|^\.manifest\.json$/;
 
 function main() {
   let removed = 0;

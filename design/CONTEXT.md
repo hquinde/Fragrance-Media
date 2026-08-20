@@ -5,7 +5,7 @@
 - Fonts: Cormorant Garamond (headlines), Instrument Serif (title-slide photo headline), IBM Plex Mono (eyebrow labels + body copy).
 - Colors: `#161310` (near-black text), `#e8e6e0` (page background), `#f4efe6` (title-slide text on photo).
 - Slide size: 1080×1920, `.slide-wrap` class in `base.html`.
-- Slide types today: title (`minimal` — white bg, centered black headline; or `photo` — dark photo bg + gradient scrim + light headline) and fragrance (white bg, eyebrow label, name, copy, bottle image, Fragrantica card image).
+- Slide types today: title (dark photo bg + gradient scrim + light headline — the only title style; no white/minimal alternative), single (white bg, eyebrow label, name, copy, bottle image, Fragrantica card image), and double (two fragrances stacked with a divider — brand/name, bottle+card images, price on its own centered line; no copy).
 
 ## Why JSX, not plain HTML
 

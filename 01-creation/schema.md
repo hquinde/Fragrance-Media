@@ -18,7 +18,7 @@ timestamp: 2026-08-08
 | `plays` | INTEGER \| NULL | Video plays. |
 | `saves` | INTEGER \| NULL | Saves. |
 | `likes` | INTEGER \| NULL | Likes. |
-| `fragrances` | RECORD, REPEATED (5) | Nested fragrance rows — see [Fragrance](#fragrance). |
+| `fragrances` | RECORD, REPEATED (5, or 10 for a carousel comparing fragrance pairs — one record per side of each pair) | Nested fragrance rows — see [Fragrance](#fragrance). |
 
 ## Fragrance (nested under `fragrances`)
 

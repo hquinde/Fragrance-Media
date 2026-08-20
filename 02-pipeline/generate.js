@@ -19,13 +19,21 @@ function resolveImages(carousels) {
   const resolved = [];
 
   for (const carousel of carousels) {
-    let titleImg = null;
-    if (carousel.titleStyle !== 'minimal') {
-      titleImg = ['jpg', 'png', 'webp'].map(e => `c${carousel.num}-title.${e}`).find(f => fs.existsSync(path.join(IMAGES_DIR, f)));
-      if (!titleImg) missing.push(`c${carousel.num}-title.jpg`);
-    }
+    const titleImg = ['jpg', 'png', 'webp'].map(e => `c${carousel.num}-title.${e}`).find(f => fs.existsSync(path.join(IMAGES_DIR, f)));
+    if (!titleImg) missing.push(`c${carousel.num}-title.jpg`);
 
     const slides = carousel.slides.map(slide => {
+      if (carousel.contentType === 'double') {
+        const resolveSide = (side, letter) => {
+          const bottle = `c${carousel.num}-s${slide.num}${letter}-bottle.jpg`;
+          if (!fs.existsSync(path.join(IMAGES_DIR, bottle))) missing.push(bottle);
+          const card = `c${carousel.num}-s${slide.num}${letter}-card.jpg`;
+          if (!fs.existsSync(path.join(IMAGES_DIR, card))) missing.push(card);
+          return { ...side, bottle, card };
+        };
+        return { ...slide, a: resolveSide(slide.a, 'a'), b: resolveSide(slide.b, 'b') };
+      }
+
       const bottle = `c${carousel.num}-s${slide.num}-bottle.jpg`;
       if (!fs.existsSync(path.join(IMAGES_DIR, bottle))) missing.push(bottle);
 
@@ -56,23 +64,45 @@ function eyebrowLabel(brand, gender) {
   return `${brand} · for ${gender}`;
 }
 
+// Compare slide — two fragrances stacked with brand/name, bottle+card images,
+// and price on its own centered line. Copied as-is from design/build-slide.js.
+function compareRow(frag) {
+  return `
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', gap: '60px', marginBottom: '24px', width: '100%' }}>
+              <div style={{ width: '560px', flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '20px', fontWeight: 500, letterSpacing: '0.22em', color: '#161310', textTransform: 'uppercase' }}>${frag.brand}</div>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: '64px', color: '#161310', lineHeight: '0.95', marginTop: '10px', textWrap: 'balance' }}>${frag.name}</div>
+              </div>
+              <div style={{ width: '160px', flexShrink: 0, display: 'flex', justifyContent: 'center', fontFamily: "'IBM Plex Mono', monospace", fontSize: '36px', fontWeight: 500, color: '#161310' }}>${frag.price}</div>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '48px', width: '100%' }}>
+              <div style={{ flexShrink: 0, width: '380px', height: '640px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <img src="/images/${frag.bottle}" alt="${frag.name} bottle" style={{ maxWidth: '100%', maxHeight: '100%', width: 'auto', height: 'auto', objectFit: 'contain' }} />
+              </div>
+              <img src="/images/${frag.card}" alt="${frag.name} card" style={{ width: '460px', height: 'auto', borderRadius: '14px', display: 'block' }} />
+            </div>
+          </div>`;
+}
+
+function generateCompareSlideJsx(label, a, b) {
+  return `      <div className="slide-caption">${label}</div>
+      <div className="slide-wrap">
+        <div style={{ width: '100%', height: '100%', boxSizing: 'border-box', background: '#ffffff', padding: '70px 60px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          ${compareRow(a)}
+          <div style={{ height: '2px', width: '100%', background: 'rgba(22,19,16,0.12)', margin: '40px 0' }} />
+          ${compareRow(b)}
+        </div>
+      </div>`;
+}
+
 function generateCarouselJsx(carousel) {
   const pad = n => String(n).padStart(2, '0');
   const sections = [];
   let i = 1;
 
-  // Title slide — "minimal": white bg, centered black Cormorant Garamond, no photo.
-  // Default "photo": Instrument Serif 400, 132px, dark photo bg + scrim-strong.
-  if (carousel.titleStyle === 'minimal') {
-    sections.push(`      {/* ── Slide ${pad(i)} — Title (minimal) ── */}
-      <div className="slide-caption">${pad(i)} — Title</div>
-      <div className="slide-wrap">
-        <div style={{ width: '100%', height: '100%', boxSizing: 'border-box', background: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '96px' }}>
-          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: '64px', color: '#161310', lineHeight: '1.05', textAlign: 'center', textWrap: 'balance', margin: 0 }}>${carousel.title}</h1>
-        </div>
-      </div>`);
-  } else {
-    sections.push(`      {/* ── Slide ${pad(i)} — Title ── */}
+  // Title slide — dark photo bg + gradient scrim, Instrument Serif 400 132px headline.
+  sections.push(`      {/* ── Slide ${pad(i)} — Title ── */}
       <div className="slide-caption">${pad(i)} — Title</div>
       <div className="slide-wrap" style={{ position: 'relative' }}>
         <img src="/images/${carousel.titleImg}" alt="title background" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0, display: 'block' }} />
@@ -81,10 +111,16 @@ function generateCarouselJsx(carousel) {
           <h1 style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400, fontSize: '132px', color: '#f4efe6', lineHeight: '1.0', textWrap: 'balance', margin: 0 }}>${carousel.title}</h1>
         </div>
       </div>`);
-  }
   i++;
 
   for (const slide of carousel.slides) {
+    if (carousel.contentType === 'double') {
+      const label = `${pad(i)} — ${slide.a.name} vs ${slide.b.name}`;
+      sections.push(`      {/* ── Slide ${label} ── */}\n${generateCompareSlideJsx(label, slide.a, slide.b)}`);
+      i++;
+      continue;
+    }
+
     const nSize = headlineFontSize(slide.name);
     const eyebrow = eyebrowLabel(slide.brand, slide.gender);
 

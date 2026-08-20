@@ -41,6 +41,11 @@ function loadSlides(carousels) {
   const slides = [];
   for (const c of carousels) {
     for (const s of c.slides || []) {
+      if (c.contentType === 'double') {
+        slides.push({ carousel: c.num, slide: `${s.num}a`, label: s.a.name, link: s.a.fragranticaUrl });
+        slides.push({ carousel: c.num, slide: `${s.num}b`, label: s.b.name, link: s.b.fragranticaUrl });
+        continue;
+      }
       slides.push({ carousel: c.num, slide: s.num, label: s.name, link: s.fragranticaUrl });
     }
   }
@@ -77,11 +82,6 @@ function downloadTitleImages(carousels, urls, manifest) {
   let urlIdx = 0;
   for (const c of carousels) {
     const num = c.num;
-    if (c.titleStyle === 'minimal') {
-      console.log(`  Carousel ${num}: minimal title style — no photo needed`);
-      continue;
-    }
-
     const manifestKey = `c${num}-title`;
     const outBase = path.join(IMAGES_DIR, manifestKey);
     const url = urls[urlIdx++];
@@ -192,10 +192,9 @@ function downloadCards(slides, manifest) {
 function run() {
   const titleUrls = process.argv.slice(2);
   const carousels = loadCarousels();
-  const photoCarousels = carousels.filter(c => c.titleStyle !== 'minimal').length;
 
-  if (titleUrls.length < photoCarousels) {
-    console.error(`Usage: node process-images.js "title-url-1" ... (need ${photoCarousels} URL(s) — one per non-minimal carousel)`);
+  if (titleUrls.length < carousels.length) {
+    console.error(`Usage: node process-images.js "title-url-1" ... (need ${carousels.length} URL(s) — one per carousel)`);
     process.exit(1);
   }
 

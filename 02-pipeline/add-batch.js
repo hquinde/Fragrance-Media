@@ -15,6 +15,9 @@
 //         ...
 //       ]
 //     },
+//     // A comparison carousel (5 price-comparison pairs instead of 5 single
+//     // picks) just needs 10 fragrances instead of 5 — one per side of each
+//     // pair. No separate flag; the title already says what it is.
 //     ...
 //   ]
 // }
@@ -40,8 +43,9 @@ function main() {
     process.exit(1);
   }
   for (const c of carousels) {
-    if (!c.title || !Array.isArray(c.fragrances) || c.fragrances.length !== 5) {
-      console.error(`! Carousel "${c.title || '(untitled)'}" needs a title and exactly 5 fragrances.`);
+    const count = Array.isArray(c.fragrances) ? c.fragrances.length : 0;
+    if (!c.title || (count !== 5 && count !== 10)) {
+      console.error(`! Carousel "${c.title || '(untitled)'}" needs a title and exactly 5 fragrances (10 for a comparison carousel).`);
       process.exit(1);
     }
     for (const f of c.fragrances) {
