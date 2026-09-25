@@ -1,0 +1,87 @@
+{
+  "day": "Mon",
+  "carousels": [
+    {
+      "num": 1,
+      "title": "3 Fragrances That Make a Room Go Quiet When You Walk In",
+      "slides": [
+        {
+          "num": 1,
+          "name": "Y Eau de Parfum",
+          "brand": "Yves Saint Laurent",
+          "gender": "men",
+          "copy": "Sage, ginger, and amberwood pulled tight — quietly commanding, never loud.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Yves-Saint-Laurent/Y-Eau-de-Parfum-50757.html"
+        },
+        {
+          "num": 2,
+          "name": "Maai",
+          "brand": "Bogue Profumo",
+          "gender": "unisex",
+          "copy": "A raw chypre of tuberose and animalic musk that stops a room mid-sentence.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Bogue/Maai-26681.html"
+        },
+        {
+          "num": 3,
+          "name": "EO No. 1",
+          "brand": "Ensar Oud",
+          "gender": "unisex",
+          "copy": "Pure distilled oud, no dilution — the kind of scent that precedes you.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Ensar-Oud/EO-No-1-50854.html"
+        }
+      ]
+    },
+    {
+      "num": 2,
+      "title": "3 Fragrances vs Their Designer Twins: Can You Tell the Difference?",
+      "contentType": "double",
+      "slides": [
+        {
+          "num": 1,
+          "a": { "brand": "Mancera", "name": "Instant Crush", "price": "$135", "fragranticaUrl": "https://www.fragrantica.com/perfume/Mancera/Instant-Crush-54885.html" },
+          "b": { "brand": "Lattafa", "name": "Ameer Al Oudh", "price": "$25", "fragranticaUrl": "https://www.fragrantica.com/perfume/Lattafa-Perfumes/Ameer-Al-Oudh-25826.html" }
+        },
+        {
+          "num": 2,
+          "a": { "brand": "Tom Ford", "name": "Tobacco Vanille", "price": "$250", "fragranticaUrl": "https://www.fragrantica.com/perfume/Tom-Ford/Tobacco-Vanille-1825.html" },
+          "b": { "brand": "Zara", "name": "Tobacco Sublime", "price": "$36", "fragranticaUrl": "https://www.fragrantica.com/perfume/Zara/Tobacco-Sublime-84078.html" }
+        },
+        {
+          "num": 3,
+          "a": { "brand": "Davidoff", "name": "Cool Water", "price": "$68", "fragranticaUrl": "https://www.fragrantica.com/perfume/Davidoff/Cool-Water-507.html" },
+          "b": { "brand": "Zara", "name": "Man Blue Spirit", "price": "$36", "fragranticaUrl": "https://www.fragrantica.com/perfume/Zara/Man-Blue-Spirit-43468.html" }
+        }
+      ]
+    },
+    {
+      "num": 3,
+      "title": "3 Fragrances That Make People Lean In Closer",
+      "slides": [
+        {
+          "num": 1,
+          "name": "Idole",
+          "brand": "Lancome",
+          "gender": "women",
+          "copy": "Rose and vanilla wrapped in clean musk — soft enough to make someone move closer.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Lancome/Idole-55795.html"
+        },
+        {
+          "num": 2,
+          "name": "Gypsy Water",
+          "brand": "Byredo",
+          "gender": "unisex",
+          "copy": "Juniper, pine, and incense with a warm vanilla trail that lingers just out of reach.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Byredo/Gypsy-Water-3575.html"
+        },
+        {
+          "num": 3,
+          "name": "Basmati Rose",
+          "brand": "Sultan Pasha Attars",
+          "gender": "women",
+          "copy": "A rare rose attar, worn skin-close — the kind people ask about quietly.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Sultan-Pasha-Attars/Basmati-Rose-64541.html"
+        }
+      ]
+    }
+  ]
+}

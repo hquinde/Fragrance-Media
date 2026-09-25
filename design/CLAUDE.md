@@ -11,6 +11,7 @@
 
 # Files
 
+- [brand.png](brand.png) — the account's logo (Fragrance / Collectives / three stars, `#000000` on `#E1E1E1`); source of the carousel palette and star mark. Color codes: [CONTEXT.md](CONTEXT.md) → Brand.
 - [base.html](base.html) — the shell: fonts, global CSS, React/Babel CDN loader that fetches and transforms whichever `*-slides.jsx` file `?c=` points to.
 - [build-slide.js](build-slide.js) — the actual slide markup: `generateCarouselJsx()` + `headlineFontSize()` + `eyebrowLabel()` (fragrance slides), and `generateCompareSlideJsx()` (compare slides — two fragrances stacked with a price line), copied as-is from `02-pipeline/generate.js`. Edit this to change slide design; add a new function here for a new slide type/template.
 - [sample-data.js](sample-data.js) — real data from an actual posted batch (5 fragrances, not fabricated), used only for preview rendering.
@@ -25,4 +26,4 @@
 
 # Last Updated
 
-- 2026-08-20 — update this date whenever this file is edited.
+- 2026-09-25 — update this date whenever this file is edited.

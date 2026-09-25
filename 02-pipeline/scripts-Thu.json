@@ -1,0 +1,95 @@
+{
+  "day": "Thu",
+  "carousels": [
+    {
+      "num": 1,
+      "title": "3 Fragrances That Make People Remember You a Week Later",
+      "slides": [
+        {
+          "num": 1,
+          "name": "Opium",
+          "brand": "Yves Saint Laurent",
+          "gender": "women",
+          "copy": "Spice, amber, and incense — a scent so distinct it becomes a memory on its own.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Yves-Saint-Laurent/Opium-1977-93.html"
+        },
+        {
+          "num": 2,
+          "name": "No 5",
+          "brand": "Chanel",
+          "gender": "women",
+          "copy": "Aldehydes and jasmine, worn since 1921 for a reason — unmistakable, unforgettable.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Chanel/Chanel-No-5-Parfum-28711.html"
+        },
+        {
+          "num": 3,
+          "name": "Habit Rouge",
+          "brand": "Guerlain",
+          "gender": "men",
+          "copy": "Leather and citrus with a warm amber base — the kind of scent people ask about days later.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Guerlain/Habit-Rouge-Eau-de-Parfum-25313.html"
+        }
+      ]
+    },
+    {
+      "num": 2,
+      "title": "3 Fragrances That Make People Circle Back Just to Say Hi",
+      "slides": [
+        {
+          "num": 1,
+          "name": "Perfect",
+          "brand": "Marc Jacobs",
+          "gender": "women",
+          "copy": "Rhubarb and almond milk over cedar — approachable enough to say hi to.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Marc-Jacobs/Perfect-62021.html"
+        },
+        {
+          "num": 2,
+          "name": "Eternity",
+          "brand": "Calvin Klein",
+          "gender": "women",
+          "copy": "Citrus and lily of the valley, clean and easy — the scent of someone worth circling back for.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Calvin-Klein/Eternity-257.html"
+        },
+        {
+          "num": 3,
+          "name": "L'Eau d'Issey",
+          "brand": "Issey Miyake",
+          "gender": "women",
+          "copy": "Lotus and melon over clean musk — fresh enough to remember without trying.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Issey-Miyake/L-eau-d-Issey-720.html"
+        }
+      ]
+    },
+    {
+      "num": 3,
+      "title": "3 Fragrances That Make You the Reason Someone's Still Thinking About Tonight",
+      "slides": [
+        {
+          "num": 1,
+          "name": "Black Orchid",
+          "brand": "Tom Ford",
+          "gender": "women",
+          "copy": "Black truffle and dark chocolate under jasmine — the reason the night keeps going in someone's head.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Tom-Ford/Black-Orchid-1018.html"
+        },
+        {
+          "num": 2,
+          "name": "Spicebomb",
+          "brand": "Viktor&Rolf",
+          "gender": "men",
+          "copy": "Pink pepper, cinnamon, and tobacco — a warm, spicy trail that lingers past goodnight.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Viktor-Rolf/Spicebomb-13857.html"
+        },
+        {
+          "num": 3,
+          "name": "Black Saffron",
+          "brand": "Byredo",
+          "gender": "unisex",
+          "copy": "Grapefruit and saffron over cashmeran — quietly addictive, hard to stop thinking about.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Byredo/Black-Saffron-16220.html"
+        }
+      ]
+    }
+  ]
+}

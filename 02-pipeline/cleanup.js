@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Runs the "done posting" cleanup as a single command instead of a 3-step
 // free-text instruction, which has been silently skipped before:
-//   1. Delete PNGs from 03-checkpoint/1, 03-checkpoint/2, 03-checkpoint/3 (keep folders)
+//   1. Delete PNGs from 03-checkpoint/<Day>/1,2,3 for every weekday folder (keep folders)
 //   2. Delete downloaded image files from this folder (keep the scripts/docs/toolchain)
 //   3. Delete scripts.json
 //
@@ -11,7 +11,8 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const CHECKPOINT_DIRS = [1, 2, 3].map(n => path.join(ROOT, '03-checkpoint', String(n)));
+const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const CHECKPOINT_DIRS = DAYS.flatMap(day => [1, 2, 3].map(n => path.join(ROOT, '03-checkpoint', day, String(n))));
 const IMAGES_DIR = __dirname;
 const SCRIPTS_JSON = path.join(__dirname, 'scripts.json');
 
@@ -45,7 +46,7 @@ function main() {
     removed++;
   }
 
-  console.log(`Cleanup done — removed ${removed} file(s). 03-checkpoint/1,2,3 and this folder are ready for the next batch.`);
+  console.log(`Cleanup done — removed ${removed} file(s). 03-checkpoint/<Day>/1,2,3 and this folder are ready for the next batch.`);
 }
 
 main();

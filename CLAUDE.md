@@ -5,7 +5,7 @@ A pipeline for creating Fragrance Collective carousels. A single AI agent works 
 **Folder layout**
 - `01-creation/` — performance review + title creation, the one part of the pipeline that's a real back-and-forth with the user.
 - `02-pipeline/` — everything after titles are confirmed: picking fragrances, copy, assets, render, cleanup. Self-contained `CLAUDE.md`.
-- `design/` — the carousel design system, isolated from pipeline logic/data so template work doesn't need pipeline context. Not currently wired into `02-pipeline/`.
+- `design/` — the carousel design system, isolated from pipeline logic/data so template work doesn't need pipeline context. Not currently wired into `02-pipeline/`. Holds the brand logo (`design/brand.png`) and color codes (`design/CONTEXT.md` → Brand).
 - `.claude/` — [.claude/CLAUDE.md](.claude/CLAUDE.md) — Claude Code configuration: skills, hooks, and settings.
 
 ---
@@ -23,4 +23,4 @@ Produce user-facing text **only** at the moments explicitly called out in `01-cr
 
 # Last Updated
 
-- 2026-08-09 — update this date whenever this file is edited.
+- 2026-09-25 — update this date whenever this file is edited.

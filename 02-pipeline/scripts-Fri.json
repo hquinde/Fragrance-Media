@@ -1,0 +1,95 @@
+{
+  "day": "Fri",
+  "carousels": [
+    {
+      "num": 1,
+      "title": "3 Fragrances That Make People Whisper \"What Is That\"",
+      "slides": [
+        {
+          "num": 1,
+          "name": "No. 1",
+          "brand": "Clive Christian",
+          "gender": "unisex",
+          "copy": "Rare ingredients, no budget cap — once called the world's most expensive perfume for a reason.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Clive-Christian/No-1-4648.html"
+        },
+        {
+          "num": 2,
+          "name": "Eau de New York",
+          "brand": "Bond No 9",
+          "gender": "unisex",
+          "copy": "Citrus and green tea with a soft musk base — understated enough to make people lean in and ask.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Bond-No-9/Eau-de-New-York-1303.html"
+        },
+        {
+          "num": 3,
+          "name": "Molecule 01",
+          "brand": "Escentric Molecules",
+          "gender": "unisex",
+          "copy": "A single molecule, no recognizable notes — it smells like skin, only better, and everyone wants to know why.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Escentric-Molecules/Molecule-01-845.html"
+        }
+      ]
+    },
+    {
+      "num": 2,
+      "title": "3 Fragrances That Feel Like Old Money",
+      "slides": [
+        {
+          "num": 1,
+          "name": "Cristalle",
+          "brand": "Chanel",
+          "gender": "women",
+          "copy": "Lemon and oakmoss since 1974 — the kind of quiet confidence that doesn't age.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Chanel/Cristalle-Eau-de-Toilette-12.html"
+        },
+        {
+          "num": 2,
+          "name": "Aramis",
+          "brand": "Aramis",
+          "gender": "men",
+          "copy": "Leather, moss, and spice from 1963 — often called 'No. 5 for men,' still unmatched.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Aramis/Aramis-113.html"
+        },
+        {
+          "num": 3,
+          "name": "Must de Cartier",
+          "brand": "Cartier",
+          "gender": "women",
+          "copy": "Galbanum and jasmine wrapped in vanilla — a scent with a crest, not a logo.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Cartier/Must-de-Cartier-312.html"
+        }
+      ]
+    },
+    {
+      "num": 3,
+      "title": "3 Fragrances That Make a First Date Go Better Than Expected",
+      "slides": [
+        {
+          "num": 1,
+          "name": "Le Beau",
+          "brand": "Jean Paul Gaultier",
+          "gender": "men",
+          "copy": "Bergamot and coconut over tonka bean — warm, easy, never overdone.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Jean-Paul-Gaultier/Le-Beau-55785.html"
+        },
+        {
+          "num": 2,
+          "name": "Chloé",
+          "brand": "Chloé",
+          "gender": "women",
+          "copy": "Peony and rose with soft amber — the kind of scent that gets remembered past the first course.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Chloe/Chloe-Eau-de-Parfum-1733.html"
+        },
+        {
+          "num": 3,
+          "name": "Romance",
+          "brand": "Ralph Lauren",
+          "gender": "women",
+          "copy": "Rose and violet leaves with a green edge — the fragrance version of good chemistry.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Ralph-Lauren/Romance-825.html"
+        }
+      ]
+    }
+  ]
+}

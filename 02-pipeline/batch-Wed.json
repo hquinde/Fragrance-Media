@@ -1,0 +1,28 @@
+{
+  "carousels": [
+    {
+      "title": "3 Fragrances That Make People Move Closer Without Realizing It",
+      "fragrances": [
+        { "fragrance": "Jo Malone Wood Sage Sea Salt", "tier": "mainstream", "gender": "unisex" },
+        { "fragrance": "Diptyque Philosykos", "tier": "mid-niche", "gender": "unisex" },
+        { "fragrance": "Vilhelm Parfumerie Dear Polly", "tier": "deep-niche", "gender": "women" }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Smell Like You Own the Room",
+      "fragrances": [
+        { "fragrance": "Hermes Terre d'Hermes", "tier": "mainstream", "gender": "men" },
+        { "fragrance": "Frederic Malle Carnal Flower", "tier": "mid-niche", "gender": "women" },
+        { "fragrance": "Giorgio Armani Armani Code", "tier": "mainstream", "gender": "men" }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make Someone Turn Their Head Twice",
+      "fragrances": [
+        { "fragrance": "Atelier Cologne Oolang Infini", "tier": "mid-niche", "gender": "unisex" },
+        { "fragrance": "Etat Libre d'Orange Rien", "tier": "deep-niche", "gender": "unisex" },
+        { "fragrance": "Sultan Pasha Attars Tabacaurum", "tier": "obscure", "gender": "unisex" }
+      ]
+    }
+  ]
+}

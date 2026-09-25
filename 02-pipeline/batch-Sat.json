@@ -1,0 +1,28 @@
+{
+  "carousels": [
+    {
+      "title": "3 Fragrances That Make People Want to Stand Closer",
+      "fragrances": [
+        { "fragrance": "Burberry Her", "tier": "mainstream", "gender": "women" },
+        { "fragrance": "Giorgio Armani Si", "tier": "mainstream", "gender": "women" },
+        { "fragrance": "Diesel Fuel for Life Homme", "tier": "mainstream", "gender": "men" }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make Your Presence Known Before You Speak",
+      "fragrances": [
+        { "fragrance": "Bvlgari Man In Black", "tier": "mainstream", "gender": "men" },
+        { "fragrance": "Gucci Made to Measure", "tier": "mainstream", "gender": "men" },
+        { "fragrance": "Burberry London for Men", "tier": "mainstream", "gender": "men" }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Smell Like a Plot Twist",
+      "fragrances": [
+        { "fragrance": "Demeter Fragrance Library Dirt", "tier": "obscure", "gender": "unisex" },
+        { "fragrance": "Etat Libre d'Orange Secretions Magnifiques", "tier": "deep-niche", "gender": "unisex" },
+        { "fragrance": "Arquiste Anima Dulcis", "tier": "mid-niche", "gender": "unisex" }
+      ]
+    }
+  ]
+}

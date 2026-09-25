@@ -1,31 +1,27 @@
 # Title Pattern Notes
 
-Merged recovered legacy data (pre-migration `performance.json` winners) with the current `reported` set in `carousels.json` — 75 unique titles total (up from 43).
-
-**Data-quality caveats:**
-- 6 old "winners" have `null` plays — dropped, no signal.
-- 15 have exactly `1000` plays — suspiciously round and repeats too often to be real measurements. Looks like an old placeholder/floor value from the pre-migration schema, not actual counts. Treated as low-confidence, not zero-weight.
+Regenerated from the current `reported` set in `carousels.json` — 50 titles.
 
 ## Pattern
 
-Seasonal is the single strongest signal in the whole dataset:
+Active-verb social-effect claims are still the strongest outcome tier, well clear of everything else:
 
 | Bucket | Range | Read |
 |---|---|---|
-| "Built for Summer" / "Built for the Heat" | 6,000 | Broad seasonal beats everything except the top 2 outcome titles |
-| "That [X happens to you socially, active verb]" | 5,700–8,554 | Walk Into a Room, Turn Heads, Double Take, Stop People in Their Tracks, Feel Illegal to Wear — all direct, active social-effect claims |
-| "That Smell Like [money/luxury metaphor]" | 1,100–2,169 | Passive comparison metaphors (Old Money, Pure Luxury, Five-Star Hotel) consistently underperform the active-verb version of the same idea |
-| "Built for [narrow occasion]" | 1,000–1,800 | Road Trip, Rooftop, Gym, Beach, Ski Trip, Boardroom, etc. — the floor of the dataset, seasonal exceptions aside |
-| "NEED a Fragrance for X?" | 1,000–3,000 | Mostly flat, except "Summer Nights" (3,000) — riding the same seasonal boost, not the question format |
+| "That [X happens to you socially, active verb]" | 4,700–8,554 | Walk Into a Room Before You Do, Feel Like a Secret Weapon, Smell Like Serious Money, Make People Do a Double Take, Come Alive on Your Skin, Feel Illegal to Wear, Linger Long After You Leave — direct, active social-effect claims dominate the top of the dataset |
+| Mid-tier standalone hooks | 1,900–2,261 | Make People Ask What You're Wearing, Nobody Expects You to Own, Always Get Compliments at Night, Make You Smell Like New Money, Smell Like a Different Life, Smell Like Trouble — a step down from the top tier but clear of the floor |
+| "Built for [narrow occasion]" | 1,000–1,800 | Night Out, Mountains, Cold, Warm Evening, Golden Hour, Rainy Day, Business Trip, Job Interview, Night In, Yacht Weekend, Boardroom Takeover, First Impression, Ski Trip, Promotion, **Summer** — the floor of the dataset regardless of occasion; note "Built for Summer" itself only hit 1,106 this run, so seasonal framing is not a reliable lift on its own anymore |
+| "Smell Like [luxury/money metaphor]" | 1,100–2,041 | Wide spread — Serious Money (6,200) and New Money (2,041) hit, but Quiet Wealth (1,115) and Trouble (1,868) sit lower; the metaphor alone doesn't predict performance, the specific phrase does |
+| "NEED a Fragrance for X?" | 1,150–1,400 | Flat, still the weakest template regardless of occasion |
 
 ## Takeaway
 
-The strongest lever isn't "That vs. Built for" as a template — it's **universal/seasonal relevance** (Summer, Heat) or a **direct active-verb social-effect claim** (turn heads, stop people, walk into a room). Narrow occasions and passive luxury metaphors are the two things that reliably underperform, regardless of which template wraps them.
+The active-verb social-effect claim (something *happens* to the wearer because of the fragrance — people turn, stop, ask, notice) remains the one reliable lever. Narrow-occasion "Built for X" framing is the consistent floor — this run's data specifically undercuts leaning on seasonal ("Built for Summer") as an exception; it performed like any other narrow occasion.
 
 For the next batch, best bets:
-- `"5 Fragrances Built for [Fall/Winter/current season]"`
-- `"5 Fragrances That [Make/Stop/Turn — active verb about others noticing you]"`
+- `"5 Fragrances That [Make/Stop/Turn/Ask — active verb about others noticing you]"`
+- Avoid `"Built for [occasion]"` framing, seasonal included, unless paired with an active-verb hook rather than standing alone.
 
 # Last Updated
 
-- 2026-06-08 — update this date whenever this file is edited.
+- 2026-09-24 — update this date whenever this file is edited.

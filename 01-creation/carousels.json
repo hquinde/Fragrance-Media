@@ -1725,12 +1725,12 @@
     },
     {
       "title": "5 Fragrances That Make You the Main Character",
-      "status": "pending",
+      "status": "reported",
       "date_posted": null,
-      "date_reported": null,
-      "plays": null,
-      "saves": null,
-      "likes": null,
+      "date_reported": "08/20/26",
+      "plays": 1215,
+      "saves": 7,
+      "likes": 10,
       "fragrances": [
         {
           "fragrance": "Versace Eros",
@@ -1760,49 +1760,13 @@
       ]
     },
     {
-      "title": "Imagine Smelling Like Fall",
-      "status": "pending",
-      "date_posted": null,
-      "date_reported": null,
-      "plays": null,
-      "saves": null,
-      "likes": null,
-      "fragrances": [
-        {
-          "fragrance": "Bogue MEM",
-          "tier": "deep-niche",
-          "gender": "unisex"
-        },
-        {
-          "fragrance": "Filippo Sorcinelli AMBROSIVS",
-          "tier": "ultra-niche",
-          "gender": "unisex"
-        },
-        {
-          "fragrance": "Vero Profumo Rubj",
-          "tier": "ultra-niche",
-          "gender": "women"
-        },
-        {
-          "fragrance": "Bruno Acampora Musc",
-          "tier": "ultra-niche",
-          "gender": "women"
-        },
-        {
-          "fragrance": "Masque Milano Montecristo",
-          "tier": "ultra-niche",
-          "gender": "men"
-        }
-      ]
-    },
-    {
       "title": "5 Fragrances That Make People Ask What You're Wearing",
-      "status": "pending",
+      "status": "reported",
       "date_posted": null,
-      "date_reported": null,
-      "plays": null,
-      "saves": null,
-      "likes": null,
+      "date_reported": "08/20/26",
+      "plays": 2261,
+      "saves": 13,
+      "likes": 37,
       "fragrances": [
         {
           "fragrance": "Orto Parisi Megamare",
@@ -1826,6 +1790,740 @@
         },
         {
           "fragrance": "Creed Silver Mountain Water",
+          "tier": "mid-niche",
+          "gender": "unisex"
+        }
+      ]
+    },
+    {
+      "title": "5 Fragrances That Make Strangers Start a Conversation",
+      "status": "reported",
+      "date_posted": null,
+      "date_reported": "09/24/26",
+      "plays": 2275,
+      "saves": 42,
+      "likes": 74,
+      "fragrances": [
+        {
+          "fragrance": "Prada Luna Rossa Carbon",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "YSL Libre Intense",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Masque Milano Russian Tea",
+          "tier": "deep-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Meo Fusciuni Buio",
+          "tier": "deep-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Hiram Green Slowdive",
+          "tier": "ultra-niche",
+          "gender": "unisex"
+        }
+      ]
+    },
+    {
+      "title": "5 Fragrances vs Their Budget Dupes: Which One Actually Wins?",
+      "status": "reported",
+      "date_posted": null,
+      "date_reported": "09/24/26",
+      "plays": 2831,
+      "saves": 11,
+      "likes": 36,
+      "fragrances": [
+        {
+          "fragrance": "Hugo Boss Boss Bottled",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Adidas Victory League",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Chanel Bleu de Chanel",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Armaf Club de Nuit Blue Iconic",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Tom Ford Ombre Leather",
+          "tier": "mid-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Zara Vibrant Leather",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Lancome La Vie Est Belle",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Zara Red Vanilla",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Ariana Grande Cloud",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Zara Red Temptation Vanille",
+          "tier": "mainstream",
+          "gender": "women"
+        }
+      ]
+    },
+    {
+      "title": "5 Expensive Fragrances vs Their Cheaper Rivals",
+      "status": "reported",
+      "date_posted": null,
+      "date_reported": "09/24/26",
+      "plays": 1091,
+      "saves": 4,
+      "likes": 10,
+      "fragrances": [
+        {
+          "fragrance": "Jean Paul Gaultier Ultra Male",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Zara Gourmand Leather",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Carolina Herrera Very Good Girl",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Armaf Club De Nuit Maleka",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "By Kilian Love Dont Be Shy",
+          "tier": "mid-niche",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Bath Body Works Love Unleashed",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Marc Jacobs Daisy",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Zara Applejuice",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Gucci Bloom",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Zara Fleur d'Oranger",
+          "tier": "mainstream",
+          "gender": "women"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make a Room Go Quiet When You Walk In",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Yves Saint Laurent Y Eau de Parfum",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Bogue Profumo Maai",
+          "tier": "deep-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Ensar Oud EO No. 1",
+          "tier": "ultra-niche",
+          "gender": "unisex"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances vs Their Designer Twins: Can You Tell the Difference?",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Mancera Instant Crush",
+          "tier": "mid-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Lattafa Ameer Al Oudh",
+          "tier": "mainstream",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Tom Ford Tobacco Vanille",
+          "tier": "mid-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Zara Tobacco Sublime",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Davidoff Cool Water",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Zara Man Blue Spirit",
+          "tier": "mainstream",
+          "gender": "men"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make People Lean In Closer",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Lancome Idole",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Byredo Gypsy Water",
+          "tier": "mid-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Sultan Pasha Attars Basmati Rose",
+          "tier": "obscure",
+          "gender": "women"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make People Forget What They Were Saying",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Prada Paradoxe",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Serge Lutens Chergui",
+          "tier": "mid-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Comme des Garcons Wonderwood",
+          "tier": "deep-niche",
+          "gender": "men"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances vs Their Dollar-Store Look-Alikes: Same Vibe, Different Price?",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Guerlain Shalimar",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Al Haramain Amber Oud",
+          "tier": "mainstream",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Acqua di Parma Colonia",
+          "tier": "mid-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Rasasi Hawas for Him",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Rabanne 1 Million",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Lattafa Bade'e Al Oud Oud for Glory",
+          "tier": "mainstream",
+          "gender": "unisex"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make a Stranger Text Their Friend About You",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Narciso Rodriguez For Her",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Comme des Garcons Black",
+          "tier": "deep-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "L'Artisan Parfumeur Dzing",
+          "tier": "ultra-niche",
+          "gender": "unisex"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make People Move Closer Without Realizing It",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Jo Malone Wood Sage Sea Salt",
+          "tier": "mainstream",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Diptyque Philosykos",
+          "tier": "mid-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Vilhelm Parfumerie Dear Polly",
+          "tier": "deep-niche",
+          "gender": "women"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Smell Like You Own the Room",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Hermes Terre d'Hermes",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Frederic Malle Carnal Flower",
+          "tier": "mid-niche",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Giorgio Armani Armani Code",
+          "tier": "mainstream",
+          "gender": "men"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make Someone Turn Their Head Twice",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Atelier Cologne Oolang Infini",
+          "tier": "mid-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Etat Libre d'Orange Rien",
+          "tier": "deep-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Sultan Pasha Attars Tabacaurum",
+          "tier": "obscure",
+          "gender": "unisex"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make People Remember You a Week Later",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Yves Saint Laurent Opium",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Chanel No 5",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Guerlain Habit Rouge",
+          "tier": "mainstream",
+          "gender": "men"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make People Circle Back Just to Say Hi",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Marc Jacobs Perfect",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Calvin Klein Eternity",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Issey Miyake L'Eau d'Issey",
+          "tier": "mainstream",
+          "gender": "women"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make You the Reason Someone's Still Thinking About Tonight",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Tom Ford Black Orchid",
+          "tier": "mid-niche",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Viktor Rolf Spicebomb",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Byredo Black Saffron",
+          "tier": "mid-niche",
+          "gender": "unisex"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make People Whisper \"What Is That\"",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Clive Christian No 1",
+          "tier": "ultra-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Bond No 9 Eau de New York",
+          "tier": "mid-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Escentric Molecules Molecule 01",
+          "tier": "mid-niche",
+          "gender": "unisex"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Feel Like Old Money",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Chanel Cristalle",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Aramis Aramis",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Cartier Must de Cartier",
+          "tier": "mainstream",
+          "gender": "women"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make a First Date Go Better Than Expected",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Jean Paul Gaultier Le Beau",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Chloe by Chloe",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Ralph Lauren Romance",
+          "tier": "mainstream",
+          "gender": "women"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make People Want to Stand Closer",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Burberry Her",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Giorgio Armani Si",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Diesel Fuel for Life Homme",
+          "tier": "mainstream",
+          "gender": "men"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make Your Presence Known Before You Speak",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Bvlgari Man In Black",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Gucci Made to Measure",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Burberry London for Men",
+          "tier": "mainstream",
+          "gender": "men"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Smell Like a Plot Twist",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Demeter Fragrance Library Dirt",
+          "tier": "obscure",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Etat Libre d'Orange Secretions Magnifiques",
+          "tier": "deep-niche",
+          "gender": "unisex"
+        },
+        {
+          "fragrance": "Arquiste Anima Dulcis",
+          "tier": "mid-niche",
+          "gender": "unisex"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make Someone Chase You Down for the Name",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Kenzo Flower by Kenzo",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Lanvin Eclat d'Arpege",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Kayali Vanilla 28",
+          "tier": "mid-niche",
+          "gender": "women"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make You Smell Unbothered",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Estee Lauder Pleasures",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Coach for Men",
+          "tier": "mainstream",
+          "gender": "men"
+        },
+        {
+          "fragrance": "Elizabeth Arden Green Tea",
+          "tier": "mainstream",
+          "gender": "women"
+        }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make People Assume You're Loaded",
+      "status": "pending",
+      "date_posted": null,
+      "date_reported": null,
+      "plays": null,
+      "saves": null,
+      "likes": null,
+      "fragrances": [
+        {
+          "fragrance": "Michael Kors Michael Kors",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Nina Ricci L'Air du Temps",
+          "tier": "mainstream",
+          "gender": "women"
+        },
+        {
+          "fragrance": "Ex Nihilo Fleur Narcotique",
           "tier": "mid-niche",
           "gender": "unisex"
         }

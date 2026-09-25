@@ -1,0 +1,95 @@
+{
+  "day": "Sun",
+  "carousels": [
+    {
+      "num": 1,
+      "title": "3 Fragrances That Make Someone Chase You Down for the Name",
+      "slides": [
+        {
+          "num": 1,
+          "name": "Flower by Kenzo",
+          "brand": "Kenzo",
+          "gender": "women",
+          "copy": "Parma violet and vanilla musk — soft, then suddenly someone's asking what it is.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Kenzo/Flower-by-Kenzo-72.html"
+        },
+        {
+          "num": 2,
+          "name": "Éclat d'Arpège",
+          "brand": "Lanvin",
+          "gender": "women",
+          "copy": "Green lilac and peony with a whisper of amber — delicate enough to make someone follow it.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Lanvin/Eclat-d-Arpege-988.html"
+        },
+        {
+          "num": 3,
+          "name": "Vanilla | 28",
+          "brand": "Kayali",
+          "gender": "women",
+          "copy": "Vanilla orchid and jasmine over warm amber — sweet enough that strangers stop you for the name.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Kayali-Fragrances/Vanilla-28-52616.html"
+        }
+      ]
+    },
+    {
+      "num": 2,
+      "title": "3 Fragrances That Make You Smell Unbothered",
+      "slides": [
+        {
+          "num": 1,
+          "name": "Pleasures",
+          "brand": "Estée Lauder",
+          "gender": "women",
+          "copy": "White lily and violet leaves, soapy-clean — effortless, no performance needed.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Estee-Lauder/Pleasures-536.html"
+        },
+        {
+          "num": 2,
+          "name": "Coach for Men",
+          "brand": "Coach",
+          "gender": "men",
+          "copy": "Pear and bergamot into vetiver and suede — easy, unhurried, put-together without trying.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Coach/Coach-for-Men-45343.html"
+        },
+        {
+          "num": 3,
+          "name": "Green Tea",
+          "brand": "Elizabeth Arden",
+          "gender": "women",
+          "copy": "Bergamot and mint over musk — crisp, quiet, completely at ease.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Elizabeth-Arden/Green-Tea-83.html"
+        }
+      ]
+    },
+    {
+      "num": 3,
+      "title": "3 Fragrances That Make People Assume You're Loaded",
+      "slides": [
+        {
+          "num": 1,
+          "name": "Michael Kors",
+          "brand": "Michael Kors",
+          "gender": "women",
+          "copy": "Ginger and violet leaf into amber and sandalwood — polished enough to read as expensive.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Michael-Kors/Michael-Kors-2418.html"
+        },
+        {
+          "num": 2,
+          "name": "L'Air du Temps",
+          "brand": "Nina Ricci",
+          "gender": "women",
+          "copy": "Carnation and iris since 1948 — old-world elegance, unmistakably rich.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Nina-Ricci/L-Air-du-Temps-1014.html"
+        },
+        {
+          "num": 3,
+          "name": "Fleur Narcotique",
+          "brand": "Ex Nihilo",
+          "gender": "unisex",
+          "copy": "Lychee and peony over musk and moss — bright, plush, quietly expensive.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Ex-Nihilo/Fleur-Narcotique-27571.html"
+        }
+      ]
+    }
+  ]
+}

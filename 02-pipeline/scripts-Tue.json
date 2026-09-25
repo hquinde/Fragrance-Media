@@ -1,0 +1,87 @@
+{
+  "day": "Tue",
+  "carousels": [
+    {
+      "num": 1,
+      "title": "3 Fragrances That Make People Forget What They Were Saying",
+      "slides": [
+        {
+          "num": 1,
+          "name": "Paradoxe",
+          "brand": "Prada",
+          "gender": "women",
+          "copy": "Pear and orange blossom over warm vanilla — soft enough to make someone lose their train of thought.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Prada/Prada-Paradoxe-75668.html"
+        },
+        {
+          "num": 2,
+          "name": "Chergui",
+          "brand": "Serge Lutens",
+          "gender": "unisex",
+          "copy": "Tobacco leaf, honey, and iris — a scent so warm it derails the conversation.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Serge-Lutens/Chergui-2762.html"
+        },
+        {
+          "num": 3,
+          "name": "Wonderwood",
+          "brand": "Comme des Garcons",
+          "gender": "men",
+          "copy": "A wall of cedar, oud, and pepper — impossible to keep talking through.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Comme-des-Garcons/Wonderwood-8991.html"
+        }
+      ]
+    },
+    {
+      "num": 2,
+      "title": "3 Fragrances vs Their Dollar-Store Look-Alikes: Same Vibe, Different Price?",
+      "contentType": "double",
+      "slides": [
+        {
+          "num": 1,
+          "a": { "brand": "Guerlain", "name": "Shalimar", "price": "$135", "fragranticaUrl": "https://www.fragrantica.com/perfume/Guerlain/Shalimar-Eau-de-Parfum-53.html" },
+          "b": { "brand": "Al Haramain", "name": "Amber Oud", "price": "$60", "fragranticaUrl": "https://www.fragrantica.com/perfume/Al-Haramain-Perfumes/Amber-Oud-51817.html" }
+        },
+        {
+          "num": 2,
+          "a": { "brand": "Acqua di Parma", "name": "Colonia", "price": "$145", "fragranticaUrl": "https://www.fragrantica.com/perfume/Acqua-di-Parma/Acqua-di-Parma-Colonia-1681.html" },
+          "b": { "brand": "Rasasi", "name": "Hawas for Him", "price": "$25", "fragranticaUrl": "https://www.fragrantica.com/perfume/Rasasi/Hawas-for-Him-46890.html" }
+        },
+        {
+          "num": 3,
+          "a": { "brand": "Rabanne", "name": "1 Million", "price": "$98", "fragranticaUrl": "https://www.fragrantica.com/perfume/Rabanne/1-Million-3747.html" },
+          "b": { "brand": "Lattafa", "name": "Bade'e Al Oud Oud for Glory", "price": "$24", "fragranticaUrl": "https://www.fragrantica.com/perfume/Lattafa-Perfumes/Bade-e-Al-Oud-Oud-for-Glory-64948.html" }
+        }
+      ]
+    },
+    {
+      "num": 3,
+      "title": "3 Fragrances That Make a Stranger Text Their Friend About You",
+      "slides": [
+        {
+          "num": 1,
+          "name": "For Her",
+          "brand": "Narciso Rodriguez",
+          "gender": "women",
+          "copy": "Musk, rose, and peach — the kind of quiet scent that gets someone reaching for their phone.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Narciso-Rodriguez/Narciso-Rodriguez-For-Her-209.html"
+        },
+        {
+          "num": 2,
+          "name": "Black",
+          "brand": "Comme des Garcons",
+          "gender": "unisex",
+          "copy": "Smoky birch tar and black pepper, dark enough that someone has to ask who's wearing it.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Comme-des-Garcons/Black-15238.html"
+        },
+        {
+          "num": 3,
+          "name": "Dzing!",
+          "brand": "L'Artisan Parfumeur",
+          "gender": "unisex",
+          "copy": "Leather, caramel, and paper — strange, warm, and instantly memorable.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/L-Artisan-Parfumeur/Dzing-1953.html"
+        }
+      ]
+    }
+  ]
+}

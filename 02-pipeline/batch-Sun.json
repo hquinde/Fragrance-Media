@@ -1,0 +1,28 @@
+{
+  "carousels": [
+    {
+      "title": "3 Fragrances That Make Someone Chase You Down for the Name",
+      "fragrances": [
+        { "fragrance": "Kenzo Flower by Kenzo", "tier": "mainstream", "gender": "women" },
+        { "fragrance": "Lanvin Eclat d'Arpege", "tier": "mainstream", "gender": "women" },
+        { "fragrance": "Kayali Vanilla 28", "tier": "mid-niche", "gender": "women" }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make You Smell Unbothered",
+      "fragrances": [
+        { "fragrance": "Estee Lauder Pleasures", "tier": "mainstream", "gender": "women" },
+        { "fragrance": "Coach for Men", "tier": "mainstream", "gender": "men" },
+        { "fragrance": "Elizabeth Arden Green Tea", "tier": "mainstream", "gender": "women" }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make People Assume You're Loaded",
+      "fragrances": [
+        { "fragrance": "Michael Kors Michael Kors", "tier": "mainstream", "gender": "women" },
+        { "fragrance": "Nina Ricci L'Air du Temps", "tier": "mainstream", "gender": "women" },
+        { "fragrance": "Ex Nihilo Fleur Narcotique", "tier": "mid-niche", "gender": "unisex" }
+      ]
+    }
+  ]
+}

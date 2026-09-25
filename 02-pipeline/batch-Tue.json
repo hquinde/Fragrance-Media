@@ -1,0 +1,31 @@
+{
+  "carousels": [
+    {
+      "title": "3 Fragrances That Make People Forget What They Were Saying",
+      "fragrances": [
+        { "fragrance": "Prada Paradoxe", "tier": "mainstream", "gender": "women" },
+        { "fragrance": "Serge Lutens Chergui", "tier": "mid-niche", "gender": "unisex" },
+        { "fragrance": "Comme des Garcons Wonderwood", "tier": "deep-niche", "gender": "men" }
+      ]
+    },
+    {
+      "title": "3 Fragrances vs Their Dollar-Store Look-Alikes: Same Vibe, Different Price?",
+      "fragrances": [
+        { "fragrance": "Guerlain Shalimar", "tier": "mainstream", "gender": "women" },
+        { "fragrance": "Al Haramain Amber Oud", "tier": "mainstream", "gender": "unisex" },
+        { "fragrance": "Acqua di Parma Colonia", "tier": "mid-niche", "gender": "unisex" },
+        { "fragrance": "Rasasi Hawas for Him", "tier": "mainstream", "gender": "men" },
+        { "fragrance": "Rabanne 1 Million", "tier": "mainstream", "gender": "men" },
+        { "fragrance": "Lattafa Bade'e Al Oud Oud for Glory", "tier": "mainstream", "gender": "unisex" }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make a Stranger Text Their Friend About You",
+      "fragrances": [
+        { "fragrance": "Narciso Rodriguez For Her", "tier": "mainstream", "gender": "women" },
+        { "fragrance": "Comme des Garcons Black", "tier": "deep-niche", "gender": "unisex" },
+        { "fragrance": "L'Artisan Parfumeur Dzing", "tier": "ultra-niche", "gender": "unisex" }
+      ]
+    }
+  ]
+}

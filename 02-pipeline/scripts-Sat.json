@@ -1,0 +1,95 @@
+{
+  "day": "Sat",
+  "carousels": [
+    {
+      "num": 1,
+      "title": "3 Fragrances That Make People Want to Stand Closer",
+      "slides": [
+        {
+          "num": 1,
+          "name": "Her",
+          "brand": "Burberry",
+          "gender": "women",
+          "copy": "Crushed berries with violet and jasmine — playful enough to close the gap.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Burberry/Burberry-Her-51694.html"
+        },
+        {
+          "num": 2,
+          "name": "Si",
+          "brand": "Giorgio Armani",
+          "gender": "women",
+          "copy": "Blackcurrant and rose over vanilla — sweet, warm, hard not to lean toward.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Giorgio-Armani/Si-18453.html"
+        },
+        {
+          "num": 3,
+          "name": "Fuel for Life Homme",
+          "brand": "Diesel",
+          "gender": "men",
+          "copy": "Anise and grapefruit into warm woods — an easy, magnetic pull.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Diesel/Fuel-for-Life-Homme-1605.html"
+        }
+      ]
+    },
+    {
+      "num": 2,
+      "title": "3 Fragrances That Make Your Presence Known Before You Speak",
+      "slides": [
+        {
+          "num": 1,
+          "name": "Man In Black",
+          "brand": "Bvlgari",
+          "gender": "men",
+          "copy": "Rum and spice over leather and tonka — the room notices before you say a word.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Bvlgari/Bvlgari-Man-In-Black-26358.html"
+        },
+        {
+          "num": 2,
+          "name": "Made to Measure",
+          "brand": "Gucci",
+          "gender": "men",
+          "copy": "Lavender and orange blossom over leather and amber — refined, deliberate, unmistakable.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Gucci/Made-to-Measure-18703.html"
+        },
+        {
+          "num": 3,
+          "name": "London for Men",
+          "brand": "Burberry",
+          "gender": "men",
+          "copy": "Cinnamon and tobacco leaf into oakmoss and guaiac wood — warm authority, no effort shown.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Burberry/London-for-Men-804.html"
+        }
+      ]
+    },
+    {
+      "num": 3,
+      "title": "3 Fragrances That Smell Like a Plot Twist",
+      "slides": [
+        {
+          "num": 1,
+          "name": "Dirt",
+          "brand": "Demeter Fragrance Library",
+          "gender": "unisex",
+          "copy": "Literally the smell of turned earth — the plot twist nobody expects from a perfume.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Demeter-Fragrance/Dirt-7782.html"
+        },
+        {
+          "num": 2,
+          "name": "Sécrétions Magnifiques",
+          "brand": "Etat Libre d'Orange",
+          "gender": "unisex",
+          "copy": "Milk, seaweed, and iris pushed past comfortable — one of the most talked-about scents ever bottled.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Etat-Libre-d-Orange/Secretions-Magnifiques-4523.html"
+        },
+        {
+          "num": 3,
+          "name": "Anima Dulcis",
+          "brand": "Arquiste",
+          "gender": "unisex",
+          "copy": "Cocoa, cinnamon, and smoked chili — a dessert that turns into something else entirely.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Arquiste/Anima-Dulcis-14380.html"
+        }
+      ]
+    }
+  ]
+}

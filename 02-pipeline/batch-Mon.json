@@ -1,0 +1,31 @@
+{
+  "carousels": [
+    {
+      "title": "3 Fragrances That Make a Room Go Quiet When You Walk In",
+      "fragrances": [
+        { "fragrance": "Yves Saint Laurent Y Eau de Parfum", "tier": "mainstream", "gender": "men" },
+        { "fragrance": "Bogue Profumo Maai", "tier": "deep-niche", "gender": "unisex" },
+        { "fragrance": "Ensar Oud EO No. 1", "tier": "ultra-niche", "gender": "unisex" }
+      ]
+    },
+    {
+      "title": "3 Fragrances vs Their Designer Twins: Can You Tell the Difference?",
+      "fragrances": [
+        { "fragrance": "Mancera Instant Crush", "tier": "mid-niche", "gender": "unisex" },
+        { "fragrance": "Lattafa Ameer Al Oudh", "tier": "mainstream", "gender": "unisex" },
+        { "fragrance": "Tom Ford Tobacco Vanille", "tier": "mid-niche", "gender": "unisex" },
+        { "fragrance": "Zara Tobacco Sublime", "tier": "mainstream", "gender": "men" },
+        { "fragrance": "Davidoff Cool Water", "tier": "mainstream", "gender": "men" },
+        { "fragrance": "Zara Man Blue Spirit", "tier": "mainstream", "gender": "men" }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make People Lean In Closer",
+      "fragrances": [
+        { "fragrance": "Lancome Idole", "tier": "mainstream", "gender": "women" },
+        { "fragrance": "Byredo Gypsy Water", "tier": "mid-niche", "gender": "unisex" },
+        { "fragrance": "Sultan Pasha Attars Basmati Rose", "tier": "obscure", "gender": "women" }
+      ]
+    }
+  ]
+}

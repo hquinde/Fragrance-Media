@@ -1,15 +1,18 @@
 #!/usr/bin/env node
 // Exports a carousel HTML file as PNGs (1080×1920) via Puppeteer.
-// Usage: node export.js <carousel-id>
-// Example: node export.js c1
+// Usage: node export.js <carousel-id> <day>
+// Example: node export.js c1 Mon
 
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
 const carouselId = process.argv[2];
-if (!carouselId) {
-  console.error('Usage: node export.js <carousel-id>');
+const day = process.argv[3];
+const VALID_DAYS = new Set(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']);
+if (!carouselId || !day || !VALID_DAYS.has(day)) {
+  console.error('Usage: node export.js <carousel-id> <day>');
+  console.error(`  <day> must be one of: ${[...VALID_DAYS].join(', ')}`);
   process.exit(1);
 }
 const SOURCE_DIR = path.join(__dirname, 'source');
@@ -17,7 +20,7 @@ const IMAGES_DIR = __dirname;
 const OUTPUTS_ROOT = path.join(__dirname, '..', '03-checkpoint');
 
 const carouselNum = carouselId.replace(/\D/g, '');
-const OUT_DIR = path.join(OUTPUTS_ROOT, carouselNum);
+const OUT_DIR = path.join(OUTPUTS_ROOT, day, carouselNum);
 
 const MIME = {
   '.html': 'text/html',
@@ -107,7 +110,7 @@ async function run() {
     server.close();
   }
 
-  console.log(`\nDone — ${carouselId} exported to 03-checkpoint/${carouselNum}/`);
+  console.log(`\nDone — ${carouselId} exported to 03-checkpoint/${day}/${carouselNum}/`);
 }
 
 run().catch((err) => {

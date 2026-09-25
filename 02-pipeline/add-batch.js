@@ -9,14 +9,14 @@
 // {
 //   "carousels": [
 //     {
-//       "title": "5 Fragrances Built for a Long Flight",
+//       "title": "3 Fragrances Built for a Long Flight",
 //       "fragrances": [
 //         { "fragrance": "Burberry Weekend for Men", "tier": "mainstream", "gender": "men" },
 //         ...
 //       ]
 //     },
-//     // A comparison carousel (5 price-comparison pairs instead of 5 single
-//     // picks) just needs 10 fragrances instead of 5 — one per side of each
+//     // A comparison carousel (3 price-comparison pairs instead of 3 single
+//     // picks) just needs 6 fragrances instead of 3 — one per side of each
 //     // pair. No separate flag; the title already says what it is.
 //     ...
 //   ]
@@ -44,8 +44,8 @@ function main() {
   }
   for (const c of carousels) {
     const count = Array.isArray(c.fragrances) ? c.fragrances.length : 0;
-    if (!c.title || (count !== 5 && count !== 10)) {
-      console.error(`! Carousel "${c.title || '(untitled)'}" needs a title and exactly 5 fragrances (10 for a comparison carousel).`);
+    if (!c.title || (count !== 3 && count !== 6)) {
+      console.error(`! Carousel "${c.title || '(untitled)'}" needs a title and exactly 3 fragrances (6 for a comparison carousel).`);
       process.exit(1);
     }
     for (const f of c.fragrances) {

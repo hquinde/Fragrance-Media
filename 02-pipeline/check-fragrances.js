@@ -28,8 +28,9 @@ const STOPWORDS = new Set([
 // flag). Add to this list whenever a real false positive turns up — see
 // CLAUDE.md Rules.
 const GENERIC_DESCRIPTORS = new Set([
-  'russian', 'oriental', 'leather', 'tobacco', 'vanilla', 'chocolate',
+  'russian', 'oriental', 'leather', 'tobacco', 'vanilla', 'vanille', 'chocolate',
   'vintage', 'classic', 'original', 'intense', 'extreme', 'absolute',
+  'good', 'girl', 'cologne', 'dhermes', 'christian', 'cartier', 'library',
 ]);
 
 function normalize(str) {
@@ -78,9 +79,9 @@ function distinctiveOverlapHit(aTokensFull, bTokensFull) {
   const distinctive = t => t.length >= 4 && !STOPWORDS.has(t);
   const aDist = [...new Set(aTokens.filter(distinctive))];
   const bSet = new Set(bTokens);
-  const shared = aDist.filter(w => bSet.has(w));
+  const shared = aDist.filter(w => bSet.has(w) && !GENERIC_DESCRIPTORS.has(w));
   if (shared.length >= 2) return true;
-  if (shared.length === 1 && shared[0].length >= 7 && !GENERIC_DESCRIPTORS.has(shared[0])) return true;
+  if (shared.length === 1 && shared[0].length >= 7) return true;
   return false;
 }
 

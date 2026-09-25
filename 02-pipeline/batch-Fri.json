@@ -1,0 +1,28 @@
+{
+  "carousels": [
+    {
+      "title": "3 Fragrances That Make People Whisper \"What Is That\"",
+      "fragrances": [
+        { "fragrance": "Clive Christian No 1", "tier": "ultra-niche", "gender": "unisex" },
+        { "fragrance": "Bond No 9 Eau de New York", "tier": "mid-niche", "gender": "unisex" },
+        { "fragrance": "Escentric Molecules Molecule 01", "tier": "mid-niche", "gender": "unisex" }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Feel Like Old Money",
+      "fragrances": [
+        { "fragrance": "Chanel Cristalle", "tier": "mainstream", "gender": "women" },
+        { "fragrance": "Aramis Aramis", "tier": "mainstream", "gender": "men" },
+        { "fragrance": "Cartier Must de Cartier", "tier": "mainstream", "gender": "women" }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make a First Date Go Better Than Expected",
+      "fragrances": [
+        { "fragrance": "Jean Paul Gaultier Le Beau", "tier": "mainstream", "gender": "men" },
+        { "fragrance": "Chloe by Chloe", "tier": "mainstream", "gender": "women" },
+        { "fragrance": "Ralph Lauren Romance", "tier": "mainstream", "gender": "women" }
+      ]
+    }
+  ]
+}

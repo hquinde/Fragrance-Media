@@ -1,0 +1,95 @@
+{
+  "day": "Wed",
+  "carousels": [
+    {
+      "num": 1,
+      "title": "3 Fragrances That Make People Move Closer Without Realizing It",
+      "slides": [
+        {
+          "num": 1,
+          "name": "Wood Sage & Sea Salt",
+          "brand": "Jo Malone London",
+          "gender": "unisex",
+          "copy": "Sea salt and sage with a soft musk finish — easy to lean into without noticing why.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Jo-Malone-London/Wood-Sage-Sea-Salt-25529.html"
+        },
+        {
+          "num": 2,
+          "name": "Philosykos",
+          "brand": "Diptyque",
+          "gender": "unisex",
+          "copy": "Green fig leaf and milky fig sap, warm enough to close the distance.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Diptyque/Philosykos-Eau-de-Parfum-3865.html"
+        },
+        {
+          "num": 3,
+          "name": "Dear Polly",
+          "brand": "Vilhelm Parfumerie",
+          "gender": "women",
+          "copy": "Black tea and apple over soft amber musk — quietly magnetic.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Vilhelm-Parfumerie/Dear-Polly-30928.html"
+        }
+      ]
+    },
+    {
+      "num": 2,
+      "title": "3 Fragrances That Smell Like You Own the Room",
+      "slides": [
+        {
+          "num": 1,
+          "name": "Terre d'Hermès",
+          "brand": "Hermès",
+          "gender": "men",
+          "copy": "Grapefruit, pepper, and flint over vetiver — the scent of someone who doesn't need to prove it.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Hermes/Terre-d-Hermes-17.html"
+        },
+        {
+          "num": 2,
+          "name": "Carnal Flower",
+          "brand": "Frederic Malle",
+          "gender": "women",
+          "copy": "A wall of tuberose and jasmine, worn like it's yours by right.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Frederic-Malle-Editions-de-Parfums/Carnal-Flower-1024.html"
+        },
+        {
+          "num": 3,
+          "name": "Code",
+          "brand": "Armani",
+          "gender": "men",
+          "copy": "Lemon and tonka over cedar — sharp, expensive, unmistakable.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Giorgio-Armani/Armani-Code-412.html"
+        }
+      ]
+    },
+    {
+      "num": 3,
+      "title": "3 Fragrances That Make Someone Turn Their Head Twice",
+      "slides": [
+        {
+          "num": 1,
+          "name": "Oolang Infini",
+          "brand": "Atelier Cologne",
+          "gender": "unisex",
+          "copy": "Oolong tea and leather with a citrus snap — the kind of scent that earns a second look.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Atelier-Cologne/Oolang-Infini-9424.html"
+        },
+        {
+          "num": 2,
+          "name": "Rien",
+          "brand": "Etat Libre d'Orange",
+          "gender": "unisex",
+          "copy": "Leather, incense, and rose pushed to the edge — impossible to place, impossible to ignore.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Etat-Libre-d-Orange/Rien-4522.html"
+        },
+        {
+          "num": 3,
+          "name": "Tabacaurum",
+          "brand": "Sultan Pasha Attars",
+          "gender": "unisex",
+          "copy": "Tobacco and oud layered with honey and tuberose — rare enough that people turn back around.",
+          "fragranticaUrl": "https://www.fragrantica.com/perfume/Sultan-Pasha-Attars/Tabacaurum-64540.html"
+        }
+      ]
+    }
+  ]
+}

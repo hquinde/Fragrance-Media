@@ -2,10 +2,12 @@
 
 ## Run order
 
-1. Titles confirmed (`../01-creation/`) → pick 15 fragrances (see Fragrance selection below) → `check-fragrances.js`
-2. Fragrances verified → write copy + scripts.json (see Copy + registration below) → `add-batch.js`
-3. Batch registered → ask for Pinterest URLs (see Assets below) → `process-images.js`
-4. Assets downloaded → `generate.js` → say exactly: "All 3 carousels are in 03-checkpoint/ and ready to upload. Let me know when you're done posting and I'll clean everything up."
+The user preps the whole week — Monday through Sunday, 7 batches of 3, 21 carousels — in one Sunday sitting, then returns the following Sunday to do the next Monday–Sunday week. Run order for that sitting:
+
+1. Titles confirmed (`../01-creation/`) → for each of the 7 days in turn: pick 9 fragrances (see Fragrance selection below) → `check-fragrances.js` → write copy + that day's carousel data into a working file `scripts-<Day>.json` (`Mon`–`Sun`, see Copy + registration below) → `add-batch.js` to register that day's 3 carousels as pending. Repeat for all 7 days before moving on — each day's `check-fragrances.js` run picks up every prior day's registrations this week, so conflicts within the week are caught same as conflicts against history.
+2. All 7 days registered → ask for all 21 Pinterest URLs at once (see Assets below), 3 per day, in day order.
+3. URLs in hand → for each day in turn: `process-images.js` using that day's URLs and `scripts-<Day>.json` copied into place as `scripts.json` → `generate.js` (reads the top-level `"day"` field to export to `../03-checkpoint/<Day>/`).
+4. All 7 days rendered → say exactly: "All 21 carousels are in 03-checkpoint/<Day>/ and ready to upload. Let me know when you're done posting and I'll clean everything up."
 5. User asks to clean up the posts → `cleanup.js`
 
 ## Scripts
@@ -13,19 +15,19 @@
 - **check-fragrances.js** — normalizes fragrance names (strips accents/case) and checks proposed picks against every fragrance ever used (any status). Catches flankers (e.g. "Layton Exclusif" vs "Layton") and accent variants (e.g. "Vetiver" vs "Vétiver"), not just exact matches.
   `node check-fragrances.js "Name 1" "Name 2" ...`
 
-- **add-batch.js** — appends 3 carousels to `../01-creation/carousels.json` as `status: "pending"` entries (with their tagged fragrances). Validates each carousel has a title + exactly 5 fragrances (10 for a comparison carousel — 5 pairs), and each fragrance a valid tier/gender.
+- **add-batch.js** — appends 3 carousels to `../01-creation/carousels.json` as `status: "pending"` entries (with their tagged fragrances). Validates each carousel has a title + exactly 3 fragrances (6 for a comparison carousel — 3 pairs), and each fragrance a valid tier/gender.
   `node add-batch.js batch.json`
 
 - **process-images.js** — downloads `cN-title.jpg` from Pinterest for every carousel, and `cN-sN-bottle.jpg` + `cN-sN-card.jpg` from Fragrantica for every slide, using each slide's `fragranticaUrl` in `scripts.json`. For a `"contentType": "double"` carousel, downloads both sides of each pair as `cN-sNa-*`/`cN-sNb-*`. Images land in this folder.
   `node process-images.js "url1" "url2" ...`
 
-- **generate.js** — generates `c1-slides.jsx` / `c2-slides.jsx` / `c3-slides.jsx` from `scripts.json` and exports all 3 carousels to `../03-checkpoint/` via `export.js`. Aborts with a missing-files list if an image is absent. Renders a `"contentType": "double"` carousel's slides as price-comparison pairs instead of single fragrances.
+- **generate.js** — generates `c1-slides.jsx` / `c2-slides.jsx` / `c3-slides.jsx` from `scripts.json` and exports all 3 carousels to `../03-checkpoint/<Day>/` via `export.js`, using `scripts.json`'s top-level `"day"` field (`Mon`–`Sun`). Aborts with a missing-files list if an image is absent. Renders a `"contentType": "double"` carousel's slides as price-comparison pairs instead of single fragrances.
   `node generate.js`
 
-- **export.js** — screenshots one carousel's JSX to PNGs in `../03-checkpoint/`. Used directly when hand-fixing a wrapped headline.
-  `node export.js cN`
+- **export.js** — screenshots one carousel's JSX to PNGs in `../03-checkpoint/<Day>/`. Used directly when hand-fixing a wrapped headline.
+  `node export.js cN <Day>`
 
-- **cleanup.js** — deletes PNGs from `../03-checkpoint/1,2,3` (keeps the folders), downloaded image files in this folder, and `scripts.json`.
+- **cleanup.js** — deletes PNGs from `../03-checkpoint/<Day>/1,2,3` for every weekday folder (keeps the folders), downloaded image files in this folder, and `scripts.json`.
   `node cleanup.js`
 
 ## Fragrance selection
@@ -40,9 +42,9 @@
 ## Copy + registration
 
 - Write copy — 1–2 punchy lines of slide copy per fragrance, from your own knowledge.
-- `scripts.json` — `{ "carousels": [{ "num", "title", "slides": [{ "num", "name", "brand", "gender", "copy", "fragranticaUrl" }] }] }`. `fragranticaUrl` needs its numeric ID suffix (e.g. `-46038.html`), never blank. Every carousel's title slide is the dark-photo-with-scrim style — there's no alternative title style.
-- Optional `"contentType": "double"` on a carousel (default `"single"`) makes its 5 `slides` price-comparison pairs instead of single fragrances: `{ "num", "a": { "brand", "name", "price", "fragranticaUrl" }, "b": { "brand", "name", "price", "fragranticaUrl" } }` — no `copy` field. `price` is a plain display string (e.g. `"$76"`), sourced from a live `WebSearch` at pick time, not stored/tracked. Registering one in `carousels.json` just needs 10 fragrances instead of 5 (see `add-batch.js` above) — no separate flag; the title already says what it is.
-- Register — write a scratch `batch.json` (3 carousels × `{title, fragrances: [{fragrance, tier, gender}, ...]}`), then run `add-batch.js`.
+- `scripts.json` — `{ "day": "Mon", "carousels": [{ "num", "title", "slides": [{ "num", "name", "brand", "gender", "copy", "fragranticaUrl" }] }] }`. `day` is one of `Mon`–`Sun` and controls which `../03-checkpoint/<Day>/` folder `generate.js` exports to. `fragranticaUrl` needs its numeric ID suffix (e.g. `-46038.html`), never blank. Every carousel's title slide is the dark-photo-with-scrim style — there's no alternative title style.
+- Optional `"contentType": "double"` on a carousel (default `"single"`) makes its 3 `slides` price-comparison pairs instead of single fragrances: `{ "num", "a": { "brand", "name", "price", "fragranticaUrl" }, "b": { "brand", "name", "price", "fragranticaUrl" } }` — no `copy` field. `price` is a plain display string (e.g. `"$76"`), sourced from a live `WebSearch` at pick time, not stored/tracked. Registering one in `carousels.json` just needs 6 fragrances instead of 3 (see `add-batch.js` above) — no separate flag; the title already says what it is.
+- Register — write a scratch `batch.json` (3 carousels × `{title, fragrances: [{fragrance, tier, gender}, ...]}`), then run `add-batch.js`. Keep the fuller per-slide data (copy, `fragranticaUrl`) in that day's `scripts-<Day>.json` for step 3 later — `add-batch.js` only needs and stores the tier/gender/fragrance-name tracking fields.
 
 ## Assets
 
@@ -52,4 +54,4 @@ Column/type map of `carousels.json`: `../01-creation/schema.md`.
 
 # Last Updated
 
-- 2026-08-09 — update this date whenever this file is edited.
+- 2026-09-24 — update this date whenever this file is edited.

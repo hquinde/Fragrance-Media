@@ -1,0 +1,28 @@
+{
+  "carousels": [
+    {
+      "title": "3 Fragrances That Make People Remember You a Week Later",
+      "fragrances": [
+        { "fragrance": "Yves Saint Laurent Opium", "tier": "mainstream", "gender": "women" },
+        { "fragrance": "Chanel No 5", "tier": "mainstream", "gender": "women" },
+        { "fragrance": "Guerlain Habit Rouge", "tier": "mainstream", "gender": "men" }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make People Circle Back Just to Say Hi",
+      "fragrances": [
+        { "fragrance": "Marc Jacobs Perfect", "tier": "mainstream", "gender": "women" },
+        { "fragrance": "Calvin Klein Eternity", "tier": "mainstream", "gender": "women" },
+        { "fragrance": "Issey Miyake L'Eau d'Issey", "tier": "mainstream", "gender": "women" }
+      ]
+    },
+    {
+      "title": "3 Fragrances That Make You the Reason Someone's Still Thinking About Tonight",
+      "fragrances": [
+        { "fragrance": "Tom Ford Black Orchid", "tier": "mid-niche", "gender": "women" },
+        { "fragrance": "Viktor Rolf Spicebomb", "tier": "mainstream", "gender": "men" },
+        { "fragrance": "Byredo Black Saffron", "tier": "mid-niche", "gender": "unisex" }
+      ]
+    }
+  ]
+}

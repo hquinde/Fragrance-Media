@@ -1,11 +1,23 @@
 # Design System — Fragrance Collective Carousels
 
+## Brand
+
+- Logo: [brand.png](brand.png) — "Fragrance" / rule / "Collectives" / three stars, black on grey. Every carousel color comes from it; don't introduce colors outside this palette.
+
+| Name  | Hex       | Used for                                                          |
+|-------|-----------|-------------------------------------------------------------------|
+| Grey  | `#E1E1E1` | Slide background; title-slide headline + rule/stars on the photo |
+| Black | `#000000` | All text, rules, stars on grey slides; title-photo scrim (as `rgba(0,0,0,…)`) |
+
+- In code: `BG` / `INK` constants in `build-slide.js` (mirrored in `02-pipeline/generate.js`).
+
 ## Design system
 
 - Fonts: Cormorant Garamond (headlines), Instrument Serif (title-slide photo headline), IBM Plex Mono (eyebrow labels + body copy).
-- Colors: `#161310` (near-black text), `#e8e6e0` (page background), `#f4efe6` (title-slide text on photo).
+- Colors: see Brand above.
+- Brand mark: the logo's rule with three stars centered on it (`ruleStars()` in `build-slide.js`) — under the title headline, between copy and bottle on single slides, and as the divider between the two fragrances on double slides. Bottle images use `mix-blend-mode: multiply` so Fragrantica's white JPG backgrounds disappear into the grey.
 - Slide size: 1080×1920, `.slide-wrap` class in `base.html`.
-- Slide types today: title (dark photo bg + gradient scrim + light headline — the only title style; no white/minimal alternative), single (white bg, eyebrow label, name, copy, bottle image, Fragrantica card image), and double (two fragrances stacked with a divider — brand/name, bottle+card images, price on its own centered line; no copy).
+- Slide types today: title (dark photo bg + black gradient scrim + grey headline + rule/stars — the only title style; no white/minimal alternative), single (grey bg, eyebrow label, name, copy, rule/stars, bottle image, Fragrantica card image), and double (two fragrances stacked with a rule/stars divider — brand/name, bottle+card images, price on its own centered line; no copy).
 
 ## Why JSX, not plain HTML
 
@@ -19,4 +31,4 @@
 
 # Last Updated
 
-- 2026-08-09 — update this date whenever this file is edited.
+- 2026-09-25 — update this date whenever this file is edited.

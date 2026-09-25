@@ -13,7 +13,7 @@ Find every `CLAUDE.md` in the project (excluding `.git`, `node_modules`). Read t
 
 ## 2. Project Map completeness
 
-For every directory that has its own `CLAUDE.md`, confirm its parent's `CLAUDE.md` lists it — in the exact format `- **xxx/** — [xxx/](xxx/) — <one-line description>` (linking to the folder, not `xxx/CLAUDE.md` — an agent working inside a folder reads its `CLAUDE.md` automatically; no "see" before the link; a trailing one-line, high-level description). Flag: missing entries, wrong relative path, format drift, a missing/empty description, a link pointing at the `CLAUDE.md` file instead of the folder, or a description that names specific files inside the subdirectory (that belongs in the subdirectory's own `CLAUDE.md`, not the parent's).
+For every directory that has its own `CLAUDE.md`, confirm its parent's `CLAUDE.md` lists it — in the exact format `- [xxx/](xxx/) — <one-line description>` (no bold, link to the folder itself not its `CLAUDE.md` file, no "see" before the link, and a trailing one-line, high-level description). Flag: missing entries, wrong relative path, format drift, a missing/empty description, or a description that names specific files inside the subdirectory (that belongs in the subdirectory's own `CLAUDE.md`, not the parent's).
 
 ## 3. Every bullet links to a real file
 
