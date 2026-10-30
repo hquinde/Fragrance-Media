@@ -3,7 +3,7 @@
 // free-text instruction, which has been silently skipped before:
 //   1. Delete PNGs from 03-checkpoint/<Day>/1,2,3 for every weekday folder (keep folders)
 //   2. Delete downloaded image files from this folder (keep the scripts/docs/toolchain)
-//   3. Delete scripts.json
+//   3. Delete scripts.json and the per-day working files (scripts-<Day>.json, batch-<Day>.json)
 //
 // Usage: node cleanup.js
 
@@ -20,7 +20,7 @@ const SCRIPTS_JSON = path.join(__dirname, 'scripts.json');
 // so deletion must positively identify a downloaded asset by name rather than
 // blacklist one known file — an "everything except X" rule here would wipe
 // the pipeline itself.
-const DOWNLOADED_ASSET = /^c\d+(-s\d+[ab]?)?-(title|bottle|card)\.(jpg|jpeg|png|webp)$|^\.manifest\.json$/;
+const DOWNLOADED_ASSET = /^c\d+(-s\d+[ab]?)?-(title|bottle|card)\.(jpg|jpeg|png|webp)$|^\.manifest\.json$|^(scripts|batch)-(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\.json$/;
 
 function main() {
   let removed = 0;

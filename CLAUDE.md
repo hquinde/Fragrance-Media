@@ -1,26 +1,30 @@
 # Fragrance Collective Media
 
-A pipeline for creating Fragrance Collective carousels. A single AI agent works through it in order, one phase at a time — no complex orchestration needed.
+# Purpose
 
-**Folder layout**
-- `01-creation/` — performance review + title creation, the one part of the pipeline that's a real back-and-forth with the user.
-- `02-pipeline/` — everything after titles are confirmed: picking fragrances, copy, assets, render, cleanup. Self-contained `CLAUDE.md`.
-- `design/` — the carousel design system, isolated from pipeline logic/data so template work doesn't need pipeline context. Not currently wired into `02-pipeline/`. Holds the brand logo (`design/brand.png`) and color codes (`design/CONTEXT.md` → Brand).
-- `.claude/` — [.claude/CLAUDE.md](.claude/CLAUDE.md) — Claude Code configuration: skills, hooks, and settings.
+- A pipeline for creating Fragrance Collective carousels, worked through in order by a single AI agent.
 
----
+# Project Map
 
-Start at `01-creation/`; once titles are confirmed, move to `02-pipeline/`.
+Each subdirectory with its own `CLAUDE.md` is listed here as `- [xxx/](xxx/) — <one-line description>`, with no "see" before the link. Add new subdirectories in this exact format.
 
-## Output discipline
+- [01-creation/](01-creation/) — performance review and title creation, the one part of the pipeline that's a real back-and-forth with the user.
+- [02-pipeline/](02-pipeline/) — everything after titles are confirmed: picking fragrances, copy, assets, render, cleanup.
+- [design/](design/) — the carousel design system, isolated from pipeline logic and data so template work doesn't need pipeline context.
+- [.claude/](.claude/) — Claude Code configuration: skills, hooks, and settings.
 
-Produce user-facing text **only** at the moments explicitly called out in `01-creation/` or `02-pipeline/` (the performance question, the title proposal, the regenerated monthly analysis, the Pinterest URL request, the closing message). Everything else is silent — no selection reasoning, no confirmation tables, no file-write acknowledgements, no search narration.
+`03-checkpoint/` holds the exported carousel PNGs, one folder per weekday. It grows over time, has no `CLAUDE.md`, and is not itemized.
 
-## Rules
+# Context
 
-- Don't delegate pipeline research (fragrance verification, etc.) to subagents — this is a single-agent pipeline (see the top line of this file). Run `WebSearch` directly in the main conversation. If some items fail to verify, retry with a follow-up scoped only to the failed item(s), not the whole batch.
-- When `02-pipeline/check-fragrances.js` flags a conflict caused by a shared generic/descriptor word (not the same fragrance), add that word to `GENERIC_DESCRIPTORS` in `check-fragrances.js` as part of resolving it — don't just swap the pick and move on.
+- [CONTEXT.md](CONTEXT.md) — how the pipeline runs end to end, the output discipline, and the rules that span both phases. Start here.
+
+# Conventions
+
+- This workspace follows `~/Conventions/GUIDE.md` (canonical repo: [hquinde/Conventions](https://github.com/hquinde/Conventions), cloned to `~/Conventions`), imported below so it is in context every session (skeletons in `~/Conventions/templates/`). When asked to add or change a convention, edit `~/Conventions` and log it in its `CHANGELOG.md`, never this workspace. Run `/conventions-audit` to check this workspace against it.
+
+@~/Conventions/GUIDE.md
 
 # Last Updated
 
-- 2026-09-25 — update this date whenever this file is edited.
+- 2026-10-30 — update this date whenever this file is edited.

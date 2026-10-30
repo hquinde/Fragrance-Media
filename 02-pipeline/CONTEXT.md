@@ -1,40 +1,76 @@
 # 02 — Fragrance Selection Through Cleanup
 
-## Run order
+The user preps the whole week — Monday through Sunday, 7 batches of 3, 21 carousels — in one Sunday sitting, then returns the following Sunday to do the next Monday–Sunday week.
 
-The user preps the whole week — Monday through Sunday, 7 batches of 3, 21 carousels — in one Sunday sitting, then returns the following Sunday to do the next Monday–Sunday week. Run order for that sitting:
+## Inputs
 
-1. Titles confirmed (`../01-creation/`) → for each of the 7 days in turn: pick 9 fragrances (see Fragrance selection below) → `check-fragrances.js` → write copy + that day's carousel data into a working file `scripts-<Day>.json` (`Mon`–`Sun`, see Copy + registration below) → `add-batch.js` to register that day's 3 carousels as pending. Repeat for all 7 days before moving on — each day's `check-fragrances.js` run picks up every prior day's registrations this week, so conflicts within the week are caught same as conflicts against history.
-2. All 7 days registered → ask for all 21 Pinterest URLs at once (see Assets below), 3 per day, in day order.
+| Source | File/Location | Section/Scope | Why |
+|--------|--------------|---------------|-----|
+| User | The 3 confirmed titles per day, from [../01-creation/](../01-creation/) | Full content | What each carousel is about |
+| User | Pinterest title URLs, 3 per day | Full content | Title-slide backgrounds for `process-images.js` |
+| Reference | [../01-creation/carousels.json](../01-creation/carousels.json) | Every fragrance ever used, any status | What `check-fragrances.js` checks picks against |
+| Reference | [../01-creation/schema.md](../01-creation/schema.md) | Full file | Column/type map of `carousels.json` |
+| Working file | `scripts-<Day>.json` (`Mon`–`Sun`), written during this phase | Per-day copy + slide data | Copied into place as `scripts.json` for rendering |
+
+## Process
+
+1. Titles confirmed ([../01-creation/](../01-creation/)) → for each of the 7 days in turn: pick 9 fragrances (see Fragrance selection below) → `check-fragrances.js` → write copy + that day's carousel data into a working file `scripts-<Day>.json` (`Mon`–`Sun`, see Copy + registration below) → `add-batch.js` to register that day's 3 carousels as pending. Repeat for all 7 days before moving on — each day's `check-fragrances.js` run picks up every prior day's registrations this week, so conflicts within the week are caught same as conflicts against history.
+2. **[Checkpoint]** All 7 days registered → ask for all 21 Pinterest URLs at once (see Assets below), 3 per day, in day order.
 3. URLs in hand → for each day in turn: `process-images.js` using that day's URLs and `scripts-<Day>.json` copied into place as `scripts.json` → `generate.js` (reads the top-level `"day"` field to export to `../03-checkpoint/<Day>/`).
-4. All 7 days rendered → say exactly: "All 21 carousels are in 03-checkpoint/<Day>/ and ready to upload. Let me know when you're done posting and I'll clean everything up."
-5. User asks to clean up the posts → `cleanup.js`
+4. **[Checkpoint]** All 7 days rendered → say exactly: "All 21 carousels are in 03-checkpoint/<Day>/ and ready to upload. Let me know when you're done posting and I'll clean everything up."
+5. User asks to clean up the posts → `cleanup.js`.
+6. Run the audit below, and revise before moving on.
+
+## Checkpoints
+
+| After Step | Agent Presents | Human Decides |
+|------------|---------------|---------------|
+| 2 | The Pinterest URL request (see Assets) | The 21 Pinterest URLs, in day order |
+| 4 | The closing message above | When posting is done and cleanup can run |
+
+## Audit
+
+| Check | Pass Condition |
+|-------|---------------|
+| Fragrance conflicts | `check-fragrances.js` reports no conflicts for each day's 9 picks |
+| Fragrantica URLs | Every `fragranticaUrl` has its numeric ID suffix, never blank |
+| Registration | `add-batch.js` accepted every day's batch (title + exactly 3 fragrances, or 6 for a comparison carousel; valid tier/gender) |
+| Render | `generate.js` finishes without a missing-files list, for every day |
+| Cleanup | `cleanup.js` has run only after the user said posting is done |
+
+## Outputs
+
+| Artifact | Location | Format |
+|----------|----------|--------|
+| Carousel PNGs | `../03-checkpoint/<Day>/1,2,3` | PNGs; removed by `cleanup.js` after posting |
+| Pending carousel records | [../01-creation/carousels.json](../01-creation/carousels.json) | Tier/gender/fragrance-name tracking fields only |
+| Working files | `scripts-<Day>.json`, `batch-<Day>.json`, `scripts.json`, downloaded images | Regenerated each week; removed by `cleanup.js` |
 
 ## Scripts
 
-- **check-fragrances.js** — normalizes fragrance names (strips accents/case) and checks proposed picks against every fragrance ever used (any status). Catches flankers (e.g. "Layton Exclusif" vs "Layton") and accent variants (e.g. "Vetiver" vs "Vétiver"), not just exact matches.
+- [check-fragrances.js](check-fragrances.js) — normalizes fragrance names (strips accents/case) and checks proposed picks against every fragrance ever used (any status). Catches flankers (e.g. "Layton Exclusif" vs "Layton") and accent variants (e.g. "Vetiver" vs "Vétiver"), not just exact matches.
   `node check-fragrances.js "Name 1" "Name 2" ...`
 
-- **add-batch.js** — appends 3 carousels to `../01-creation/carousels.json` as `status: "pending"` entries (with their tagged fragrances). Validates each carousel has a title + exactly 3 fragrances (6 for a comparison carousel — 3 pairs), and each fragrance a valid tier/gender.
+- [add-batch.js](add-batch.js) — appends 3 carousels to [../01-creation/carousels.json](../01-creation/carousels.json) as `status: "pending"` entries (with their tagged fragrances). Validates each carousel has a title + exactly 3 fragrances (6 for a comparison carousel — 3 pairs), and each fragrance a valid tier/gender.
   `node add-batch.js batch.json`
 
-- **process-images.js** — downloads `cN-title.jpg` from Pinterest for every carousel, and `cN-sN-bottle.jpg` + `cN-sN-card.jpg` from Fragrantica for every slide, using each slide's `fragranticaUrl` in `scripts.json`. For a `"contentType": "double"` carousel, downloads both sides of each pair as `cN-sNa-*`/`cN-sNb-*`. Images land in this folder.
+- [process-images.js](process-images.js) — downloads `cN-title.jpg` from Pinterest for every carousel, and `cN-sN-bottle.jpg` + `cN-sN-card.jpg` from Fragrantica for every slide, using each slide's `fragranticaUrl` in `scripts.json`. For a `"contentType": "double"` carousel, downloads both sides of each pair as `cN-sNa-*`/`cN-sNb-*`. Images land in this folder.
   `node process-images.js "url1" "url2" ...`
 
-- **generate.js** — generates `c1-slides.jsx` / `c2-slides.jsx` / `c3-slides.jsx` from `scripts.json` and exports all 3 carousels to `../03-checkpoint/<Day>/` via `export.js`, using `scripts.json`'s top-level `"day"` field (`Mon`–`Sun`). Aborts with a missing-files list if an image is absent. Renders a `"contentType": "double"` carousel's slides as price-comparison pairs instead of single fragrances.
+- [generate.js](generate.js) — generates `c1-slides.jsx` / `c2-slides.jsx` / `c3-slides.jsx` from `scripts.json` and exports all 3 carousels to `../03-checkpoint/<Day>/` via `export.js`, using `scripts.json`'s top-level `"day"` field (`Mon`–`Sun`). Aborts with a missing-files list if an image is absent. Renders a `"contentType": "double"` carousel's slides as price-comparison pairs instead of single fragrances.
   `node generate.js`
 
-- **export.js** — screenshots one carousel's JSX to PNGs in `../03-checkpoint/<Day>/`. Used directly when hand-fixing a wrapped headline.
+- [export.js](export.js) — screenshots one carousel's JSX to PNGs in `../03-checkpoint/<Day>/`. Used directly when hand-fixing a wrapped headline.
   `node export.js cN <Day>`
 
-- **cleanup.js** — deletes PNGs from `../03-checkpoint/<Day>/1,2,3` for every weekday folder (keeps the folders), downloaded image files in this folder, and `scripts.json`.
+- [cleanup.js](cleanup.js) — deletes PNGs from `../03-checkpoint/<Day>/1,2,3` for every weekday folder (keeps the folders), downloaded image files in this folder, `scripts.json`, and the per-day `scripts-<Day>.json` / `batch-<Day>.json` working files.
   `node cleanup.js`
 
 ## Fragrance selection
 
 - Don't pre-load excluded names into context — propose from your own knowledge; `check-fragrances.js` catches conflicts.
-- Brand saturation — heavily-used brands (Xerjoff, Amouage, Parfums de Marly, Nishane, Creed, Initio, ...) are likely tapped out after 50+ carousels. Check counts via `jq -r '.carousels[].fragrances[].fragrance' ../01-creation/carousels.json | grep -ci "Brand Name"`, lean toward lower-count or fresh brands.
-- Tier mix — don't default to `1 mainstream, 2 mid-niche, 1 deep-niche, 1 ultra-niche`; it's been used on nearly every carousel, so that data is still collection, not optimization. Check history via `jq -r '.carousels[] | [.fragrances[].tier] | group_by(.) | map("\(length) \(.[0])") | join(", ")' ../01-creation/carousels.json | sort | uniq -c | sort -rn` and assign 3 under-represented mixes for this batch.
+- Brand saturation — heavily-used brands (Xerjoff, Amouage, Parfums de Marly, Nishane, Creed, Initio, ...) tend to be tapped out as the history grows. Check counts via `jq -r '.carousels[].fragrances[].fragrance' ../01-creation/carousels.json | grep -ci "Brand Name"`, lean toward lower-count or fresh brands.
+- Tier mix — don't default to `1 mainstream, 2 mid-niche, 1 deep-niche, 1 ultra-niche`; it has been used on nearly every carousel so far, so that data is collection, not optimization. Check history via `jq -r '.carousels[] | [.fragrances[].tier] | group_by(.) | map("\(length) \(.[0])") | join(", ")' ../01-creation/carousels.json | sort | uniq -c | sort -rn` and assign 3 under-represented mixes for this batch.
 - Niche tiers: Mainstream (Dior, Chanel, YSL, Rabanne, Hugo Boss) → Mid-niche (Amouage, Xerjoff, Initio, Creed, MFK, PdM, Kilian, Maison Margiela Replica, Mancera, Montale) → Deep niche (Roja, Nishane, Nasomatto, Orto Parisi, Bogue Profumo) → Ultra niche/indie (Areej le Doré, Slumberhouse, Tauer, Ensar Oud) → Obscure (Sultan Pasha Attars, micro-batch/bespoke).
 - Verify existence, one `WebSearch` per fragrance (`WebFetch` on fragrantica.com returns 403). Confirm exact name + brand before committing; don't invent or guess from memory. Capture the URL with its numeric ID suffix (e.g. `-46038.html`).
 - If a name doesn't check out, swap in another fragrance from the same tier and re-verify.
@@ -50,8 +86,8 @@ The user preps the whole week — Monday through Sunday, 7 batches of 3, 21 caro
 
 - Ask for one Pinterest title URL per carousel, in order (3 per batch). List the carousel titles in order alongside the request so the user knows which URL maps to which title: "Paste 3 Pinterest title URLs." followed by the numbered title list.
 
-Column/type map of `carousels.json`: `../01-creation/schema.md`.
+Column/type map of `carousels.json`: [../01-creation/schema.md](../01-creation/schema.md).
 
 # Last Updated
 
-- 2026-09-24 — update this date whenever this file is edited.
+- 2026-10-30 — update this date whenever this file is edited.
