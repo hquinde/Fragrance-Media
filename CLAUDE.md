@@ -4,6 +4,19 @@
 
 - A pipeline for creating Fragrance Collective carousels, worked through in order by a single AI agent.
 
+# Folder Map
+
+```
+Fragrance-Media/                 (you are here)
+├── 01-creation/
+├── 02-pipeline/
+├── 03-checkpoint/
+├── design/
+└── .claude/
+```
+
+Top-level folders only, one level deep, no filenames or comments. Adding a folder means updating this tree and the Project Map below.
+
 # Project Map
 
 Each subdirectory with its own `CLAUDE.md` is listed here as `- [xxx/](xxx/) — <one-line description>`, with no "see" before the link. Add new subdirectories in this exact format.
@@ -21,9 +34,9 @@ Each subdirectory with its own `CLAUDE.md` is listed here as `- [xxx/](xxx/) —
 
 # Conventions
 
-- This workspace follows `~/Conventions/GUIDE.md` (canonical repo: [hquinde/Conventions](https://github.com/hquinde/Conventions), cloned to `~/Conventions`), imported below so it is in context every session (skeletons in `~/Conventions/templates/`). When asked to add or change a convention, edit `~/Conventions` and log it in its `CHANGELOG.md`, never this workspace. Run `/conventions-audit` to check this workspace against it.
+- This workspace follows `~/Workspaces/Conventions/GUIDE.md` (canonical repo: [hquinde/Conventions](https://github.com/hquinde/Conventions), cloned to `~/Workspaces/Conventions`), imported below so it is in context every session (skeletons in `~/Workspaces/Conventions/templates/`). When asked to add or change a convention, edit `~/Workspaces/Conventions` and log it in its `CHANGELOG.md`, never this workspace. Run `/conventions-audit` to check this workspace against it.
 
-@~/Conventions/GUIDE.md
+@~/Workspaces/Conventions/GUIDE.md
 
 # Last Updated
 
