@@ -2,7 +2,7 @@
 
 # Purpose
 
-- Everything after titles are confirmed: picking fragrances, copy, assets, render, cleanup. No phase-per-folder here — one folder of scripts plus a single context doc.
+- Everything after titles are confirmed: picking fragrances, copy, assets, render, cleanup.
 
 # Context
 
@@ -17,6 +17,20 @@
 - [export.js](export.js) — screenshots one carousel's JSX to PNGs; used directly for hand-fixing a single wrapped headline.
 - [cleanup.js](cleanup.js) — deletes exported PNGs, downloaded images, `scripts.json`, and the per-day `scripts-<Day>.json`/`batch-<Day>.json` files after a batch is posted.
 
+# Source
+
+- [source/carousels/carousel.html](source/carousels/carousel.html) — the render shell that loads a carousel's slides; hand-written and tracked.
+
+# Generated
+
+- [source/carousels/](source/carousels/) — also holds the per-carousel `c*-slides.jsx` files that [generate.js](generate.js) rebuilds each run; the generated JSX is gitignored.
+
+# Dependencies
+
+- [package.json](package.json) — this folder's Node dependencies (`puppeteer`).
+- [package-lock.json](package-lock.json) — the locked dependency tree for `package.json`.
+- [node_modules/](node_modules/) — installed dependencies; gitignored.
+
 # Last Updated
 
-- 2026-10-30 — update this date whenever this file is edited.
+- 2026-11-02 — update this date whenever this file is edited.

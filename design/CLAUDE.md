@@ -2,28 +2,40 @@
 
 # Purpose
 
-- The carousel design system, isolated from pipeline logic and data. Read this folder alone — no `carousels.json`, no `02-pipeline/` context — when building or iterating on a slide template.
-- Standalone: a faithful copy of the real design for experimentation, not the pipeline's source of truth. [../02-pipeline/generate.js](../02-pipeline/generate.js) is what the pipeline actually uses.
+- The carousel design system: slide templates, the render shell, and preview tooling, isolated from pipeline logic and data so template work needs no pipeline context.
 
 # Context
 
-- [CONTEXT.md](CONTEXT.md) — the design system (fonts, colors, slide types), why JSX over plain HTML, and how to add a new template. Start here.
+- [CONTEXT.md](CONTEXT.md) — the design system (fonts, colors, slide types), why JSX over plain HTML, and how to add and promote a new template. Start here.
 
-# Files
+# Assets
 
-- [brand.png](brand.png) — the account's logo (Fragrance / Collectives / three stars, `#000000` on `#E1E1E1`); source of the carousel palette and star mark. Color codes: [CONTEXT.md](CONTEXT.md) → Brand.
-- [base.html](base.html) — the shell: fonts, global CSS, React/Babel CDN loader that fetches and transforms whichever `*-slides.jsx` file `?c=` points to.
-- [build-slide.js](build-slide.js) — the actual slide markup: `generateCarouselJsx()` + `headlineFontSize()` + `eyebrowLabel()` (fragrance slides), and `generateCompareSlideJsx()` (compare slides — two fragrances stacked with a price line), copied as-is from `02-pipeline/generate.js`. Edit this to change slide design; add a new function here for a new slide type/template.
-- [sample-data.js](sample-data.js) — real data from an actual posted batch (not fabricated), used only for preview rendering.
+- [brand.png](brand.png) — the account's logo; source of the carousel palette and star mark. Color codes: [CONTEXT.md](CONTEXT.md) → Brand.
 - [samples/](samples/) — the real Fragrantica bottle/card images + Pinterest title background for `sample-data.js`'s fragrances. Self-contained `CLAUDE.md` describing each image.
-- [preview.js](preview.js) — standalone puppeteer + local server script. Renders exactly 2 slides (title + one content slide) to `preview-output/` (gitignored). `node preview.js` (1 fragrance) or `node preview.js 3` (first 3 fragrances in the one content slide, for testing a denser template).
-- [package.json](package.json) / `node_modules/` — this folder's own `puppeteer` install, kept separate from `02-pipeline/`'s so this stays genuinely standalone.
+
+# Source
+
+- [base.html](base.html) — the shell: fonts, global CSS, React/Babel CDN loader that fetches and transforms whichever `*-slides.jsx` file `?c=` points to.
+- [build-slide.js](build-slide.js) — the slide markup functions: fragrance (single) slides with their headline-sizing and eyebrow-label helpers, and compare (double) slides. Edit this to change slide design; add a new function here for a new slide type/template.
+
+# Data
+
+- [sample-data.js](sample-data.js) — real data from an actual posted batch (not fabricated), used only for preview rendering.
+
+# Scripts
+
+- [preview.js](preview.js) — standalone puppeteer + local server script. Renders exactly 2 slides (title + one content slide) to [preview-output/](preview-output/) (gitignored). `node preview.js` (1 fragrance) or `node preview.js 3` (first 3 fragrances in the one content slide, for testing a denser template).
+
+# Dependencies
+
+- [package.json](package.json) — this folder's own `puppeteer` dependency, kept separate from [../02-pipeline/](../02-pipeline/)'s install.
+- [package-lock.json](package-lock.json) — the locked dependency tree for `package.json`.
+- [node_modules/](node_modules/) — installed dependencies; gitignored.
 
 # Rules
 
-- While exploring a new template, keep the work in scratch files (prefixed `_`, e.g. `_compare-draft.js` + `_compare-preview.js`) — don't add it to `build-slide.js` or document it here until the user explicitly confirms the design is finalized. A directional pick ("let's go with C") is a signal to keep iterating on it, not approval to promote it.
 - Ask if unsure.
 
 # Last Updated
 
-- 2026-10-30 — update this date whenever this file is edited.
+- 2026-11-02 — update this date whenever this file is edited.

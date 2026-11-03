@@ -41,5 +41,5 @@ Produce user-facing text **only** at the moments explicitly called out in `01-cr
 
 | Artifact | Location | Format |
 |----------|----------|--------|
-| Carousel PNGs | `03-checkpoint/<Day>/` | PNGs, one folder per weekday; removed by cleanup after posting |
+| Carousel PNGs | [03-checkpoint/](03-checkpoint/) | PNGs in one `<Day>/` folder per weekday; removed by cleanup after posting |
 | Tracking data | [01-creation/carousels.json](01-creation/carousels.json) | JSON; updated by the phase scripts |

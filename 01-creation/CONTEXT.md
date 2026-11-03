@@ -23,7 +23,7 @@
 2. Run the performance review (see below).
 3. Run title creation (see below).
 4. **[Checkpoint]** Present the 3 candidate titles and wait for sign-off.
-5. Run the audit below, then move to `../02-pipeline/`.
+5. Run the audit below, then move to [../02-pipeline/](../02-pipeline/).
 
 ## Checkpoints
 
@@ -47,7 +47,7 @@
 |----------|----------|--------|
 | Updated performance records | [carousels.json](carousels.json) | JSON; written by `report-performance.js`, not hand-edited |
 | Performance write-up | [analysis.md](analysis.md) | Markdown; regenerated when stale |
-| 3 confirmed titles | Stated to the user, handed to `../02-pipeline/` | Plain text |
+| 3 confirmed titles | Stated to the user, handed to [../02-pipeline/](../02-pipeline/) | Plain text |
 
 ## Performance review details
 
@@ -66,8 +66,8 @@ node report-performance.js --title "Title"   # flopped, or no metrics given at a
 - Back-and-forth phase — stay here until the user has actually signed off on 3 titles, not something merely proposed.
 - Propose 3 candidate titles grounded in the performance patterns above.
 - Present them and wait — the user may confirm as-is, edit any of them, or swap in titles of their own.
-- Once confirmed, state the 3 final titles, then move to `../02-pipeline/`.
+- Once confirmed, state the 3 final titles, then move to [../02-pipeline/](../02-pipeline/).
 
 # Last Updated
 
-- 2026-10-30 — update this date whenever this file is edited.
+- 2026-11-02 — update this date whenever this file is edited.

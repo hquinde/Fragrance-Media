@@ -22,4 +22,4 @@ All "card" images share the same Fragrantica template layout (bottle thumbnail, 
 
 # Last Updated
 
-- 2026-08-09 — update this date whenever this file is edited.
+- 2026-11-02 — update this date whenever this file is edited.

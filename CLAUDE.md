@@ -26,7 +26,7 @@ Each subdirectory with its own `CLAUDE.md` is listed here as `- [xxx/](xxx/) —
 - [design/](design/) — the carousel design system, isolated from pipeline logic and data so template work doesn't need pipeline context.
 - [.claude/](.claude/) — Claude Code configuration: skills, hooks, and settings.
 
-`03-checkpoint/` holds the exported carousel PNGs, one folder per weekday. It grows over time, has no `CLAUDE.md`, and is not itemized.
+[03-checkpoint/](03-checkpoint/) holds the exported carousel PNGs, one folder per weekday. It grows over time, has no `CLAUDE.md`, and is not itemized.
 
 # Context
 
@@ -40,4 +40,4 @@ Each subdirectory with its own `CLAUDE.md` is listed here as `- [xxx/](xxx/) —
 
 # Last Updated
 
-- 2026-10-30 — update this date whenever this file is edited.
+- 2026-11-02 — update this date whenever this file is edited.
